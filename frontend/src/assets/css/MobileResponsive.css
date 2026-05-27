@@ -1,0 +1,495 @@
+/* Mobile-First Responsive Utilities */
+
+/* Google Pixel Optimizations (412px width standard) */
+@media (min-width: 360px) and (max-width: 412px) {
+  /* Pixel-specific container optimizations */
+  .container,
+  .page-container,
+  .content-container {
+    max-width: 412px;
+    margin: 0 auto;
+    padding: 1rem;
+    padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(1rem + env(safe-area-inset-bottom, 0px) + 80px);
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
+  }
+  
+  /* Pixel-optimized typography */
+  h1 { 
+    font-size: 2rem; 
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+  h2 { 
+    font-size: 1.75rem; 
+    line-height: 1.3;
+    letter-spacing: 0;
+  }
+  h3 { 
+    font-size: 1.5rem; 
+    line-height: 1.4;
+    letter-spacing: 0.15px;
+  }
+  
+  /* Pixel-optimized touch targets (Material Design 3: 48dp minimum) */
+  .btn,
+  .button,
+  .login-button,
+  .signup-button,
+  .submit-button {
+    min-height: 48px;
+    min-width: 48px;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Pixel-optimized cards */
+  .card,
+  .content-card,
+  .activity-card,
+  .profile-card {
+    border-radius: 16px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .card:active,
+  .content-card:active,
+  .activity-card:active,
+  .profile-card:active {
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Pixel-optimized inputs */
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    min-height: 48px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    border-width: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 102, 153, 0.12);
+  }
+  
+  /* Pixel-optimized tables */
+  .table-responsive {
+    border-radius: 12px;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+  
+  /* Pixel-optimized modals */
+  .modal-content {
+    border-radius: 16px;
+    max-width: 412px;
+    margin: 0 auto;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Global Mobile Styles */
+@media (max-width: 768px) {
+  /* Container adjustments */
+  .container,
+  .page-container,
+  .content-container {
+    padding: 1rem;
+    padding-bottom: 100px; /* Space for bottom navigation */
+  }
+
+  /* Typography adjustments */
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.125rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.875rem; }
+
+  /* Card components */
+  .card,
+  .content-card,
+  .activity-card,
+  .profile-card {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+  }
+
+  .card h3,
+  .content-card h3,
+  .activity-card h3 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .card p,
+  .content-card p,
+  .activity-card p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* Button adjustments */
+  .btn,
+  .button,
+  .login-button,
+  .signup-button,
+  .submit-button {
+    padding: 12px 16px;
+    font-size: 14px;
+    min-height: 44px;
+    touch-action: manipulation;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+  }
+
+  /* Form elements */
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+    box-sizing: border-box;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: #006699;
+    box-shadow: 0 0 0 3px rgba(0, 102, 153, 0.1);
+  }
+
+  /* Tables */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+
+  .table {
+    font-size: 0.875rem;
+    min-width: 600px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 4px;
+    white-space: nowrap;
+  }
+
+  /* Modal adjustments */
+  .modal,
+  .modal-dialog {
+    margin: 0;
+    max-width: 100%;
+    height: 100vh;
+  }
+
+  .modal-content {
+    margin: 1rem;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .modal-body {
+    padding: 1rem;
+  }
+
+  .modal-footer {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid #eee;
+  }
+
+  .modal-footer .btn {
+    width: 100%;
+  }
+
+  /* Navigation adjustments */
+  .navbar,
+  .nav-bar {
+    padding: 0.5rem 1rem;
+  }
+
+  .nav-item {
+    margin: 0.25rem 0;
+  }
+
+  .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 16px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Grid adjustments */
+  .row {
+    margin: 0;
+  }
+
+  .col,
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6,
+  .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    padding: 0.5rem;
+  }
+
+  /* Flexbox adjustments */
+  .d-flex {
+    flex-direction: column;
+  }
+
+  .flex-row-mobile {
+    flex-direction: row;
+  }
+
+  .flex-column-mobile {
+    flex-direction: column;
+  }
+
+  /* Spacing adjustments */
+  .mb-3 { margin-bottom: 1rem; }
+  .mb-4 { margin-bottom: 1.5rem; }
+  .mb-5 { margin-bottom: 2rem; }
+  .mt-3 { margin-top: 1rem; }
+  .mt-4 { margin-top: 1.5rem; }
+  .mt-5 { margin-top: 2rem; }
+
+  .p-3 { padding: 1rem; }
+  .p-4 { padding: 1.5rem; }
+  .p-5 { padding: 2rem; }
+
+  /* Text adjustments */
+  .text-center-mobile {
+    text-align: center;
+  }
+
+  .text-left-mobile {
+    text-align: left;
+  }
+
+  /* Hide/show utilities */
+  .d-mobile-none {
+    display: none !important;
+  }
+
+  .d-mobile-block {
+    display: block !important;
+  }
+
+  .d-mobile-flex {
+    display: flex !important;
+  }
+
+  .d-mobile-inline {
+    display: inline !important;
+  }
+
+  .d-mobile-inline-block {
+    display: inline-block !important;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .container,
+  .page-container,
+  .content-container {
+    padding: 0.75rem;
+    padding-bottom: 90px;
+  }
+
+  h1 { font-size: 1.5rem; }
+  h2 { font-size: 1.375rem; }
+  h3 { font-size: 1.125rem; }
+  h4 { font-size: 1rem; }
+
+  .card,
+  .content-card,
+  .activity-card,
+  .profile-card {
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card h3,
+  .content-card h3,
+  .activity-card h3 {
+    font-size: 1rem;
+  }
+
+  .card p,
+  .content-card p,
+  .activity-card p {
+    font-size: 0.85rem;
+  }
+
+  .btn,
+  .button,
+  .login-button,
+  .signup-button,
+  .submit-button {
+    padding: 10px 14px;
+    font-size: 13px;
+    min-height: 42px;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 6px 2px;
+  }
+
+  .modal-content {
+    margin: 0.5rem;
+    max-height: calc(100vh - 1rem);
+  }
+
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 0.75rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container,
+  .page-container,
+  .content-container {
+    padding: 1.5rem;
+  }
+
+  .btn,
+  .button {
+    min-width: 120px;
+  }
+
+  .table {
+    font-size: 0.9rem;
+  }
+}
+
+/* Desktop-specific utilities */
+@media (min-width: 768px) {
+  .d-desktop-none {
+    display: none !important;
+  }
+
+  .d-desktop-block {
+    display: block !important;
+  }
+
+  .d-desktop-flex {
+    display: flex !important;
+  }
+
+  .d-desktop-inline {
+    display: inline !important;
+  }
+
+  .d-desktop-inline-block {
+    display: inline-block !important;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device specific styles */
+  .btn:hover,
+  .button:hover,
+  .nav-link:hover {
+    transform: none;
+  }
+
+  .btn:active,
+  .button:active {
+    transform: scale(0.98);
+  }
+
+  /* Increase touch targets */
+  .clickable,
+  .interactive {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Optimize for retina displays */
+  .logo,
+  .icon {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-width: 768px) and (orientation: landscape) {
+  .modal-content {
+    max-height: 90vh;
+  }
+
+  .navbar {
+    padding: 0.25rem 1rem;
+  }
+}
+

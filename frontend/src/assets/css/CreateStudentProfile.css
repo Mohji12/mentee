@@ -1,0 +1,158 @@
+/* Create Student Profile Form */
+
+/* Form Container */
+.student-profile-form-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+/* Form Heading */
+.student-profile-form-heading {
+  font-size: 28px;
+  color: #000000;
+  text-align: left; /* Left-align heading */
+  margin-bottom: 30px;
+}
+
+/* Form Heading */
+.student-profile-form-heading1 {
+  font-size: 18px;
+  color: #2c3e50;
+  text-align: left; /* Left-align heading */
+  margin-top: -20px;
+  font-style: italic;
+}
+
+/* Error Message */
+.student-profile-form-error {
+  color: #e74c3c;
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-align: left; /* Left-align error message */
+}
+
+/* Form Fields */
+.student-profile-form-group {
+  margin-bottom: 15px;
+  text-align: left; /* Ensure text is left-aligned in form groups */
+}
+
+.student-profile-form-group label {
+  font-size: 16px;
+  color: #34495e;
+  display: block; /* Make label a block element to align it properly */
+  margin-bottom: 5px;
+}
+
+.student-profile-form-group input {
+  width: 100%;
+  font-size: 16px;
+  color: #34495e;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.student-profile-form-group input:focus {
+  outline-color: #3498db;
+  border-color: #3498db;
+}
+
+/* Submit Button */
+.student-profile-form-submit-btn {
+  background-color: #2980b9;
+  color: white;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.student-profile-form-submit-btn:hover {
+  background-color: #1f70a5;
+}
+
+/* General Form Styles */
+.student-profile-form {
+  width: 80%;
+  max-width: 600px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.student-profile-form h3 {
+  font-size: 24px;
+  color: #2c3e50;
+  text-align: left; /* Left-align heading */
+  margin-bottom: 20px;
+}
+
+.student-profile-form label {
+  font-weight: bold;
+  color: #2c3e50;
+  display: block; /* Make label a block element to align it properly */
+}
+
+.student-profile-form input {
+  width: 96%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.student-profile-form input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.student-profile-form-submit-btn {
+  background-color: #3498db;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.student-profile-form-submit-btn:hover {
+  background-color: #2980b9;
+}
+
+/* Dropdown (select) Styles */
+.student-profile-form-group select {
+  width: 100%;
+  font-size: 16px;
+  color: #34495e;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 12px; /* Add padding to make it visually aligned with input fields */
+  appearance: none; /* Remove default dropdown arrow in some browsers */
+  background-color: #ffffff; /* Ensure the background is consistent */
+  cursor: pointer;
+  transition: border-color 0.3s, box-shadow 0.3s; /* Smooth transition for focus state */
+}
+
+/* Dropdown focus state */
+.student-profile-form-group select:focus {
+  outline: none;
+  border-color: #3498db; /* Highlight border on focus */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.4); /* Subtle shadow effect */
+}
+
+/* Custom Arrow for Dropdown */
+.student-profile-form-group select::-ms-expand {
+  display: none; /* Remove default arrow in IE */
+}
+
+/* Optional: Style the dropdown's background color on hover */
+.student-profile-form-group select:hover {
+  border-color: #2980b9; /* Darker border on hover */
+}
+
+/* Optional: Add a placeholder style */
+.student-profile-form-group select option:first-child {
+  color: #aaa; /* Lighter color for placeholder */
+}

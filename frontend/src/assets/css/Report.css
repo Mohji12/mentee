@@ -1,0 +1,705 @@
+/* Modern Report Page Styles - Matching Activities Theme */
+.report-page {
+  min-height: 100vh;
+  background: transparent;
+  padding: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Section */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  gap: 1rem;
+}
+
+.header-content {
+  flex: 1;
+}
+
+.page-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000 !important;
+  margin: 0 0 0.5rem 0;
+}
+
+/* More specific selector to override global h1 styles */
+.report-header h1.page-title {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  background: none !important;
+  background-clip: unset !important;
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #0847a6;
+  margin: 0;
+  font-weight: 500;
+}
+
+
+
+/* Student USN Display */
+.student-usn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+.usn-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2d3748;
+  letter-spacing: 0.5px;
+}
+
+/* Stats Container */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  background: rgba(250, 250, 250, 0.95);
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  min-height: 100px;
+  height: auto;
+  border-left: 4px solid;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Individual stat card colors */
+.stat-card:nth-child(1) {
+  background: rgba(220, 255, 220, 0.95); /* Light green for Strengths */
+  border-left-color: #4CAF50;
+}
+
+.stat-card:nth-child(2) {
+  background: rgba(255, 255, 220, 0.95); /* Light yellow for Opportunities */
+  border-left-color: #FF9800;
+}
+
+.stat-card:nth-child(3) {
+  background: rgba(255, 220, 220, 0.95); /* Light pink for Weaknesses */
+  border-left-color: #F44336;
+}
+
+.stat-card:nth-child(4) {
+  background: rgba(255, 220, 255, 0.95); /* Light purple for Threats */
+  border-left-color: #9C27B0;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+  font-size: 1.8rem;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+.stat-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.stat-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  min-width: 0;
+  flex: 1;
+}
+
+.stat-content p {
+  font-size: 0.75rem;
+  color: #4a5568;
+  margin: 0;
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.3;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #000000 !important;
+  margin: 0 0 2rem 0;
+  text-align: center;
+}
+
+/* More specific selector to override global h2 styles */
+.swot-section h2.section-title,
+.additional-section h2.section-title {
+  color: #000000 !important;
+  -webkit-text-fill-color: #000000 !important;
+  background: none !important;
+  background-clip: unset !important;
+}
+
+/* SWOT Analysis Section */
+.swot-section {
+  margin-bottom: 3rem;
+}
+
+.swot-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.swot-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-left: 5px solid;
+  min-height: 250px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.swot-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+}
+
+.swot-card.strengths {
+  border-left-color: #4CAF50;
+  background: rgba(220, 255, 220, 0.95); /* Light green background */
+}
+
+.swot-card.opportunities {
+  border-left-color: #FF9800;
+  background: rgba(255, 255, 220, 0.95); /* Light yellow background */
+}
+
+.swot-card.weaknesses {
+  border-left-color: #F44336;
+  background: rgba(255, 220, 220, 0.95); /* Light red background */
+}
+
+.swot-card.threats {
+  border-left-color: #9C27B0;
+  background: rgba(255, 220, 220, 0.95); /* Light red background */
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  min-width: 0;
+  flex-shrink: 0;
+}
+
+.card-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.card-header h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  line-height: 1.3;
+  flex: 1;
+  min-width: 0;
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+  width: 100%;
+}
+
+.card-content p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 20;
+  -webkit-box-orient: vertical;
+  min-width: 0;
+  width: 100%;
+}
+
+/* Personal Insights Section */
+.additional-section {
+  margin-bottom: 3rem;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.insight-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  border-left: 5px solid #667eea;
+}
+
+.insight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Removed full-width class since we're using 2-column grid */
+
+.insight-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.insight-icon {
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+.insight-header h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+}
+
+.insight-card p {
+  font-size: 1.1rem;
+  color: #4a5568;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Report Footer */
+.report-footer {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  text-align: center;
+}
+
+.footer-content p {
+  font-size: 1rem;
+  color: #718096;
+  margin: 0.5rem 0;
+  font-weight: 500;
+}
+
+/* Loading States */
+.report-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #4a5568;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(102, 126, 234, 0.1);
+  border-left: 4px solid #667eea;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.report-loading p {
+  font-size: 1.1rem;
+  color: #718096;
+  margin: 0;
+}
+
+/* Error States */
+.report-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #e53e3e;
+  text-align: center;
+  padding: 2rem;
+}
+
+.error-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.report-error h2 {
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  color: #000000;
+}
+
+.report-error p {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem 0;
+  opacity: 0.9;
+}
+
+.retry-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.retry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* Empty States */
+.report-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #4a5568;
+  text-align: center;
+  padding: 2rem;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.8;
+}
+
+.report-empty h3 {
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+  color: #000000;
+}
+
+.report-empty p {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .stats-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat-title {
+    font-size: 0.9rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.7rem;
+  }
+  
+  .swot-grid {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+  
+  .insights-grid {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 1000px;
+  }
+  
+  .card-header h3 {
+    font-size: 1.3rem;
+  }
+  
+  .card-content p {
+    font-size: 1rem;
+  }
+}
+
+/* Handle zoom levels and smaller viewports */
+@media (max-width: 1100px) {
+  .stat-card {
+    padding: 1.1rem;
+  }
+  
+  .stat-title {
+    font-size: 0.85rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.68rem;
+  }
+  
+  .swot-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.25rem;
+  }
+  
+  .swot-card {
+    padding: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .report-page {
+    padding: 1rem;
+    padding-top: 6rem; /* Add top padding to avoid logo overlap */
+  }
+  
+  .report-header {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    padding: 1.5rem;
+    margin-top: 1rem; /* Additional top margin for header */
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .student-usn {
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .usn-text {
+    font-size: 1rem;
+  }
+  
+  .stats-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-title {
+    font-size: 0.85rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.65rem;
+  }
+  
+  .section-title {
+    font-size: 1.5rem;
+  }
+  
+  .swot-grid {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .swot-card {
+    padding: 1.5rem;
+    min-height: 200px;
+    height: auto;
+  }
+  
+  .card-header h3 {
+    font-size: 1.2rem;
+  }
+  
+  .card-content p {
+    font-size: 0.95rem;
+  }
+  
+  .insights-grid {
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  
+  .insight-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .report-page {
+    padding: 0.5rem;
+    padding-top: 5.5rem; /* Slightly less top padding for smaller screens */
+  }
+  
+  .report-header {
+    padding: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .page-title {
+    font-size: 1.8rem;
+  }
+  
+  .student-usn {
+    padding: 0.3rem 0.6rem;
+  }
+  
+  .usn-text {
+    font-size: 0.9rem;
+  }
+  
+
+  
+  .stat-card {
+    padding: 1rem;
+  }
+  
+  .stat-icon {
+    font-size: 1.6rem;
+  }
+  
+  .stat-content h3 {
+    font-size: 0.9rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.7rem;
+  }
+  
+  .swot-card {
+    padding: 1rem;
+    min-height: 180px;
+    height: auto;
+  }
+  
+  .card-header h3 {
+    font-size: 1.1rem;
+  }
+  
+  .card-content p {
+    font-size: 0.9rem;
+  }
+  
+  .insight-card {
+    padding: 1rem;
+  }
+}
+
+/* Additional media query for zoom levels (90% zoom = ~1111px effective width on 1920px screen) */
+@media (max-width: 1400px) {
+  .stat-card {
+    padding: 1.15rem;
+  }
+  
+  .stat-title {
+    font-size: 0.88rem;
+  }
+  
+  .stat-content p {
+    font-size: 0.72rem;
+  }
+  
+  .swot-grid {
+    gap: 1.75rem;
+  }
+  
+  .card-header h3 {
+    font-size: 1.35rem;
+  }
+  
+  .swot-card {
+    padding: 1.85rem;
+  }
+}

@@ -1,0 +1,194 @@
+/* Mentor Dashboard Container */
+.mentor-dashboard__container {
+  display: flex;
+  height: 100vh;
+  background-image: url('../images/landing.jpg');
+  position: relative; /* Enables absolute positioning for Powered by */
+}
+
+/* Sidebar */
+.mentor-dashboard__sidebar-container {
+  width: 250px;
+  background-color: #2f3c4e; /* Example background */
+}
+
+/* Sidebar items */
+.mentor-dashboard__sidebar-container .sidebar-item {
+  padding: 10px;
+  color: white;
+}
+
+/* Main Content */
+.mentor-dashboard__main-content-container {
+  flex-grow: 1;
+  padding: 20px;
+  padding-top: 80px; /* Add top padding to avoid logo overlap */
+  overflow-y: auto;  /* Enable vertical scrolling */
+  height: calc(100vh - 40px); /* Adjust height to make room for the footer */
+}
+
+/* Dashboard overview page: light background so cards stand out */
+.mentor-dashboard__main-content-container:has(.mentor-dashboard-home) {
+  background: #f1f5f9;
+}
+
+/* Example of dynamically generated page content */
+.mentor-dashboard__main-content-container .content-header {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.mentor-dashboard__main-content-container .content-body {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* "Powered by" Section */
+.mentor-dashboard-powered-by {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000; /* Subtle gray color */
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+/* Footer link styles */
+.mt-footer-link {
+  color: #000000; /* Set link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.mt-footer-link:hover {
+  color: #45a049; /* Set link color */
+  text-decoration: none;
+}
+
+/* Right logo at the top-right corner */
+.md-logo-right {
+  position: fixed;
+  top: 20px;
+  right: 30px;
+  width: 150px; /* Adjust width */
+  height: 50px; /* Adjust height */
+  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 9999; /* Ensure logo is always on top */
+  pointer-events: none; /* Allow clicks to pass through to elements below */
+}
+
+@media (max-width: 768px) {
+  /* Dashboard Container */
+  .mentor-dashboard__container {
+    flex-direction: column;
+    min-height: 100vh;
+    padding-bottom: 90px; /* Space for bottom navigation */
+  }
+
+  /* Sidebar - don't hide, let the mobile fixed positioning take over */
+  .mentor-dashboard__sidebar-container {
+    width: 0px;
+    height: 0px;
+    overflow: visible; /* Allow fixed-positioned children to show */
+  }
+  
+  /* "Powered by" Section */
+  .mentor-dashboard-powered-by {
+    position: fixed;
+    bottom: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #ffffff;
+    text-align: center;
+    z-index: 1001;
+  }
+  
+  /* Footer link styles */
+  .mt-footer-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .mt-footer-link:hover {
+    color: #45a049;
+    text-decoration: none;
+  }
+
+  /* Right logo */
+  .md-logo-right {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    width: 100px;
+    height: 50px;
+    background-image: url('../images/Jain-Logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 9999; /* Ensure logo is always on top */
+    pointer-events: none;
+  }
+
+  /* Main content scroll behavior for smaller screens */
+  .mentor-dashboard__main-content-container {
+    flex-grow: 1;
+    padding: 20px 15px;
+    padding-top: 70px; /* Add top padding to avoid logo overlap */
+    margin: 0;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Content styling */
+  .mentor-dashboard__main-content-container .content-header {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+
+  .mentor-dashboard__main-content-container .content-body {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .mentor-dashboard__container {
+    padding-bottom: 100px;
+  }
+
+  .mentor-dashboard__main-content-container {
+    padding: 15px 10px;
+    padding-top: 60px; /* Add top padding to avoid logo overlap */
+  }
+
+  .mentor-dashboard__main-content-container .content-header {
+    font-size: 1.25rem;
+    margin-bottom: 12px;
+  }
+
+  .mentor-dashboard__main-content-container .content-body {
+    font-size: 0.85rem;
+  }
+
+  .md-logo-right {
+    width: 80px;
+    height: 40px;
+    right: 10px;
+    top: 10px;
+    z-index: 9999;
+  }
+
+  .mentor-dashboard-powered-by {
+    font-size: 0.7rem;
+    bottom: 5px;
+  }
+}

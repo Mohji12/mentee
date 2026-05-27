@@ -1,0 +1,97 @@
+.unique-signup-page {
+    height: 100vh;
+    background-image: url('../images/mentor_signup.avif');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 50px;
+}
+
+.unique-signup-container {
+    width: 30%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin-right: 100px;
+    box-sizing: border-box;
+}
+
+.unique-signup-container h1,
+.unique-signup-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.unique-signup-container input {
+    width: 100%;
+    max-width: 410px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.unique-signup-container button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.unique-signup-container button:hover {
+    background-color: #0056b3;
+}
+
+.unique-signup-container p {
+    font-size: 1rem;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.unique-signup-container p a {
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.unique-signup-container p a:hover {
+    text-decoration: underline;
+}
+
+.unique-error-text {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 4px;
+}
+
+.unique-response-message {
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.unique-success {
+    color: #28a745;
+    background-color: #d4edda;
+}
+
+.unique-error {
+    color: #dc3545;
+    background-color: #f8d7da;
+}

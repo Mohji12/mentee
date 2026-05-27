@@ -1,0 +1,140 @@
+/* General styles for mobile */
+.mobile-landing-page {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: scroll;
+}
+  
+  /* Logo container */
+  .mobile-logo-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .mobile-logo-left, .mobile-logo-right {
+    width: 50px;
+    height: 50px;
+    background-color: #000;
+  }
+  
+  .mobile-logo-left {
+    border-radius: 10px;
+  }
+  
+  .mobile-logo-right {
+    border-radius: 10px;
+  }
+  
+  /* Right Section */
+  .mobile-right-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .mobile-image-section {
+    width: 100%;
+    height: 200px;
+    background-color: #f4f4f4;  /* Placeholder for your image section */
+  }
+  
+  /* Left Section */
+  .mobile-left-section {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .mobile-heading {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.5;
+  }
+  
+  .mobile-paragraph {
+    font-size: 16px;
+    margin: 20px 0;
+  }
+  
+  .mobile-paragraph-primary {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .mobile-login-buttons {
+    margin-top: 20px;
+  }
+  
+  .mobile-login-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .mobile-login-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .mobile-icon-section {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+  }
+  
+  .mobile-icon-item {
+    text-align: center;
+    max-width: 100px;
+  }
+  
+  .mobile-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .mobile-icon-description {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  /* Footer */
+  .mobile-footer {
+    padding: 10px;
+    background-color: #222;
+    color: white;
+    text-align: center;
+  }
+  
+  .mobile-footer-link {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .mobile-footer-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Adjusting layout for mobile responsiveness */
+  @media (max-width: 767px) {
+    .mobile-landing-page {
+      flex-direction: column;
+    }
+  
+    /* Stack the sections on top of each other */
+    .mobile-right-section, .mobile-left-section {
+      width: 100%;
+    }
+  
+    .mobile-footer {
+      position: relative;
+      bottom: 0;
+      margin-top: 20px;
+    }
+  }
+  

@@ -1,0 +1,137 @@
+/* admin Dashboard Container */
+.admin-dashboard__container {
+    display: flex;
+    min-height: 100vh;
+    height: 100%;
+    background-color: #f1f5f9;
+    background-image: url('../images/landing.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: local;
+    position: relative; /* Enables absolute positioning for Powered by */
+  }
+  
+  /* Sidebar */
+  .admin-dashboard__sidebar-container {
+    width: 250px;
+    background-color: #2f3c4e; /* Example background */
+  }
+  
+  .admin-dashboard__sidebar-container .sidebar-item {
+    padding: 10px;
+    color: white;
+  }
+  
+  /* Main Content */
+  .admin-dashboard__main-content-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  /* Example of dynamically generated page content */
+  .admin-dashboard__main-content-container .content-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-dashboard__main-content-container .content-body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  /* "Powered by" Section */
+.admin-dashboard-powered-by {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  color: #000000; /* Subtle gray color */
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.ad-footer-link{
+  color: #000000; /* Set link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.ad-footer-link:hover{
+  color: #45a049; /* Set link color */
+  text-decoration: none;
+}
+
+/* Right logo at the top-right corner */
+.ad-logo-right {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 150px; /* Adjust width */
+  height: 150px; /* Adjust height */
+  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index:1;
+}
+
+@media (max-width: 768px) {
+  /* Sidebar */
+  .admin-dashboard__sidebar-container {
+    width: 0px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Added spacing between items */
+  }
+  
+  .admin-dashboard-powered-by {
+    position: fixed;
+    bottom: 7px; /* Adjust the spacing from the bottom */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.75rem;
+    color: #ffffff; /* Neutral color for the text */
+    text-align: center;
+    z-index: 2;
+  }
+  
+  .ad-footer-link{
+    color: #ffffff; /* Set link color */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .ad-footer-link:hover{
+    color: #45a049; /* Set link color */
+    text-decoration: none;
+  }
+  
+  .ad-logo-right {
+    position: fixed;
+    right: 15px;
+    margin-top: -15px;
+    width: 130px; /* Adjust width */
+    height: 150px; /* Adjust height */
+    background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .admin-dashboard__main-content-container {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+    /* Main Content */
+    .admin-dashboard__main-content-container {
+      flex-grow: 1;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  }

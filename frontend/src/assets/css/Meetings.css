@@ -1,0 +1,302 @@
+/* General styles for the meetings component */
+.meetings__title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.meetings__error {
+  color: red;
+  margin-top: 75px;
+}
+
+.meetings__button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+
+.meetings__button--schedule {
+  margin-top: 20px;
+}
+
+.meetings__button--submit {
+  background-color: #28a745;
+}
+
+.meetings__button--close {
+  background-color: #dc3545;
+}
+
+.meetings__button--update {
+  background-color: #ffc107;
+}
+
+.meetings__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 4;
+}
+
+.meetings__modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+}
+
+.meetings__modal-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.meetings__input {
+  width: 95%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.meetings__input--datetime {
+  padding-left: 5px;
+}
+
+.meetings__list-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.meetings__no-records {
+  color: gray;
+}
+
+.meetings__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.meetings__table-header {
+  background-color: #f8f9fa;
+  text-align: left; /* Ensure header text is aligned to the left */
+}
+
+.meetings__table th,
+.meetings__table td {
+  padding: 12px 14px;
+  text-align: left;
+  border: 1px solid #ddd;
+  position: sticky;
+}
+
+.meetings__table-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.meetings__table th {
+  background-color: #3498db;
+  color: white;
+}
+
+.meetings__table-cell {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.meetings__table-container {
+  max-height: 400px; /* Set the maximum height of the table container */
+  margin-top: 20px;
+  border: 1px solid #ddd; /* Optional border for the container */
+  border-radius: 5px;
+  z-index: -1;
+  margin-bottom: 100px;
+}
+
+.meetings__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.meetings__table th,
+.meetings__table td {
+  padding: 12px 14px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.meetings__table-row:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.meetings__table-header {
+  background-color: #3498db;
+  color: white;
+}
+
+.meetings__table th {
+  position: sticky;
+  top: 0; /* Keep table header fixed while scrolling */
+  background-color: #3498db; /* Ensure header color matches */
+  z-index: 1; /* Ensure the header stays above the content */
+}
+
+
+@media (max-width: 768px) {
+.meetings__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  z-index: -1;
+}
+}
+
+/* Meetings.css */
+
+/* General Modal Styles
+.meetings__modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.meetings__modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.meetings__modal-title {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.meetings__textarea {
+  width: 95%;
+  height: 90px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  resize: none;
+} */
+
+.meetings__modal {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 100vh;
+}
+
+.meetings__modal-content {
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Edit remark modal */
+.meetings__textarea--remark {
+  min-height: 100px;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Remark column in table */
+.meetings__remark-cell {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meetings__table-container {
+  overflow-x: auto;
+}
+
+/* Mode of meeting (mentor schedule form) */
+.meetings__label {
+  display: block;
+  margin: 0.5rem 0;
+  font-weight: 600;
+}
+.meetings__mode-options {
+  display: flex;
+  gap: 1.5rem;
+  margin: 0.5rem 0 1rem;
+}
+.meetings__mode-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.meetings__mode-option input {
+  cursor: pointer;
+}
+.meetings__online-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 0.5rem 0 1rem;
+}
+
+/* Mode badge in table (shared) */
+.meeting-mode-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.meeting-mode-badge--online {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.meeting-mode-badge--offline {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+
+/* Row actions: Start meeting + Update Notes */
+.meetings__row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.meetings__button--start {
+  display: inline-block;
+  padding: 0.4rem 0.9rem;
+  background: #1a73e8;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.meetings__button--start:hover {
+  background: #1557b0;
+  color: #fff;
+}

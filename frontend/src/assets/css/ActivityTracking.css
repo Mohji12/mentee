@@ -1,0 +1,371 @@
+/* General container for the activity tracking section */
+.activity-tracking__container {
+  border-radius: 8px;
+  overflow-x: auto; /* Prevent unwanted horizontal overflow */
+}
+
+/* Add padding-top to avoid logo overlap */
+.meeting-portal-container {
+  padding-top: 6rem; /* Push content below the JAIN logo */
+  position: relative; /* Ensure proper positioning context */
+}
+
+/* Ensure button container is below logo */
+.meeting-portal-container > div:first-child {
+  position: relative;
+  z-index: 1; /* Lower than logo's z-index (10) */
+}
+
+/* Style for the title and button container */
+.meeting-portal-container > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .meeting-portal-container {
+    padding-top: 5rem; /* Less padding on mobile */
+  }
+  
+  /* On mobile, ensure button doesn't overlap with fixed logo */
+  .meeting-portal-container > div:first-child {
+    margin-top: 1rem;
+    flex-direction: column; /* Stack title and button vertically on mobile */
+    align-items: stretch;
+  }
+  
+  /* Make button full width on mobile */
+  .meeting-portal-container > div:first-child button {
+    width: 100%;
+  }
+}
+
+.activity-tracking__table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+.activity-tracking__textarea {
+  width: 95%;
+  padding: 8px;
+  font-size: 16px;
+  resize: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+
+/* Scrollable wrapper for the table */
+.activity-tracking__table-wrapper {
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin-top: 20px;
+}
+
+/* Table to list activities */
+.activity-tracking__table {
+  width: 100%;
+  max-width: 100%; /* Prevent table from exceeding container */
+  border-collapse: collapse;
+}
+
+.activity-tracking__table th,
+.activity-tracking__table td {
+  padding: 8px 6px;
+  font-size: 1rem;
+  vertical-align: top;
+  border: 1px solid #ddd;
+  white-space: nowrap;
+}
+
+/* Specific: Enable normal wrap for activity column content only */
+.activity-tracking__table td.activity-col-wrap {
+  white-space: normal;
+  max-width: 210px;
+  min-width: 120px;
+  text-align: left;
+  line-height: 1.4;
+}
+
+.activity-tracking__table th {
+  background-color: #3498db;
+  color: white;
+  font-weight: 700;
+  font-size: 1.07rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Activity long text cell */
+.activity-tracking__table td:nth-child(3) {
+  text-align: left;
+  max-width: 260px;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Bold for USN in name cell */
+.activity-tracking__table td:nth-child(2) strong {
+  font-weight: bold;
+  font-size: 1.10rem;
+  color: #222;
+}
+
+/* Zebra row remains */
+.activity-tracking__table tr:nth-child(even) {
+  background-color: #f6f9ff;
+}
+
+/* Set a fixed width for the Activity column */
+.activity-tracking__table th:nth-child(3),
+.activity-tracking__table td:nth-child(3) {
+  width: 250px; /* Adjust the value as necessary */
+}
+
+/* Set a fixed width for the Activity ID column */
+.activity-tracking__table th:nth-child(1),
+.activity-tracking__table td:nth-child(1) {
+  width: 92px;
+}
+
+/* Set a fixed width for the USN/Name column */
+.activity-tracking__table th:nth-child(2),
+.activity-tracking__table td:nth-child(2) {
+  width: 126px;
+}
+
+/* Set a fixed width for the Activity column */
+.activity-tracking__table th:nth-child(3),
+.activity-tracking__table td:nth-child(3) {
+  width: 210px;
+}
+
+/* Set a fixed width for the Date column */
+.activity-tracking__table th:nth-child(4),
+.activity-tracking__table td:nth-child(4) {
+  width: 85px;
+}
+
+/* Set a fixed width for the Duration column */
+.activity-tracking__table th:nth-child(5),
+.activity-tracking__table td:nth-child(5) {
+  width: 82px;
+}
+
+/* Set a fixed width for the Type column */
+.activity-tracking__table th:nth-child(6),
+.activity-tracking__table td:nth-child(6) {
+  width: 93px;
+}
+
+/* Set a fixed width for the Notes column */
+.activity-tracking__table th:nth-child(7),
+.activity-tracking__table td:nth-child(7) {
+  width: 90px;
+}
+
+/* Set a fixed width for the Status column */
+.activity-tracking__table th:nth-child(8),
+.activity-tracking__table td:nth-child(8) {
+  width: 87px;
+}
+
+/* Set a fixed width for the Actions column */
+.activity-tracking__table th:nth-child(9),
+.activity-tracking__table td:nth-child(9) {
+  width: 97px;
+}
+
+/* Set a fixed width for the ID column */
+.activity-tracking__table th:nth-child(10),
+.activity-tracking__table td:nth-child(10) {
+  width: 92px;
+}
+
+
+/* Modal (Popup) Styles */
+.activity-tracking__popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+/* Modal Content */
+.activity-tracking__form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Popup Title */
+.activity-tracking__popup-title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #3498db;
+}
+
+/* Form Input and Select Styles */
+.activity-tracking__input,
+.activity-tracking__select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+/* Submit Button */
+.activity-tracking__submit-button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.activity-tracking__submit-button:hover {
+  background-color: #2980b9;
+}
+
+/* Cancel Button */
+.activity-tracking__cancel-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.activity-tracking__cancel-button:hover {
+  background-color: #c0392b;
+}
+
+/* Centering form fields and buttons */
+.activity-tracking__form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.activity-tracking__update-button {
+  background-color: #2980b9;
+  color: #fff;
+  border-radius: 4px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.activity-tracking__update-button:hover {
+  background-color: #2471a3;
+}
+
+
+.activity-tracking__input,
+.activity-tracking__select {
+  font-size: 1rem;
+}
+
+.activity-tracking__popup button {
+  margin-top: 10px;
+}
+
+/* Close Modal on Clicking Outside */
+.activity-tracking__popup {
+  transition: opacity 0.3s ease;
+}
+
+.activity-tracking__popup.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+.activity-tracking__submit-button {
+  padding: 12px 25px;
+  background-color: #006699;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 20px;
+  margin-left: 0px;
+}
+}
+
+@media (max-width: 1100px) {
+  .activity-tracking__table th, .activity-tracking__table td { font-size: .95rem; padding: 7px 3px; }
+  .activity-col-wrap { max-width: 138px; min-width: 68px; }
+  .activity-tracking__table th, .activity-tracking__table td { min-width: 58px; }
+}
+@media (max-width: 700px) {
+  .activity-tracking__table th, .activity-tracking__table td { font-size: 0.83rem; padding: 4px 2px; min-width: 45px; }
+  .activity-col-wrap { max-width: 62px; min-width: 24px; font-size: 0.80rem; }
+}
+
+.activity-table-scroll-wrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  margin-bottom: 8px;
+  /* Hide vertical scrollbar visually */
+  scrollbar-width: none; /* Firefox */
+}
+.activity-table-scroll-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.activity-col-wrap {
+  max-width: 260px;
+  min-width: 130px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-line;
+  text-align: left;
+  font-size: 1rem;
+  padding-right: 12px;
+}
+
+.appointments-card-bg {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (max-width: 1100px) {
+  .activity-col-wrap { max-width: 150px; min-width: 85px; font-size: .94rem; }
+}
+
+@media (max-width: 700px) {
+  .activity-col-wrap { max-width: 75px; min-width: 40px; font-size: .8rem; }
+  .appointments-card-bg { padding-left:0.5rem; padding-right:0.5rem; }
+}

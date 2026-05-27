@@ -1,0 +1,856 @@
+.ap-page {
+  padding: 0;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* When inside profile, adjust styling */
+.sp-profile-details-container .ap-page {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.ap-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ap-loading,
+.ap-error {
+  margin: 1rem 0;
+}
+
+.ap-error {
+  color: #c00;
+  padding: 0.5rem;
+  background: #fee;
+  border-radius: 4px;
+}
+
+.ap-submitted-msg {
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.ap-hint {
+  color: #555;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Secondary marksheets (10th & 12th) */
+.ap-secondary-section {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  border-radius: 12px;
+  border: 2px solid #bae6fd;
+}
+
+.ap-secondary-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0c4a6e;
+  margin: 0 0 0.5rem 0;
+}
+
+.ap-secondary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.ap-secondary-card {
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ap-secondary-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ap-semester-blocked {
+  padding: 1.5rem;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
+.ap-blocked-msg {
+  margin: 0;
+  color: #92400e;
+  font-weight: 500;
+}
+
+.ap-semester-section-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.5rem 0;
+}
+
+.ap-new-row td {
+  background: #f9f9f9;
+}
+
+.ap-save-row-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.ap-save-row-btn:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ap-save-row-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ap-semester-block {
+  margin-bottom: 2rem;
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #e9ecef;
+}
+
+.ap-semester-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+}
+
+.ap-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ap-table th {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ap-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.ap-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.ap-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ap-table input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease;
+}
+
+.ap-table input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.ap-add-row {
+  margin-top: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.ap-add-row:hover:not(:disabled) {
+  background: #2563eb;
+}
+
+.ap-add-row:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ap-remove-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.85rem;
+  background: #fff;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.ap-remove-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.ap-remove-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ap-submit {
+  margin-top: 1rem;
+  padding: 0.6rem 1.25rem;
+  background: #2563eb;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.ap-submit:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ap-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ap-readonly .ap-table td {
+  background: #fafafa;
+}
+
+.ap-row-locked td {
+  background: #f5f5f5;
+  color: #666;
+}
+
+.ap-locked-badge {
+  color: #666;
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* Mentor Modal Styles - Improved Design */
+.ap-modal-mentor {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1001;
+  position: relative;
+  padding: 0;
+}
+
+.ap-modal-overlay-mentor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.ap-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-bottom: 2px solid #f0f0f0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.ap-modal-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ap-modal-close-x {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  font-size: 28px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.ap-modal-close-x:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: rotate(90deg);
+}
+
+.ap-modal-student-info {
+  padding: 20px 28px;
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.ap-student-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.ap-student-usn {
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.ap-modal-content {
+  padding: 24px 28px;
+}
+
+.ap-loading-container {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.ap-loading-container p {
+  margin-top: 16px;
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.ap-error-container {
+  padding: 20px;
+  text-align: center;
+}
+
+.ap-empty-state {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.ap-empty-icon {
+  font-size: 4rem;
+  margin-bottom: 16px;
+  opacity: 0.5;
+}
+
+.ap-empty-text {
+  font-size: 1.1rem;
+  color: #495057;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.ap-empty-subtext {
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.ap-semesters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ap-semester-card {
+  background: #ffffff;
+  border: 2px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.ap-semester-card:hover {
+  border-color: #667eea;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.ap-semester-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-bottom: 2px solid #dee2e6;
+}
+
+.ap-semester-badge {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #495057;
+  background: #ffffff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ap-semester-count {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.ap-table-wrapper {
+  overflow-x: auto;
+}
+
+.ap-table-mentor {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+}
+
+.ap-table-mentor thead {
+  background: #f8f9fa;
+}
+
+.ap-table-mentor th {
+  padding: 14px 20px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #495057;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.ap-table-mentor td {
+  padding: 16px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+
+.ap-table-mentor tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.ap-table-mentor tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.ap-table-mentor tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.ap-course-cell {
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 0.95rem;
+}
+
+.ap-grade-cell {
+  text-align: center;
+}
+
+.ap-grade-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  min-width: 50px;
+  text-align: center;
+}
+
+.ap-grade-A {
+  background: #d4edda;
+  color: #155724;
+}
+
+.ap-grade-B {
+  background: #cce5ff;
+  color: #004085;
+}
+
+.ap-grade-C {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.ap-grade-D,
+.ap-grade-F {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.ap-grade-badge:not([class*="ap-grade-"]) {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.ap-attendance-cell {
+  text-align: center;
+  font-weight: 500;
+  color: #495057;
+}
+
+.ap-attendance-value {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #e7f3ff;
+  color: #0066cc;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.ap-modal-footer {
+  padding: 20px 28px;
+  border-top: 2px solid #f0f0f0;
+  background: #f8f9fa;
+  border-radius: 0 0 16px 16px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.ap-modal-close-btn {
+  padding: 12px 32px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.ap-modal-close-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.ap-modal-close-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .ap-modal-mentor {
+    width: 95%;
+    max-height: 95vh;
+  }
+
+  .ap-modal-header {
+    padding: 20px;
+  }
+
+  .ap-modal-title {
+    font-size: 1.5rem;
+  }
+
+  .ap-modal-content {
+    padding: 20px;
+  }
+
+  .ap-semester-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .ap-table-mentor th,
+  .ap-table-mentor td {
+    padding: 12px 16px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Marksheet Upload Section Styles */
+.ap-marksheet-section {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 2px solid #e2e8f0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.ap-marksheet-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ap-marksheet-uploaded {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ap-marksheet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #28a745;
+  font-weight: 500;
+}
+
+.ap-marksheet-icon {
+  font-size: 1.25rem;
+  color: #dc3545;
+}
+
+.ap-marksheet-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.ap-marksheet-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.ap-upload-marksheet-btn,
+.ap-view-marksheet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ap-upload-marksheet-btn {
+  background: #007bff;
+  color: white;
+}
+
+.ap-upload-marksheet-btn:hover {
+  background: #0056b3;
+}
+
+.ap-view-marksheet-btn {
+  background: #28a745;
+  color: white;
+}
+
+.ap-view-marksheet-btn:hover {
+  background: #218838;
+}
+
+.ap-marksheet-preview {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: white;
+  border-radius: 6px;
+  border: 1px solid #dee2e6;
+}
+
+.ap-marksheet-preview span {
+  flex: 1;
+  font-size: 0.9rem;
+  color: #495057;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ap-remove-file-btn {
+  background: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.75rem;
+  padding: 0;
+}
+
+.ap-remove-file-btn:hover {
+  background: #c82333;
+}
+
+.ap-upload-confirm-btn {
+  padding: 0.5rem 1rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.ap-upload-confirm-btn:hover:not(:disabled) {
+  background: #218838;
+}
+
+.ap-upload-confirm-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.ap-marksheet-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+@media (max-width: 768px) {
+  .ap-marksheet-actions {
+    flex-direction: column;
+  }
+
+  .ap-upload-marksheet-btn,
+  .ap-view-marksheet-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .ap-marksheet-preview {
+    flex-wrap: wrap;
+  }
+
+  .ap-marksheet-preview span {
+    width: 100%;
+  }
+}
+
+/* Marksheet section in mentor modal */
+.ap-marksheet-mentor {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+}
+
+.ap-marksheet-mentor .ap-marksheet-uploaded {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ap-marksheet-mentor .ap-marksheet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #28a745;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.ap-marksheet-mentor .ap-marksheet-icon {
+  font-size: 1.1rem;
+  color: #dc3545;
+}
+
+.ap-marksheet-mentor .ap-marksheet-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.ap-marksheet-mentor .ap-view-marksheet-btn {
+  align-self: flex-start;
+}
+
+/* Mentor modal: secondary marksheets (10th & 12th) */
+.ap-secondary-mentor {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: #f0f9ff;
+  border-radius: 8px;
+  border: 1px solid #bae6fd;
+}
+
+.ap-secondary-mentor .ap-marksheet-title {
+  margin-top: 0;
+}
+
+.ap-secondary-mentor-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.ap-secondary-mentor-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}

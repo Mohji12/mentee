@@ -1,0 +1,308 @@
+/* Sidebar Container */
+.mentor-sidebar__container {
+  width: 250px;
+  height: 100vh;
+  background-color: #2f3c4e; /* Sidebar background color */
+  color: white;
+  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Sidebar Title */
+.mentor-sidebar__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Sidebar Menu */
+.mentor-sidebar__menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 160px;
+}
+
+.mentor-sidebar__menu-item {
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #3b4c5b; /* Slightly lighter background */
+  border-radius: 5px;
+}
+
+.mentor-sidebar__menu-item:hover {
+  background-color: #4b5d6e; /* Hover effect */
+}
+
+/* Logout Button */
+.mentor-sidebar-sidebar-logout-button {
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: auto; /* Pushes it to the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mentor-sidebar-sidebar-logout-button:hover {
+  background-color: #c0392b;
+}
+
+/* Logout Link (Make entire button clickable) */
+.mentor-sidebar-sidebar-logout-link {
+  text-decoration: none;
+  color: white;
+  width: 100%; /* Ensure the link takes up the full width of the button */
+  display: block; /* Makes the link block-level to fill the button */
+  text-align: center; /* Centers the text inside the button */
+}
+
+/* Left logo at the top-left corner */
+.mentor-sidebar-logo-left {
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  width: 200px; /* Adjust width */
+  height: 100px; /* Adjust height */
+  background-image: url('../images/mentee_tracker.png'); /* Left logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Right logo at the top-right corner */
+.md-logo-right {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 175px; /* Adjust width */
+  height: 175px; /* Adjust height */
+  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Media Query for Mobile Version */
+@media (max-width: 768px) {
+  /* Adjust the sidebar for mobile devices */
+  .mentor-sidebar__container {
+    display: flex !important;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #1a1a1a;
+    padding: 8px 0;
+    z-index: 1000;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Sidebar Menu */
+  .mentor-sidebar__menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+
+  /* Menu items as touch-friendly blocks */
+  .mentor-sidebar__menu-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    touch-action: manipulation;
+  }
+
+  .mentor-sidebar__menu-item:hover,
+  .mentor-sidebar__menu-item:active {
+    background-color: #333;
+  }
+
+  /* Logo */
+  .mentor-sidebar-logo-left {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-image: url('../images/black.png');
+    width: 100px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1001;
+  }
+
+  /* Icon styling */
+  .mentor-sidebar__menu-item svg {
+    font-size: 20px;
+    color: white;
+  }
+
+  /* Dropdown menu styling for mobile */
+  .ss-dropdown-menu {
+    position: fixed;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
+    background-color: #1a1a1a;
+    border-radius: 0;
+    z-index: 999;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid #333;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .ss-dropdown-menu-item {
+    font-size: 16px;
+    padding: 16px 20px;
+    background-color: transparent;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+  }
+
+  .ss-dropdown-menu-item:hover {
+    background-color: #333;
+  }
+
+  .ss-dropdown-menu-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Nested dropdown menu for mobile */
+  .ss-dropdown-menu .ss-dropdown-menu {
+    position: static;
+    bottom: auto;
+    width: 100%;
+    background-color: #2a2a2a;
+    border-left: 3px solid #4b5d6e;
+    margin-left: 0;
+    box-shadow: none;
+  }
+
+  .ss-dropdown-menu .ss-dropdown-menu .ss-dropdown-menu-item {
+    font-size: 14px;
+    padding: 12px 20px 12px 40px;
+    background-color: transparent;
+    margin: 0;
+    border-bottom: 1px solid #444;
+  }
+
+  /* Dropdown container */
+  .ss-dropdown-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Dropdown trigger button style for mobile */
+  .ss-dropdown-container .ss-sidebar-menu-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    touch-action: manipulation;
+    cursor: pointer;
+  }
+
+  .ss-dropdown-container .ss-sidebar-menu-item:hover,
+  .ss-dropdown-container .ss-sidebar-menu-item:active {
+    background-color: #333;
+  }
+
+  .ss-dropdown-container .ss-sidebar-menu-item svg {
+    font-size: 20px;
+    color: white;
+  }
+
+  /* Hide chevron arrows on mobile */
+  .ss-dropdown-container .ss-sidebar-menu-item .d-desktop-inline {
+    display: none;
+  }
+
+  /* Active state for dropdown items */
+  .mentor-sidebar__menu-item.active {
+    background-color: #4b5d6e;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .mentor-sidebar__container {
+    height: 70px;
+    padding: 6px 0;
+  }
+
+  .mentor-sidebar__menu-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mentor-sidebar__menu-item svg {
+    font-size: 16px;
+  }
+
+  .ss-dropdown-container .ss-sidebar-menu-item {
+    width: 40px;
+    height: 40px;
+  }
+
+  .ss-dropdown-container .ss-sidebar-menu-item svg {
+    font-size: 16px;
+  }
+
+  .ss-dropdown-menu {
+    bottom: 70px;
+  }
+
+  .ss-dropdown-menu-item {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .mentor-sidebar-logo-left {
+    width: 80px;
+    height: 40px;
+  }
+}

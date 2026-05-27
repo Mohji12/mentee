@@ -1,0 +1,186 @@
+/* General container for the meetings page */
+.student-meetings-container {
+  padding: 24px 28px;
+  font-family: Arial, sans-serif;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(100vh - 80px);
+  box-sizing: border-box;
+}
+  
+  /* Title of the page */
+  .student-meetings-title {
+  text-align: left;
+  font-size: 1.6rem;
+  color: #1f2933;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  }
+  
+  /* Error message styling */
+  .student-meetings-error {
+    color: red;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-top: 75px;
+  }
+  
+  /* No meetings message */
+  .student-meetings-no-schedule {
+    font-size: 1.2rem;
+    text-align: center;
+    color: red;
+    margin-top: 75px;
+  }
+  
+  /* Table for meetings */
+  .student-meetings-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling for the table */
+  .student-meetings-header {
+    font-size: 1.1rem;
+    padding: 10px;
+    text-align: left;
+    background-color: #007bff;
+    color: white;
+    border-bottom: 2px solid #0056b3;
+  }
+  
+  /* Table row styling */
+  .student-meetings-row {
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Cell styling for the table */
+  .student-meetings-cell {
+    padding: 10px;
+    font-size: 1rem;
+    text-align: left;
+    color: #000000;
+  }
+
+  .student-meetings-table-container {
+    max-height: 600px; /* Adjust the height as needed */
+    margin-top: 20px;
+    margin-bottom: 200px;
+    /* overflow: scroll; */
+    border: 1px solid #ddd; /* Optional, adds a border around the scrollable area */
+  }
+  
+  /* Cards layout (shared with Appointments design) */
+  .meeting-cards-list.student-meetings-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+  }
+  .meeting-card.student-meeting-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+  }
+  .meeting-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    background: #f8f9fa;
+    border-bottom: 1px solid #eee;
+  }
+  .meeting-card-id {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #333;
+  }
+  .meeting-mode-badge {
+    display: inline-block;
+    padding: 0.25rem 0.65rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .meeting-mode-badge--online {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+  .meeting-mode-badge--offline {
+    background: #f3e5f5;
+    color: #6a1b9a;
+  }
+  .meeting-card-body {
+    padding: 1.25rem;
+  }
+  .meeting-card-body p {
+    margin: 0.4rem 0;
+    font-size: 0.95rem;
+  }
+  .status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+  .status-badge--approved {
+    background: #d4edda;
+    color: #155724;
+  }
+  .status-badge--pending {
+    background: #fff3cd;
+    color: #856404;
+  }
+  .status-badge--rejected {
+    background: #f8d7da;
+    color: #721c24;
+  }
+  .meeting-card-actions {
+    padding: 1rem 1.25rem;
+    border-top: 1px solid #eee;
+  }
+  .btn-start-meeting {
+    display: inline-block;
+    background: #1a73e8;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-start-meeting:hover {
+    background: #1557b0;
+    color: #fff;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .student-meetings-title {
+      font-size: 1.6rem;
+    }
+    .student-meetings-header {
+      font-size: 1rem;
+    }
+    .student-meetings-cell {
+      font-size: 0.9rem;
+    }
+    .student-meetings-table-container {
+      max-height: 500px;
+      overflow: scroll;
+      border: 1px solid #ddd;
+    }
+    .meeting-cards-list.student-meetings-cards {
+      grid-template-columns: 1fr;
+    }
+  }

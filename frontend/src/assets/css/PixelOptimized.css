@@ -1,0 +1,524 @@
+/* Google Pixel Mobile Optimization CSS
+ * Optimized for Pixel 6, 7, 8 series (412px width in portrait)
+ * Material Design 3 guidelines compliance
+ */
+
+/* Pixel-specific viewport optimizations */
+:root {
+  /* Pixel viewport width: 412px in portrait mode */
+  --pixel-width: 412px;
+  --pixel-safe-area-top: env(safe-area-inset-top, 0px);
+  --pixel-safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --pixel-safe-area-left: env(safe-area-inset-left, 0px);
+  --pixel-safe-area-right: env(safe-area-inset-right, 0px);
+  
+  /* Material Design 3 spacing */
+  --pixel-spacing-xs: 4px;
+  --pixel-spacing-sm: 8px;
+  --pixel-spacing-md: 16px;
+  --pixel-spacing-lg: 24px;
+  --pixel-spacing-xl: 32px;
+  
+  /* Material Design 3 touch targets (minimum 48dp) */
+  --pixel-touch-target: 48px;
+  --pixel-touch-target-small: 40px;
+  
+  /* Material Design 3 typography scale */
+  --pixel-font-display-large: 57px;
+  --pixel-font-display-medium: 45px;
+  --pixel-font-display-small: 36px;
+  --pixel-font-headline-large: 32px;
+  --pixel-font-headline-medium: 28px;
+  --pixel-font-headline-small: 24px;
+  --pixel-font-title-large: 22px;
+  --pixel-font-title-medium: 16px;
+  --pixel-font-title-small: 14px;
+  --pixel-font-body-large: 16px;
+  --pixel-font-body-medium: 14px;
+  --pixel-font-body-small: 12px;
+  --pixel-font-label-large: 14px;
+  --pixel-font-label-medium: 12px;
+  --pixel-font-label-small: 11px;
+  
+  /* Material Design 3 colors (Pixel theme) */
+  --pixel-primary: #006699;
+  --pixel-primary-variant: #004d66;
+  --pixel-secondary: #6200ee;
+  --pixel-surface: #ffffff;
+  --pixel-surface-variant: #f5f5f5;
+  --pixel-background: #fafafa;
+  --pixel-error: #b00020;
+  --pixel-on-primary: #ffffff;
+  --pixel-on-surface: #000000;
+  --pixel-on-surface-variant: #666666;
+  
+  /* Material Design 3 elevation */
+  --pixel-elevation-0: none;
+  --pixel-elevation-1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  --pixel-elevation-2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  --pixel-elevation-3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+  --pixel-elevation-4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+  --pixel-elevation-5: 0px 4px 4px 0px rgba(0, 0, 0, 0.3), 0px 8px 12px 6px rgba(0, 0, 0, 0.15);
+  
+  /* Material Design 3 border radius */
+  --pixel-radius-xs: 4px;
+  --pixel-radius-sm: 8px;
+  --pixel-radius-md: 12px;
+  --pixel-radius-lg: 16px;
+  --pixel-radius-xl: 28px;
+  --pixel-radius-full: 9999px;
+}
+
+/* Base Pixel optimizations */
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+html {
+  /* Prevent text size adjustment on Pixel */
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Smooth scrolling for Pixel */
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+body {
+  /* Safe area insets for Pixel phones with notches */
+  padding-top: var(--pixel-safe-area-top);
+  padding-bottom: var(--pixel-safe-area-bottom);
+  padding-left: var(--pixel-safe-area-left);
+  padding-right: var(--pixel-safe-area-right);
+  
+  /* Optimize for Pixel's high DPI display */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* Prevent horizontal scroll on Pixel */
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+/* Pixel-specific breakpoints */
+/* Pixel 6/7/8 standard width: 412px */
+@media (min-width: 360px) and (max-width: 412px) {
+  /* Standard Pixel phones */
+  .pixel-container {
+    width: 100%;
+    max-width: 412px;
+    margin: 0 auto;
+    padding: var(--pixel-spacing-md);
+    padding-top: calc(var(--pixel-spacing-md) + var(--pixel-safe-area-top));
+    padding-bottom: calc(var(--pixel-spacing-md) + var(--pixel-safe-area-bottom));
+  }
+  
+  /* Typography optimized for Pixel */
+  h1 {
+    font-size: var(--pixel-font-headline-large);
+    line-height: 1.2;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  
+  h2 {
+    font-size: var(--pixel-font-headline-medium);
+    line-height: 1.3;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+  
+  h3 {
+    font-size: var(--pixel-font-headline-small);
+    line-height: 1.4;
+    font-weight: 400;
+    letter-spacing: 0.15px;
+  }
+  
+  p, body {
+    font-size: var(--pixel-font-body-large);
+    line-height: 1.5;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Material Design 3 buttons for Pixel */
+  .pixel-button,
+  button.pixel-button,
+  .btn.pixel-button {
+    min-height: var(--pixel-touch-target);
+    min-width: var(--pixel-touch-target);
+    padding: var(--pixel-spacing-sm) var(--pixel-spacing-md);
+    border-radius: var(--pixel-radius-xl);
+    font-size: var(--pixel-font-label-large);
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: var(--pixel-elevation-1);
+  }
+  
+  .pixel-button:active {
+    box-shadow: var(--pixel-elevation-2);
+    transform: scale(0.98);
+  }
+  
+  /* Material Design 3 cards for Pixel */
+  .pixel-card {
+    background-color: var(--pixel-surface);
+    border-radius: var(--pixel-radius-lg);
+    padding: var(--pixel-spacing-md);
+    margin-bottom: var(--pixel-spacing-md);
+    box-shadow: var(--pixel-elevation-1);
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .pixel-card:active {
+    box-shadow: var(--pixel-elevation-2);
+  }
+  
+  /* Material Design 3 input fields for Pixel */
+  .pixel-input,
+  input.pixel-input,
+  textarea.pixel-input,
+  select.pixel-input {
+    min-height: var(--pixel-touch-target);
+    padding: var(--pixel-spacing-sm) var(--pixel-spacing-md);
+    border-radius: var(--pixel-radius-sm);
+    border: 1px solid rgba(0, 0, 0, 0.38);
+    font-size: var(--pixel-font-body-large);
+    background-color: var(--pixel-surface);
+    color: var(--pixel-on-surface);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .pixel-input:focus {
+    outline: none;
+    border-color: var(--pixel-primary);
+    border-width: 2px;
+    box-shadow: 0 0 0 3px rgba(0, 102, 153, 0.12);
+  }
+  
+  /* Material Design 3 navigation for Pixel */
+  .pixel-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 412px;
+    margin: 0 auto;
+    background-color: var(--pixel-surface);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    padding: var(--pixel-spacing-xs) 0;
+    padding-bottom: calc(var(--pixel-spacing-xs) + var(--pixel-safe-area-bottom));
+    box-shadow: var(--pixel-elevation-3);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .pixel-bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--pixel-touch-target);
+    min-height: var(--pixel-touch-target);
+    padding: var(--pixel-spacing-xs);
+    color: var(--pixel-on-surface-variant);
+    text-decoration: none;
+    transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    touch-action: manipulation;
+  }
+  
+  .pixel-bottom-nav-item.active {
+    color: var(--pixel-primary);
+  }
+  
+  .pixel-bottom-nav-item-icon {
+    font-size: 24px;
+    margin-bottom: var(--pixel-spacing-xs);
+  }
+  
+  .pixel-bottom-nav-item-label {
+    font-size: var(--pixel-font-label-small);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Content padding for bottom navigation */
+  .pixel-content {
+    padding-bottom: calc(80px + var(--pixel-safe-area-bottom));
+  }
+}
+
+/* Pixel 8 Pro and larger (if needed) */
+@media (min-width: 413px) and (max-width: 480px) {
+  .pixel-container {
+    max-width: 100%;
+    padding: var(--pixel-spacing-lg);
+  }
+}
+
+/* Small Pixel devices (Pixel 4a, etc.) */
+@media (max-width: 359px) {
+  .pixel-container {
+    padding: var(--pixel-spacing-sm);
+  }
+  
+  h1 {
+    font-size: var(--pixel-font-headline-medium);
+  }
+  
+  h2 {
+    font-size: var(--pixel-font-headline-small);
+  }
+  
+  .pixel-button {
+    min-height: var(--pixel-touch-target-small);
+    padding: var(--pixel-spacing-xs) var(--pixel-spacing-sm);
+    font-size: var(--pixel-font-label-medium);
+  }
+}
+
+/* Pixel landscape orientation */
+@media (max-width: 915px) and (orientation: landscape) {
+  .pixel-container {
+    padding: var(--pixel-spacing-sm);
+  }
+  
+  .pixel-bottom-nav {
+    padding-bottom: var(--pixel-spacing-xs);
+  }
+  
+  .pixel-content {
+    padding-bottom: calc(70px + var(--pixel-safe-area-bottom));
+  }
+}
+
+/* High DPI optimization for Pixel displays */
+@media (-webkit-min-device-pixel-ratio: 2.5),
+       (min-resolution: 240dpi) {
+  /* Optimize images for Pixel's high DPI */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Sharper borders on high DPI */
+  .pixel-card,
+  .pixel-input,
+  .pixel-button {
+    border-width: 0.5px;
+  }
+}
+
+/* Dark mode support for Pixel (Material Design 3) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --pixel-surface: #1e1e1e;
+    --pixel-surface-variant: #2d2d2d;
+    --pixel-background: #121212;
+    --pixel-on-surface: #ffffff;
+    --pixel-on-surface-variant: #b3b3b3;
+  }
+  
+  .pixel-card {
+    background-color: var(--pixel-surface);
+    box-shadow: var(--pixel-elevation-1);
+  }
+  
+  .pixel-input {
+    background-color: var(--pixel-surface);
+    border-color: rgba(255, 255, 255, 0.38);
+    color: var(--pixel-on-surface);
+  }
+  
+  .pixel-bottom-nav {
+    background-color: var(--pixel-surface);
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
+}
+
+/* Pixel-specific utility classes */
+.pixel-safe-area-top {
+  padding-top: var(--pixel-safe-area-top);
+}
+
+.pixel-safe-area-bottom {
+  padding-bottom: var(--pixel-safe-area-bottom);
+}
+
+.pixel-safe-area-left {
+  padding-left: var(--pixel-safe-area-left);
+}
+
+.pixel-safe-area-right {
+  padding-right: var(--pixel-safe-area-right);
+}
+
+.pixel-safe-area-all {
+  padding-top: var(--pixel-safe-area-top);
+  padding-bottom: var(--pixel-safe-area-bottom);
+  padding-left: var(--pixel-safe-area-left);
+  padding-right: var(--pixel-safe-area-right);
+}
+
+/* Material Design 3 ripple effect for Pixel */
+.pixel-ripple {
+  position: relative;
+  overflow: hidden;
+}
+
+.pixel-ripple::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(0, 102, 153, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.pixel-ripple:active::after {
+  width: 300px;
+  height: 300px;
+}
+
+/* Pixel-optimized scrolling */
+.pixel-scrollable {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
+/* Pixel-optimized tables */
+.pixel-table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  border-radius: var(--pixel-radius-md);
+}
+
+.pixel-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+  font-size: var(--pixel-font-body-medium);
+}
+
+.pixel-table th,
+.pixel-table td {
+  padding: var(--pixel-spacing-sm) var(--pixel-spacing-md);
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.pixel-table th {
+  font-weight: 500;
+  color: var(--pixel-on-surface-variant);
+  font-size: var(--pixel-font-label-medium);
+}
+
+/* Pixel-optimized modals */
+.pixel-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: var(--pixel-spacing-md);
+  padding-top: calc(var(--pixel-spacing-md) + var(--pixel-safe-area-top));
+  padding-bottom: calc(var(--pixel-spacing-md) + var(--pixel-safe-area-bottom));
+}
+
+.pixel-modal-content {
+  background-color: var(--pixel-surface);
+  border-radius: var(--pixel-radius-lg);
+  width: 100%;
+  max-width: 412px;
+  max-height: calc(100vh - var(--pixel-spacing-xl) - var(--pixel-safe-area-top) - var(--pixel-safe-area-bottom));
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: var(--pixel-elevation-5);
+}
+
+/* Pixel-optimized forms */
+.pixel-form-group {
+  margin-bottom: var(--pixel-spacing-lg);
+}
+
+.pixel-form-label {
+  display: block;
+  font-size: var(--pixel-font-label-large);
+  font-weight: 500;
+  color: var(--pixel-on-surface);
+  margin-bottom: var(--pixel-spacing-xs);
+  letter-spacing: 0.15px;
+}
+
+/* Pixel loading states */
+.pixel-loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 102, 153, 0.3);
+  border-top-color: var(--pixel-primary);
+  border-radius: 50%;
+  animation: pixel-spin 0.8s linear infinite;
+}
+
+@keyframes pixel-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Pixel-optimized spacing utilities */
+.pixel-mt-xs { margin-top: var(--pixel-spacing-xs); }
+.pixel-mt-sm { margin-top: var(--pixel-spacing-sm); }
+.pixel-mt-md { margin-top: var(--pixel-spacing-md); }
+.pixel-mt-lg { margin-top: var(--pixel-spacing-lg); }
+.pixel-mt-xl { margin-top: var(--pixel-spacing-xl); }
+
+.pixel-mb-xs { margin-bottom: var(--pixel-spacing-xs); }
+.pixel-mb-sm { margin-bottom: var(--pixel-spacing-sm); }
+.pixel-mb-md { margin-bottom: var(--pixel-spacing-md); }
+.pixel-mb-lg { margin-bottom: var(--pixel-spacing-lg); }
+.pixel-mb-xl { margin-bottom: var(--pixel-spacing-xl); }
+
+.pixel-p-xs { padding: var(--pixel-spacing-xs); }
+.pixel-p-sm { padding: var(--pixel-spacing-sm); }
+.pixel-p-md { padding: var(--pixel-spacing-md); }
+.pixel-p-lg { padding: var(--pixel-spacing-lg); }
+.pixel-p-xl { padding: var(--pixel-spacing-xl); }
+
+/* Pixel text utilities */
+.pixel-text-center { text-align: center; }
+.pixel-text-left { text-align: left; }
+.pixel-text-right { text-align: right; }
+
+.pixel-text-primary { color: var(--pixel-primary); }
+.pixel-text-secondary { color: var(--pixel-secondary); }
+.pixel-text-error { color: var(--pixel-error); }
+.pixel-text-on-surface { color: var(--pixel-on-surface); }
+.pixel-text-on-surface-variant { color: var(--pixel-on-surface-variant); }
+

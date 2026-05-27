@@ -1,0 +1,969 @@
+/* Modern Student Profile Styles - Matching Activities Theme */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  color: #334155;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main Container */
+.sp-details-profile {
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Mobile spacing to avoid logo overlap */
+@media (max-width: 768px) {
+  .sp-details-profile {
+    padding-top: 6rem; /* Add top padding to avoid logo overlap */
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .sp-profile-header {
+    margin-top: 1rem; /* Additional top margin for header */
+    margin-bottom: 2rem;
+    margin-right: 0; /* Remove right margin on mobile */
+  }
+  
+  .sp-profile-details {
+    padding: 1.5rem; /* Reduce padding on mobile */
+  }
+}
+
+/* Large screens — same width for header + details (reserve space for top-right Jain logo) */
+@media (min-width: 769px) {
+  .sp-profile-header,
+  .sp-profile-details-container {
+    margin-right: 180px;
+  }
+}
+
+/* Profile Header */
+.sp-profile-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.sp-profile-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #000000;
+  margin: 0;
+  background: linear-gradient(135deg, #000000, #000000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sp-profile-edit-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #030303;
+  padding: 0.75rem;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background-color: white;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sp-profile-edit-icon:hover {
+  background-color: #000000;
+  color: white;
+  border-color: #000000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile Details Container */
+.sp-profile-details-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Profile Details Card */
+.sp-profile-details {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.sp-profile-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1e40af, #3b82f6);
+}
+
+/* Profile Info Grid */
+.sp-profile-details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.sp-profile-details div {
+  margin: 0;
+  padding: 1rem 1.5rem;
+  background: #f8fafc;
+  border-radius: 12px;
+  border-left: 4px solid #1e40af;
+  font-size: 1rem;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.sp-profile-details div:hover {
+  background: #f1f5f9;
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.sp-profile-label {
+  font-weight: 600;
+  color: #1e293b;
+  margin-right: 0.75rem;
+  min-width: 140px;
+  display: inline-block;
+}
+
+/* LinkedIn Button */
+.sp-profile-linkedin-btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: #0077b5;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+}
+
+.sp-profile-linkedin-btn:hover {
+  background: #005885;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.3);
+}
+
+/* Action Buttons */
+.sp-profile-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.sp-profile-create-button {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.3);
+}
+
+.sp-profile-create-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(30, 64, 175, 0.4);
+}
+
+.sp-sidebar-logout-button {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(220, 38, 38, 0.3);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: auto;
+}
+
+.sp-sidebar-logout-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
+
+.sp-sidebar-logout-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Logout button container for centering */
+.sp-logout-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+/* Modal Styles */
+.sp-profile-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+  padding: 1rem;
+  width: 100vw;
+  height: 100vh;
+}
+
+.sp-profile-modal-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  position: relative;
+  z-index: 100000;
+}
+
+.sp-profile-modal-content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1.5rem 0;
+  text-align: center;
+}
+
+/* New Mobile-Optimized Modal Styles */
+.sp-profile-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f1f5f9;
+}
+
+.sp-profile-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+.sp-profile-modal-close:hover {
+  background-color: #f1f5f9;
+  color: #374151;
+}
+
+.sp-profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sp-profile-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sp-profile-form-group label {
+  font-weight: 600;
+  color: #374151;
+  font-size: 1rem;
+}
+
+.sp-profile-form-group input {
+  padding: 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #374151;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.sp-profile-form-group input:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.sp-profile-form-group input::placeholder {
+  color: #9ca3af;
+}
+
+.sp-profile-save-btn {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.sp-profile-save-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.sp-profile-cancel-btn {
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 140px;
+}
+
+.sp-profile-cancel-btn:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+.sp-profile-modal-content label {
+  display: block;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.sp-profile-modal-content input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  color: #374151;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.sp-profile-modal-content input:focus {
+  outline: none;
+  border-color: #1e40af;
+  box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+}
+
+.sp-profile-buttons-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.sp-profile-modal-content button {
+  padding: 0.875rem 1.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 120px;
+}
+
+.sp-profile-modal-content button:first-child {
+  background: linear-gradient(135deg, #1e40af, #3b82f6);
+  color: white;
+}
+
+.sp-profile-modal-content button:first-child:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+}
+
+.sp-profile-modal-content button:last-child {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+.sp-profile-modal-content button:last-child:hover {
+  background: #e2e8f0;
+  color: #475569;
+}
+
+/* Loading State */
+.sp-profile-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Error Messages */
+.sp-profile-error {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #fef2f2;
+  border-radius: 6px;
+  border: 1px solid #fecaca;
+}
+
+/* Empty / not provided placeholder */
+.sp-profile-empty {
+  color: #94a3b8;
+  font-style: normal;
+}
+
+/* No Profile State */
+.sp-no-profile {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.sp-no-profile p {
+  font-size: 1.1rem;
+  color: #64748b;
+  margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .sp-details-profile {
+    padding: 1.5rem;
+  }
+  
+  .sp-profile-details {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .sp-details-profile {
+    padding: 1rem;
+  }
+  
+  .sp-profile-header {
+    padding: 1.5rem;
+  }
+  
+  .sp-profile-title {
+    font-size: 2rem;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .sp-profile-details {
+    padding: 1.5rem;
+  }
+  
+  .sp-profile-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Make logout button small and centered on mobile */
+  .sp-logout-button-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sp-sidebar-logout-button {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.875rem;
+    margin: 0;
+    display: flex;
+    width: auto;
+    max-width: 150px;
+    justify-content: center;
+  }
+  
+  .sp-profile-modal {
+    padding: 0.5rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 99999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  
+  .sp-profile-modal-content {
+    padding: 1.5rem;
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    border-radius: 16px;
+    max-height: calc(100vh - 4rem);
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 100000;
+    position: relative;
+    display: block !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-profile-header {
+    padding: 1rem;
+  }
+  
+  .sp-profile-title {
+    font-size: 1.75rem;
+  }
+  
+  .sp-profile-edit-button {
+    min-width: 32px !important;
+    min-height: 32px !important;
+    padding: 0.4rem !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+  
+  .sp-profile-edit-button svg {
+    font-size: 0.9rem !important;
+  }
+  
+  .sp-profile-details {
+    padding: 1rem;
+  }
+  
+  .sp-profile-details div {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .sp-profile-label {
+    min-width: 100px;
+    font-size: 0.9rem;
+  }
+  
+  /* Make logout button even smaller and centered on small mobile */
+  .sp-logout-button-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .sp-sidebar-logout-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+    margin: 0;
+    display: flex;
+    width: auto;
+    max-width: 120px;
+    justify-content: center;
+  }
+  
+  .sp-profile-modal {
+    padding: 0.25rem;
+    padding-top: 1rem;
+    background-color: rgba(0, 0, 0, 0.98);
+    z-index: 99999;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+  
+  .sp-profile-modal-content {
+    padding: 1rem;
+    border-radius: 12px;
+    z-index: 100000;
+    position: relative;
+    background: white;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    display: block !important;
+  }
+  
+  .sp-profile-modal-content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+
+  }
+  
+  .sp-profile-modal-content input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .sp-profile-buttons-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .sp-profile-modal-content button {
+    width: 100%;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* Touch-friendly mobile improvements */
+@media (max-width: 768px) {
+  .sp-profile-edit-button {
+    min-width: 36px !important;
+    min-height: 36px !important;
+    padding: 0.5rem !important;
+    top: 15px !important;
+    right: 15px !important;
+  }
+  
+  .sp-profile-edit-button svg {
+    font-size: 1rem !important;
+  }
+  
+  /* Ensure modal is visible on mobile */
+  .sp-profile-modal {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+  }
+  
+  .sp-profile-modal-close {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  
+  .sp-profile-form-group input {
+    min-height: 44px;
+  }
+  
+  .sp-profile-save-btn,
+  .sp-profile-cancel-btn {
+    min-height: 44px;
+  }
+  
+  .sp-profile-modal-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .sp-profile-form {
+    gap: 1rem;
+  }
+  
+  .sp-profile-buttons-container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .sp-profile-save-btn,
+  .sp-profile-cancel-btn {
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-profile-modal-header {
+    margin-bottom: 1rem;
+  }
+  
+  .sp-profile-form {
+    gap: 0.75rem;
+  }
+  
+  .sp-profile-form-group input {
+    padding: 0.75rem;
+    font-size: 0.9rem;
+  }
+  
+  .sp-profile-buttons-container {
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  
+  .sp-profile-save-btn,
+  .sp-profile-cancel-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Academic Performance Summary Styles */
+.ap-summary-container {
+  background: white;
+  border-radius: 20px;
+  padding: 2.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  margin-top: 2rem;
+}
+
+.ap-summary-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 0 0 1.5rem 0;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e2e8f0;
+}
+
+.ap-summary-loading,
+.ap-summary-error {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.ap-summary-error {
+  color: #dc2626;
+  background-color: #fef2f2;
+  border-radius: 8px;
+  border: 1px solid #fecaca;
+}
+
+.ap-summary-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #64748b;
+}
+
+.ap-summary-empty p {
+  margin: 0.5rem 0;
+}
+
+.ap-summary-hint {
+  font-size: 0.9rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.ap-summary-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.ap-summary-semester {
+  margin-bottom: 1.5rem;
+}
+
+.ap-summary-semester-label {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 1rem 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+  border-radius: 10px;
+  border-left: 4px solid #3b82f6;
+}
+
+.ap-summary-table-wrapper {
+  overflow-x: auto;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+.ap-summary-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  font-size: 0.95rem;
+}
+
+.ap-summary-table thead {
+  background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+}
+
+.ap-summary-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #1e293b;
+  border-bottom: 2px solid #e2e8f0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.ap-summary-table td {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #475569;
+}
+
+.ap-summary-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.ap-summary-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .ap-summary-container {
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .ap-summary-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .ap-summary-semester-label {
+    font-size: 1.1rem;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .ap-summary-table {
+    font-size: 0.875rem;
+  }
+
+  .ap-summary-table th,
+  .ap-summary-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .ap-summary-table-wrapper {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Marksheet Display in Summary */
+.ap-summary-marksheet {
+  margin-top: 1rem;
+  padding: 0.875rem;
+  background: #e7f3ff;
+  border-radius: 8px;
+  border: 1px solid #b3d9ff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.ap-summary-marksheet-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #0066cc;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.ap-summary-marksheet-icon {
+  font-size: 1.1rem;
+  color: #dc3545;
+}
+
+.ap-summary-marksheet-date {
+  font-size: 0.8rem;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.ap-summary-view-marksheet-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: #0066cc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+
+.ap-summary-view-marksheet-btn:hover {
+  background: #0052a3;
+}
+
+@media (max-width: 768px) {
+  .ap-summary-marksheet {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ap-summary-view-marksheet-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+

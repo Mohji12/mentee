@@ -1,0 +1,74 @@
+/* Global Form Styling */
+.form-container-unique {
+  width: 70%;
+  margin-left: 20px;
+  border-radius: 8px;
+}
+
+.psychometric-title-unique {
+  text-align: left;
+  font-size: 2em;
+  color: #333;
+  margin-top: 70px;
+}
+
+.form-section-unique {
+  margin-bottom: 20px;
+}
+
+.section-title-unique {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.input-field-unique {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.textarea-field-unique {
+  height: 100px;
+}
+
+.nav-button-unique, .submit-button-unique {
+  padding: 10px 20px;
+  width: 12%;
+  border: none;
+  background-color: #5cb85c;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.nav-button-unique:hover, .submit-button-unique:hover {
+  background-color: #4cae4c;
+}
+
+.status-message-unique {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #ff6347;
+}
+
+/* Navigation Buttons */
+.form-navigation-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-button-unique {
+    width: 30%;
+  }
+
+  .submit-button-unique{
+    width: 30%;
+  }
+}

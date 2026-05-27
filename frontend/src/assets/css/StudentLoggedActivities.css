@@ -1,0 +1,79 @@
+/* General container for the student activities page */
+.student-activities-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Title of the page */
+.student-activities-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Loading text */
+.student-activities-loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #555;
+    margin-top: 75px;
+}
+
+/* Error message */
+.student-activities-error {
+    text-align: center;
+    font-size: 1.2rem;
+    color: red;
+    margin-top: 75px;
+}
+
+/* Empty state message */
+.student-activities-no-data {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff0000;
+    margin-top: 75px;
+}
+
+/* Table styles */
+.student-activities-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    margin-bottom: 100px;
+}
+
+.student-activities-table-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.student-activities-table-row:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.student-activities-table-row:hover {
+    background-color: #e6f7ff;
+}
+
+.student-activities-table-data {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+/* Optional responsive adjustments */
+@media (max-width: 768px) {
+    .student-activities-table {
+        font-size: 0.9rem;
+    }
+
+    .student-activities-table-header,
+    .student-activities-table-data {
+        padding: 8px;
+    }
+}

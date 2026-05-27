@@ -1,0 +1,33 @@
+from pydantic import BaseModel
+from typing import Optional
+
+class PsychometricForm(BaseModel):
+    present_address: Optional[str] = None
+    permanent_address: Optional[str] = None
+    educational_qualifications: Optional[str] = None
+    subjects_strength: Optional[str] = None
+    subjects_weakness: Optional[str] = None
+    previous_work_experience: Optional[str] = None
+    father_name: Optional[str] = None
+    father_mobile_no: Optional[str] = None
+    father_education: Optional[str] = None
+    father_employment: Optional[str] = None
+    mother_name: Optional[str] = None
+    mother_mobile_no: Optional[str] = None
+    mother_education: Optional[str] = None
+    mother_employment: Optional[str] = None
+    siblings_details: Optional[str] = None
+    professional_dream: Optional[str] = None
+    professional_fear: Optional[str] = None
+    happiness_sources: Optional[str] = None
+    expectations: Optional[str] = None
+    goal_achieving_opportunities: Optional[str] = None
+    participate_in_skill_programs: Optional[bool] = None
+    interested_skill_programs: Optional[str] = None
+    external_factors_affecting_growth: Optional[str] = None
+    primary_stressors: Optional[str] = None
+    biggest_distractions: Optional[str] = None
+    strongest_skills: Optional[str] = None
+    areas_of_low_confidence: Optional[str] = None
+    hobbies_interests: Optional[str] = None
+    consent_given: bool = True

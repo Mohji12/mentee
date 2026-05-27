@@ -1,0 +1,253 @@
+html, body, #root {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+/* Root container for mobile layout */
+.mlp-container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: visible; /* Make sure container doesn’t create its own scroll */
+}
+
+/* Header logos – same vibe, mobile-friendly size */
+.mlp-header {
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mlp-logo-left {
+  width: 85px;
+  height: 85px;
+  margin-left: 10px;
+}
+
+.mlp-logo-right{
+  width: 85px;
+  height: 85px;
+  margin-right: 10px;
+}
+
+/* Logo images are now handled by img tags in the JSX, no background images needed */
+
+/* Hero image full-width */
+.mlp-hero-image {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mlp-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Headline and subtitle */
+.mlp-text-block {
+  padding: 1.5rem 1rem 0.5rem;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.mlp-heading {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #1f2937; /* Same as .lp-heading if applicable */
+  margin-bottom: 0.5rem;
+  font-family: sans-serif;
+  text-align: left;
+}
+
+.mlp-subheading {
+  font-size: 1rem;
+  color: #4b5563; /* Match .lp-paragraph-primary */
+  margin-bottom: 1rem;
+  margin-right: 10px;
+  text-align: left;
+}
+
+/* CTA button style consistent with .lp-login-button */
+.mlp-cta {
+  margin: 1rem 0;
+}
+
+.mlp-get-started {
+  background-color: #000000; /* Match your primary theme */
+  color: #fff;
+  padding: 0.7rem 1.5rem;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.mlp-get-started:hover {
+  background-color: #000000; /* Darker green on hover */
+  transform: scale(1.05); /* Slightly enlarge button on hover */
+  color: rgb(255, 255, 255);
+}
+
+.mlp-icons-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 2rem 1rem;
+}
+
+/* Make each card row-based */
+.mlp-icon-card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 90%;
+  padding: 1rem 1.2rem;
+  border-radius: 1rem;
+}
+
+/* Icon sizing */
+.mlp-icon-card img {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+}
+
+/* Text aligned to left, responsive */
+.mlp-icon-text {
+  flex-grow: 1;
+}
+
+.mlp-icon-text p {
+  font-size: 0.95rem;
+  color: #1f2937;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4rem;
+}
+
+/* Footer and Chatbot are assumed global */
+footer {
+  width: 100%;
+  margin-top: auto;
+}
+
+/* Pixel-optimized styles (412px width) */
+@media (min-width: 360px) and (max-width: 412px) {
+  .mlp-container {
+    max-width: 412px;
+    margin: 0 auto;
+    padding-top: calc(15px + env(safe-area-inset-top, 0px));
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    padding-left: calc(10px + env(safe-area-inset-left, 0px));
+    padding-right: calc(10px + env(safe-area-inset-right, 0px));
+  }
+  
+  .mlp-logo-left,
+  .mlp-logo-right {
+    width: 80px;
+    height: 80px;
+    margin: 0 8px;
+  }
+  
+  .mlp-heading {
+    font-size: 2rem;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+  
+  .mlp-subheading {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    letter-spacing: 0.15px;
+  }
+  
+  .mlp-get-started {
+    min-height: 48px;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.1px;
+    text-transform: uppercase;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+  }
+  
+  .mlp-get-started:active {
+    transform: scale(0.98);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  }
+  
+  .mlp-icon-card {
+    border-radius: 16px;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .mlp-icon-card:active {
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+  }
+}
+
+/* Mobile-specific logo improvements */
+@media (max-width: 480px) {
+  .mlp-logo-left,
+  .mlp-logo-right {
+    width: 75px;
+    height: 75px;
+    margin: 0 5px;
+  }
+  
+  .mlp-header {
+    margin-top: 10px;
+    margin-bottom: 35px;
+    padding: 0 5px;
+  }
+}
+
+@media (max-width: 360px) {
+  .mlp-logo-left,
+  .mlp-logo-right {
+    width: 65px;
+    height: 65px;
+    margin: 0 3px;
+  }
+  
+  .mlp-header {
+    margin-bottom: 30px;
+  }
+}
+
+/* Ensure logos are visible on all mobile devices */
+.mlp-logo-left,
+.mlp-logo-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 65px;
+  min-height: 65px;
+}
+
+/* Additional mobile logo styling */
+.mlp-logo-left img,
+.mlp-logo-right img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}

@@ -1,0 +1,159 @@
+:root {
+    --primary-color: #3498db;
+    --accent-color: #0077cc;
+    --hover-accent: #005fa3;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --light-grey: #f1f1f1;
+    --text-color: #333;
+    --bg-color: #fff;
+    --modal-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  }
+  
+  .activities-approval__container {
+    padding: 2rem;
+    margin: auto;
+    max-width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+  }
+  
+  .activities-approval__container h2,
+  .activities-approval__container h3 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+  }
+  
+  .status-reviewed {
+    color: var(--success-color);
+    font-weight: bold;
+  }
+  
+  /* Table */
+  .activities-approval__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+  }
+  
+  .activities-approval__table th,
+  .activities-approval__table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .activities-approval__table th {
+    background-color: var(--primary-color);
+    color: white;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  
+  .activities-approval__table tbody tr:hover {
+    background-color: var(--light-grey);
+  }
+  
+  .activities-approval__table button {
+    padding: 6px 12px;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .activities-approval__table button:hover {
+    background-color: var(--hover-accent);
+  }
+  
+  /* Modal */
+  .ReactModal__Overlay {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .ReactModal__Content {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--bg-color);
+    border-radius: 10px;
+    padding: 2rem;
+    position: relative;
+    box-shadow: var(--modal-shadow);
+    inset: unset !important; /* overrides default top/left settings */
+    transform: translateY(-10%);
+  }
+  
+  .ReactModal__Content h2 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: #444;
+    text-align: center;
+  }
+  
+  /* Form Elements */
+  .ReactModal__Content label {
+    display: block;
+    margin-top: 1rem;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .ReactModal__Content select,
+  .ReactModal__Content input,
+  .ReactModal__Content textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border 0.2s ease;
+  }
+  
+  .ReactModal__Content select:focus,
+  .ReactModal__Content input:focus,
+  .ReactModal__Content textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+  }
+  
+  /* Modal Buttons */
+  .ReactModal__Content button {
+    margin-top: 1.5rem;
+    margin-right: 1rem;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .ReactModal__Content button:first-of-type {
+    background-color: var(--success-color);
+    color: white;
+  }
+  
+  .ReactModal__Content button:first-of-type:hover {
+    background-color: #218838;
+  }
+  
+  .ReactModal__Content button:last-of-type {
+    background-color: var(--danger-color);
+    color: white;
+  }
+  
+  .ReactModal__Content button:last-of-type:hover {
+    background-color: #c82333;
+  }
+  

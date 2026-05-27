@@ -1,0 +1,106 @@
+/* Profile Content */
+.admin-profile__content {
+  margin: 20px;
+  border-radius: 8px;
+  max-width: 800px;
+}
+
+/* Profile Title */
+.admin-profile__title {
+  font-size: 26px;
+  color: #333;
+  text-align: left; /* Center the header */
+}
+
+/* Profile Details */
+.admin-profile__details p {
+  font-size: 17px;
+  margin: 8px 0;
+  text-align: left; /* Left-align the content */
+}
+
+.admin-profile__edit-btn, .admin-profile__create-btn {
+  padding: 10px 15px;
+  font-size: 16px;
+  width: 20%;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+}
+
+.admin-profile__edit-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.admin-profile__edit-btn:hover {
+  background-color: #45a049;
+}
+
+.admin-profile__create-btn {
+  background-color: #2196f3;
+  color: white;
+}
+
+.admin-profile__create-btn:hover {
+  background-color: #1976d2;
+}
+
+/* No Profile Found */
+.admin-profile__no-profile {
+  text-align: left; /* Left-align the content */
+  border-radius: 8px;
+}
+
+.admin-profile__no-profile p {
+  font-size: 18px;
+  color: #ff0019;
+  text-align: left;
+}
+
+/* Logout Button */
+.admin-profile-sidebar-logout-button {
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 13%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-profile-sidebar-logout-button:hover {
+  background-color: #c0392b;
+}
+
+/* Logout Link (Make entire button clickable) */
+.admin-profile-sidebar-logout-link {
+  text-decoration: none;
+  color: white;
+  width: 100%; /* Ensure the link takes up the full width of the button */
+  display: block; /* Makes the link block-level to fill the button */
+  text-align: center; /* Centers the text inside the button */
+}
+
+@media (max-width: 768px) {
+/* Logout Button */
+.admin-profile-sidebar-logout-button {
+  padding: 08px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 26%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-profile-sidebar-logout-button:hover {
+  background-color: #c0392b;
+}
+}

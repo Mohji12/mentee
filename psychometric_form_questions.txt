@@ -1,0 +1,118 @@
+PSYCHOMETRIC FORM QUESTIONS
+============================
+
+PAGE 1: PERSONAL INFORMATION
+----------------------------
+1. Present Address
+   Placeholder: "Enter your current address"
+
+2. Permanent Address
+   Placeholder: "Enter your permanent address"
+
+
+PAGE 2: EDUCATIONAL BACKGROUND
+--------------------------------
+3. Educational Qualifications
+   Placeholder: "List your highest qualifications"
+
+4. Strengths in Subjects
+   Placeholder: "Which subjects do you excel in? List out"
+
+5. Weaknesses in Subjects
+   Placeholder: "Which subjects do you struggle with? List out"
+
+6. Previous Work Experience
+   Placeholder: "Describe any work experience you have, if applicable"
+
+
+PAGE 3: FAMILY BACKGROUND
+--------------------------
+7. Father's Name
+   Placeholder: "Father's Name"
+
+8. Father's Mobile Number
+   Placeholder: "Father's Mobile No."
+
+9. Father's Education
+   Placeholder: "What is your father's highest educational qualification?"
+
+10. Father's Employment
+    Placeholder: "What is your father's occupation?"
+
+11. Mother's Name
+    Placeholder: "Mother's Name"
+
+12. Mother's Mobile Number
+    Placeholder: "Mother's Mobile No."
+
+13. Mother's Education
+    Placeholder: "What is your mother's highest educational qualification?"
+
+14. Mother's Employment
+    Placeholder: "What is your mother's occupation?"
+
+15. Sibling's Details
+    Placeholder: "Do you have siblings? If yes, mention their occupation or educational status"
+
+
+PAGE 4: PROFESSIONAL ASPIRATIONS
+---------------------------------
+16. What is your professional dream?
+    Placeholder: "Describe your career aspirations"
+
+17. What is your biggest fear?
+    Placeholder: "What challenges or fears do you think might affect your career goals?"
+
+18. What is your happiness in your personal/professional life?
+    Placeholder: "What activities, achievements, or experience make you happy?"
+
+
+PAGE 5: OPPORTUNITIES AND EXPECTATIONS
+--------------------------------------
+19. What are your expectations when joining JAIN (Deemed-to-be University)?
+    Placeholder: "What do you hope to achieve academically and personally during your time at the university?"
+
+20. What opportunities do you think will help you achieve your goals?
+    Placeholder: "List the resources, programs, or experiences you believe will benefit you"
+
+21. Would you like to participate in additional skills-building programs?
+    (Checkbox - Yes/No)
+
+22. What kind of skill-building programs are you interested in?
+    Placeholder: "List out the interested skill building programs"
+    (Conditional - only shown if question 21 is checked)
+
+
+PAGE 6: CHALLENGES
+-------------------
+23. What external factors that you think might affect your academic growth?
+    Placeholder: "For eg. family responsibilities, financial issues, etc."
+
+24. What are your primary stressors?
+    Placeholder: "List situations or tasks that cause you the most stress"
+
+25. What do you consider the biggest distractions in your life right now?
+    Placeholder: "For eg, social media, peer pressure, etc."
+
+
+PAGE 7: SKILLS AND INTERESTS
+-----------------------------
+26. What according to you, are your strongest skills?
+    Placeholder: "Mention any skills you feel particularly confident in"
+
+27. What areas do you feel less confident?
+    Placeholder: "Describe skills or areas where you think you need improvement"
+
+28. What are your hobbies or extracurricular interests?
+    Placeholder: "List any activities or interests you enjoy outside academics"
+
+
+PAGE 8: CONSENT
+---------------
+29. Consent Statement
+    Text: "I hereby consent to the collection and analysis of my personal, academic, and professional data for the purpose of conducting a SWOT (Strengths, Weaknesses, Opportunities, and Threats) analysis. I understand that this analysis is intended to support my academic and personal growth. I acknowledge that this data may also be shared with designated university officials/ my mentor/ mentorship coordinator for analysis and academic purposes. I understand that all collected data will be kept confidential, securely stored, and used solely for educational and institutional purposes. Additionally, I recognize that all data provided is the proprietary property of JAIN (Deemed-to-be University) and will be handled in accordance with the university's data protection and privacy policies."
+    (Checkbox - Required)
+
+
+TOTAL QUESTIONS: 29 (including consent checkbox)
+TOTAL PAGES: 8

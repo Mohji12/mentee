@@ -1,0 +1,365 @@
+/* Sidebar Container - single scroll for entire sidebar when Forms/Activities expanded */
+.ss-sidebar-container {
+  width: 250px;
+  background-color: #2f3c4e; /* Sidebar background color */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Left logo at the top-left corner */
+.ss-logo-left {
+  position: absolute;
+  top: -09px;
+  left: 35px;
+  width: 230px; /* Adjust width */
+  height: 130px; /* Adjust height */
+  background-image: url('../images/mentee_tracker.png'); /* Left logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Sidebar Menu - scrollable when content overflows */
+.ss-sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 110px;
+  flex: 1;
+  min-height: 0;
+}
+
+.ss-sidebar-menu-item {
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #3b4c5b;
+  border-radius: 5px;
+}
+
+.ss-sidebar-menu-item:hover {
+  background-color: #4b5d6e;
+}
+
+/* Dropdown Container */
+.ss-dropdown-container {
+  position: relative;
+}
+
+/* Dropdown Menu - no inner scroll; sidebar container scrolls so only one scrollbar */
+.ss-dropdown-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  background-color: #2f3c4e;
+  border-radius: 5px;
+  margin-top: 5px;
+  overflow: visible;
+}
+
+/* Nested Dropdown Menu (for sub-dropdowns) */
+.ss-dropdown-menu .ss-dropdown-menu {
+  margin-left: 20px;
+  margin-top: 5px;
+  background-color: #1a2634;
+  border-left: 2px solid #4b5d6e;
+}
+
+.ss-dropdown-menu-item {
+  padding: 10px;
+  margin: 10px 15px 10px 10px;
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #3b4c5b; /* Slightly lighter background */
+  border-radius: 5px;
+  font-size: 16px; /* Default font size for desktop */
+}
+
+.ss-dropdown-menu-item:hover {
+  background-color: #4b5d6e; /* Hover effect */
+}
+
+/* Nested dropdown menu items */
+.ss-dropdown-menu .ss-dropdown-menu .ss-dropdown-menu-item {
+  margin: 5px 10px 5px 10px;
+  background-color: #2a3745;
+  font-size: 14px;
+}
+
+.ss-dropdown-menu .ss-dropdown-menu .ss-dropdown-menu-item:hover {
+  background-color: #3b4c5b;
+}
+
+.ss-sidebar-menu-item {
+  cursor: pointer;
+}
+
+/* Native button styled like sidebar links (e.g. MCA Download) */
+button.ss-sidebar-menu-button {
+  border: none;
+  font: inherit;
+  text-align: inherit;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button.ss-sidebar-menu-button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+/* Full-screen MCA download loader (portal content lives in Loader.css overlay) */
+.ss-mca-download-loader-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.ss-mca-download-loader-text {
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+  font-weight: 500;
+}
+/* Media Query for Mobile Version */
+@media (max-width: 768px) {
+  /* Adjust the sidebar for mobile devices */
+  .ss-sidebar-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #1a1a1a;
+    padding: 8px 0;
+    /* Above .sd-powered-by (1001) and chatbot icon (1000) so nav taps reach real targets */
+    z-index: 1200;
+    border-top: 1px solid #333;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Sidebar Menu */
+  .ss-sidebar-menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0 8px;
+    margin: 0;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    gap: 4px;
+  }
+
+  /* Menu items as touch-friendly blocks */
+  .ss-sidebar-menu-item {
+    flex: 1;
+    min-width: 50px;
+    max-width: 80px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 0;
+    margin: 0 2px;
+    padding: 0;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
+    touch-action: manipulation;
+    flex-shrink: 1;
+  }
+
+  .ss-sidebar-menu-item:hover,
+  .ss-sidebar-menu-item:active {
+    background-color: #333;
+  }
+
+  /* Logo */
+  .ss-logo-mobile-left {
+    position: fixed;
+    left: 10px;
+    top: 10px;
+    background-image: url('../images/black.png');
+    width: 100px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1001;
+  }
+
+  .ss-logo-mobile-right {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    background-image: url('../images/Jain-Logo.png');
+    width: 100px;
+    height: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 1001;
+  }
+
+  .sp-profile-edit-icon {
+    z-index: -1;
+  }
+
+  /* Icon styling */
+  .ss-sidebar-menu-item svg {
+    font-size: 20px;
+    color: white;
+  }
+
+  /* Dropdown menu styling for mobile */
+  .ss-dropdown-menu {
+    position: fixed;
+    left: 0;
+    bottom: 80px;
+    width: 100%;
+    background-color: #1a1a1a;
+    border-radius: 0;
+    /* Above bottom nav (1200) so expanded menus stay visible */
+    z-index: 1250;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    border-top: 1px solid #333;
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+
+  .ss-dropdown-menu-item {
+    font-size: 16px;
+    padding: 16px 20px;
+    background-color: transparent;
+    margin: 0;
+    border-bottom: 1px solid #333;
+    color: white;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s ease;
+  }
+
+  .ss-dropdown-menu-item:hover {
+    background-color: #333;
+  }
+
+  .ss-dropdown-menu-item:last-child {
+    border-bottom: none;
+  }
+
+  /* Nested dropdown menu for mobile */
+  .ss-dropdown-menu .ss-dropdown-menu {
+    position: static;
+    bottom: auto;
+    width: 100%;
+    background-color: #2a2a2a;
+    border-left: 3px solid #4b5d6e;
+    margin-left: 0;
+    box-shadow: none;
+  }
+
+  .ss-dropdown-menu .ss-dropdown-menu .ss-dropdown-menu-item {
+    font-size: 14px;
+    padding: 12px 20px 12px 40px;
+    background-color: transparent;
+    margin: 0;
+    border-bottom: 1px solid #444;
+  }
+
+  /* Dropdown container */
+  .ss-dropdown-container {
+    position: relative;
+    flex: 1;
+    min-width: 50px;
+    max-width: 80px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Small mobile dropdown container */
+  @media (max-width: 480px) {
+    .ss-dropdown-container {
+      min-width: 40px;
+      max-width: 70px;
+      height: 45px;
+    }
+  }
+
+  /* Active state for dropdown items */
+  .ss-sidebar-menu-item.active {
+    background-color: #4b5d6e;
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+  .ss-sidebar-container {
+    height: 70px;
+    padding: 6px 0;
+  }
+
+  .ss-sidebar-menu-item {
+    flex: 1;
+    min-width: 40px;
+    max-width: 70px;
+    height: 45px;
+    margin: 0 1px;
+  }
+
+  .ss-sidebar-menu-item svg {
+    font-size: 16px;
+  }
+
+  .ss-dropdown-menu {
+    bottom: 70px;
+  }
+
+  .ss-dropdown-menu-item {
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+
+  .ss-logo-mobile-left,
+  .ss-logo-mobile-right {
+    width: 80px;
+    height: 40px;
+  }
+}
+
+/* Nested sub-dropdown for MCA Form */
+.ss-sub-dropdown-menu {
+  list-style-type: none;
+  padding: 0;
+  margin: 5px 0 5px 20px;
+  background-color: #1a2634;
+  border-left: 2px solid #4b5d6e;
+  border-radius: 5px;
+  display: block;
+  position: relative;
+  z-index: 1001;
+}
+
+.ss-sub-dropdown-menu .ss-dropdown-menu-item {
+  margin: 5px 10px;
+  background-color: #2a3745;
+  font-size: 14px;
+}
+
+.ss-sub-dropdown-menu .ss-dropdown-menu-item:hover {
+  background-color: #3b4c5b;
+}

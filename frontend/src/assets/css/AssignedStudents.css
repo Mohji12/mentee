@@ -1,0 +1,464 @@
+
+
+/* Title */
+.assigned-students__title {
+  font-size: 28px;
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Table Styling */
+.assigned-students__table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.assigned-students__table th,
+.assigned-students__table td {
+  padding: 14px 16px;
+  text-align: left;
+}
+
+/* Table Header */
+.assigned-students__table--colorful thead tr {
+  background: #2563eb;
+}
+
+.assigned-students__table--colorful th {
+  color: white;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: none;
+  position: relative;
+  background: #2563eb;
+}
+
+.assigned-students__table--colorful th::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.assigned-students__table--colorful th:last-child::after {
+  display: none;
+}
+
+/* All column headers use same solid color */
+.assigned-students__table--colorful .th-usn,
+.assigned-students__table--colorful .th-name,
+.assigned-students__table--colorful .th-phone,
+.assigned-students__table--colorful .th-email,
+.assigned-students__table--colorful .th-program,
+.assigned-students__table--colorful .th-actions {
+  background: #2563eb;
+}
+
+/* Actions column */
+.assigned-students__table--colorful .th-actions {
+  text-align: center;
+  width: 120px;
+}
+
+.assigned-students__table--colorful .td-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.td-actions .download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  font-weight: 500;
+}
+
+.td-actions .download-btn.mca-download {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.td-actions .download-btn.mca-download:hover {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.td-actions .download-btn.full-report-download {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+.td-actions .download-btn.full-report-download:hover:not(:disabled) {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.td-actions .download-btn.full-report-download:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.td-actions .btn-spinner {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: assigned-spin 0.8s linear infinite;
+}
+
+@keyframes assigned-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Table Body Rows */
+.assigned-students__table--colorful tbody tr {
+  transition: all 0.3s ease;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.assigned-students__table--colorful tbody tr:last-child {
+  border-bottom: none;
+}
+
+.assigned-students__table--colorful .row-even {
+  background-color: #ffffff;
+}
+
+.assigned-students__table--colorful .row-odd {
+  background-color: #f8fafc;
+}
+
+.assigned-students__table--colorful tbody tr:hover {
+  background: linear-gradient(135deg, #fef3f2 0%, #fce7f3 50%, #f3e8ff 100%);
+  transform: scale(1.005);
+  box-shadow: 0 4px 12px rgba(102, 102, 234, 0.15);
+}
+
+/* Table Cell Styles */
+.assigned-students__table--colorful td {
+  border: none;
+  color: #374151;
+  font-size: 0.9rem;
+}
+
+.assigned-students__table--colorful .td-usn {
+  font-weight: 600;
+  color: #6366f1;
+  font-family: 'Monaco', 'Consolas', monospace;
+}
+
+.assigned-students__table--colorful .td-name {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+/* Student clickable links */
+.student-link {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.student-link:hover {
+  color: #6366f1;
+  text-decoration: underline;
+}
+
+.td-usn .student-link {
+  color: #6366f1;
+}
+
+.td-usn .student-link:hover {
+  color: #4f46e5;
+}
+
+.td-name .student-link {
+  color: #1f2937;
+}
+
+.td-name .student-link:hover {
+  color: #6366f1;
+}
+
+.assigned-students__table--colorful .td-phone {
+  color: #059669;
+  font-weight: 500;
+}
+
+.assigned-students__table--colorful .td-email {
+  color: #2563eb;
+  word-break: break-word;
+}
+
+.assigned-students__table--colorful .td-email:hover {
+  text-decoration: underline;
+}
+
+/* Program Badge */
+.program-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  border: 1px solid #fbbf24;
+  white-space: nowrap;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .assigned-students__table--colorful th,
+  .assigned-students__table--colorful td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+  
+  .program-badge {
+    padding: 4px 8px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .assigned-students__table-container {
+    overflow-x: auto;
+  }
+  
+  .assigned-students__table--colorful {
+    min-width: 600px;
+  }
+  
+  .assigned-students__table--colorful th,
+  .assigned-students__table--colorful td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Message when no students are assigned */
+.assigned-students__no-students {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+}
+
+/* Filter Section Styling */
+.assigned-students__filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #ecf5fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Filter Labels */
+.assigned-students__filter label {
+  font-size: 16px;
+  color: #34495e;
+  margin-right: 10px;
+}
+
+/* Filter Select (Program) */
+.assigned-students__filter select {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 180px;
+  transition: border-color 0.3s ease;
+}
+
+.assigned-students__filter select:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+/* Filter Input (USN Search) */
+.assigned-students__filter input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: 200px;
+  transition: border-color 0.3s ease;
+}
+
+.assigned-students__filter input:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.mentor-stats {
+  margin-top: 20px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.admin-stats h3 {
+  margin-bottom: 10px;
+}
+
+.mstats-circles {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap; /* Prevents overflow */
+}
+
+.mstat-circle {
+  text-align: center;
+  flex: 1;
+  min-width: 80px;
+}
+
+.mcircle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  font-size: 20px;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.stat-circle p {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+  margin-left: 60px;
+}
+
+.stats-btn{
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  max-width: 100%;
+}
+
+.stats-btn:hover {
+  background-color: #0056b3;
+}
+
+.stats-btn:focus {
+  outline: none;
+}
+
+.highlight-text {
+  color: rgb(0, 64, 255);
+  font-weight: bold;
+}
+
+.download-btn.mca-download {
+  padding: 2px 10px;
+  font-size: 0.85rem;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.download-btn.mca-download:disabled {
+  background: #bdbdbd;
+  cursor: not-allowed;
+}
+.download-btn.mca-download:hover:not(:disabled) {
+  background: #1769aa;
+}
+
+/* Academic Performance / Grades button - Green to differentiate from MCA */
+.grades-btn {
+  background-color: #4caf50 !important;
+  font-weight: 500;
+}
+
+.grades-btn:hover:not(:disabled) {
+  background-color: #45a049 !important;
+}
+
+.grades-btn:disabled {
+  background: #bdbdbd !important;
+  cursor: not-allowed;
+}
+
+/* 16PF Form download button */
+.pf16-download {
+  background-color: #17a2b8 !important;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s;
+}
+
+.pf16-download:hover:not(:disabled) {
+  background-color: #138496 !important;
+}
+
+.pf16-download:disabled {
+  background: #bdbdbd !important;
+  cursor: not-allowed;
+}
+
+.linkedin-btn {
+  padding: 4px 14px;
+  font-size: 0.95rem;
+  background-color: #0077b5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+.linkedin-btn:disabled {
+  background: #bdbdbd;
+  color: #fff;
+  cursor: not-allowed;
+}
+.linkedin-btn:hover:not(:disabled) {
+  background: #005983;
+}

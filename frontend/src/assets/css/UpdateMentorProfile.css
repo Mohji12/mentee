@@ -1,0 +1,83 @@
+/* Container for Mentor Profile Update */
+.update-mentor-profile__container {
+  margin: 30px;
+  padding: 30px;
+  background-color: #f1f9fc;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Main Content */
+.update-mentor-profile__main-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Title for the page */
+.update-mentor-profile__title {
+  font-size: 28px;
+  color: #2c3e50;
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+/* Error Message */
+.update-mentor-profile__error {
+  color: red;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Form Styling */
+.update-mentor-profile__form {
+  display: contents;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Input Group Styling */
+.update-mentor-profile__input-group {
+  display: contents;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Labels for Input Fields */
+.update-mentor-profile__label {
+  font-size: 16px;
+  color: #34495e;
+}
+
+/* Input Field Styling */
+.update-mentor-profile__input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+.update-mentor-profile__input:focus {
+  border-color: #2980b9;
+}
+
+/* Submit Button */
+.update-mentor-profile__submit-btn {
+  padding: 12px 20px;
+  font-size: 18px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.update-mentor-profile__submit-btn:hover {
+  background-color: #2980b9;
+}

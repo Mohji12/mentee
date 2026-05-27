@@ -1,0 +1,373 @@
+.student-signup-page {
+  min-height: 100vh;
+  background-image: url('../images/landing.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: white;
+  overflow-y: auto;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .student-signup-page {
+    padding: 10px;
+    align-items: flex-start;
+    padding-top: 80px;
+  }
+
+  .student-signup-form-container {
+    width: 100%;
+    max-width: 100%;
+    padding: 15px;
+    margin: 0;
+    border-radius: 8px;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-group label {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    min-height: 48px;
+    width: 100%;
+    touch-action: manipulation;
+  }
+
+  .terms-container1 {
+    margin-top: 15px;
+    font-size: 14px;
+  }
+
+  .terms-checkbox1 {
+    margin-top: 0.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-signup-page {
+    padding: 5px;
+    padding-top: 70px;
+  }
+
+  .student-signup-form-container {
+    padding: 12px;
+  }
+
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 10px 16px;
+    font-size: 15px;
+  }
+
+  .terms-container1 {
+    font-size: 13px;
+  }
+}
+
+
+.student-signup-form-container {
+  width: 100%; /* Use full width */
+  max-width: 500px; /* Limit the max width */
+  background: rgba(255, 255, 255, 0.9); /* No background */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  box-sizing: border-box;
+  margin-left: 0; /* Removed the left margin */
+}
+
+.terms-container1 {
+  display: flex;
+  align-items: flex-start;
+  color: #333;
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.terms-container1 > :first-child {
+  flex: 0 0 auto; /* Don't grow, don't shrink, keep its size */
+  width: 45px; /* or however wide you want the first box (e.g., checkbox) */
+}
+
+.terms-container1 > :nth-child(2) {
+  flex: 1; /* Let the second item (usually the label/text) take the remaining space */
+}
+
+.terms-checkbox1 {
+  margin-top: 0.2rem;
+  cursor: pointer;
+  accent-color: #007BFF; /* nice blue accent */
+}
+
+.terms-label {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+}
+
+.terms-link {
+  color: #007BFF;
+  text-decoration: underline;
+  transition: color 0.2s ease-in-out;
+}
+
+.terms-link:hover {
+  color: #0056b3;
+}
+/* Disabled Sign Up Button */
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+.student-signup-form-container h1,
+.student-signup-form-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.student-signup-form-container h3 {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.student-signup-form-container input {
+  width: 90%;
+  max-width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.student-signup-form-container button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.student-signup-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.student-signup-form-container p {
+  font-size: 1rem;
+  color: #555;
+  margin-top: 10px;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.student-signup-form-container p button {
+  font-weight: bold;
+  color: #007bff;
+  background: none;
+  border: none;
+  text-decoration: underline;
+}
+
+.student-signup-form-container p button:hover {
+  text-decoration: underline;
+}
+
+.student-signup-input-error {
+  color:red;
+  font-size: 0.9em;
+  margin-top: 4px;
+}
+
+.student-signup-response-message {
+  font-weight: bold;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.student-signup-success-message {
+  color: #28a745;
+  background-color: #d4edda;
+}
+
+.student-signup-error-message {
+  color: #dc3545;
+  background-color: #f8d7da;
+}
+
+.student-signup-otp-input {
+  width: 100%;
+  max-width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.student-signup-otp-button {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.student-signup-otp-button:hover {
+  background-color: #0056b3;
+}
+
+/* Footer styling */
+.stud-powered-by {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  color: #000000;
+}
+
+.stud-footer-link {
+  color: #000000;
+  text-decoration: none;
+  font-weight: 1000;
+}
+
+.stud-footer-link:hover {
+  color: #160c61;
+}
+
+/* Left logo at the top-left corner */
+.ssg-logo-left {
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  width: 230px;
+  height: 80px;
+  background-image: url('../images/black.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Right logo at the top-right corner */
+.ssg-logo-right {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 175px;
+  height: 175px;
+  background-image: url('../images/Jain-Logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Mobile Version */
+@media (max-width: 768px) {
+  .student-signup-page {
+    padding: 0 10px;
+  }
+
+  .student-signup-form-container {
+    max-width: 100%;
+    margin-top: 90px;
+    padding: 15px;
+    box-shadow: none; /* Optional: Remove shadow for mobile */
+    background: none;
+  }
+
+  .student-signup-form-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .student-signup-form-container input,
+  .student-signup-form-container button {
+    width: 95%;
+  }
+
+  .ssg-logo-left {
+    position: fixed;
+    left: -05px;
+    width: 130px;
+  }
+
+  .ssg-logo-right {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 120px;
+    height: 120px;
+    z-index: 1;
+  }
+  /* Footer styling */
+  .stud-powered-by {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: #000000;
+  }
+  
+  .stud-footer-link {
+    color: #000000; /* Green color for the link */
+    text-decoration: none; /* Remove underline */
+    font-weight: 1000;
+  }
+  
+  .stud-footer-link:hover {
+    color: #160c61; /* Darker green on hover */
+  }
+
+  .terms-lcontainer {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 11px;
+    margin-left: 10px;
+  }
+
+
+}
+

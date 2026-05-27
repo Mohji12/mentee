@@ -1,0 +1,384 @@
+.pf16-page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.pf16-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pf16-locked-message {
+  background: #d4edda;
+  border: 2px solid #28a745;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.pf16-locked-message p {
+  margin: 0.5rem 0;
+  color: #155724;
+  font-weight: 500;
+}
+
+.pf16-download-btn {
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pf16-download-btn:hover {
+  background: #0056b3;
+}
+
+.pf16-status {
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.pf16-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.pf16-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.pf16-progress {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.pf16-instructions {
+  background: #e7f3ff;
+  border-left: 4px solid #007bff;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 4px;
+}
+
+.pf16-instructions ul {
+  margin: 0.5rem 0 0 1.5rem;
+  padding: 0;
+}
+
+.pf16-instructions li {
+  margin: 0.5rem 0;
+  color: #495057;
+}
+
+.pf16-questions-container {
+  margin-bottom: 2rem;
+}
+
+.pf16-question-block {
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.pf16-question-block:last-child {
+  margin-bottom: 0;
+}
+
+.pf16-question-header {
+  margin-bottom: 0.75rem;
+}
+
+.pf16-question-number {
+  background: #007bff;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.pf16-question-text {
+  font-size: 1.05rem;
+  color: #2c3e50;
+  margin-bottom: 1.25rem;
+  line-height: 1.7;
+  font-weight: 500;
+  padding-top: 0.5rem;
+}
+
+.pf16-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.pf16-option-label {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #f8f9fa;
+  min-height: 50px;
+}
+
+.pf16-option-label:hover {
+  border-color: #007bff;
+  background: #e7f3ff;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.1);
+}
+
+.pf16-option-label input[type="radio"]:checked + .pf16-option-letter {
+  background: #007bff;
+  color: white;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+}
+
+.pf16-option-label input[type="radio"]:checked ~ .pf16-option-text {
+  font-weight: 600;
+  color: #007bff;
+}
+
+.pf16-option-label input[type="radio"] {
+  accent-color: #007bff;
+}
+
+.pf16-radio {
+  margin: 0;
+  margin-right: 0.75rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  align-self: center;
+  width: 18px;
+  height: 18px;
+}
+
+.pf16-option-letter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #e9ecef;
+  color: #495057;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  transition: all 0.2s;
+  align-self: center;
+}
+
+.pf16-option-text {
+  flex: 1;
+  color: #495057;
+  line-height: 1.5;
+  align-self: center;
+  display: flex;
+  align-items: center;
+}
+
+.pf16-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-top: 2px solid #e9ecef;
+  margin-top: 2rem;
+}
+
+.pf16-nav-btn {
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #007bff;
+  background: white;
+  color: #007bff;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pf16-nav-btn:hover:not(:disabled) {
+  background: #007bff;
+  color: white;
+}
+
+.pf16-nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pf16-page-indicator {
+  font-weight: 600;
+  color: #495057;
+}
+
+.pf16-submit-btn {
+  padding: 0.75rem 2rem;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.pf16-submit-btn:hover:not(:disabled) {
+  background: #218838;
+}
+
+.pf16-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pf16-readonly-view {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.pf16-readonly-view h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.pf16-responses-summary {
+  margin-top: 1rem;
+}
+
+.pf16-response-item {
+  background: white;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 6px;
+  border-left: 3px solid #007bff;
+}
+
+.pf16-answer {
+  color: #28a745;
+  font-weight: 500;
+}
+
+.pf16-more-info {
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+.pf16-modal {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 500px;
+  width: 90%;
+  text-align: center;
+}
+
+.pf16-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.pf16-modal h2 {
+  color: #28a745;
+  margin-bottom: 1rem;
+}
+
+.pf16-modal p {
+  margin: 0.75rem 0;
+  color: #495057;
+}
+
+.pf16-modal-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.pf16-modal-download-btn {
+  padding: 0.75rem 1.5rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pf16-modal-download-btn:hover {
+  background: #0056b3;
+}
+
+.pf16-modal-close-btn {
+  padding: 0.75rem 1.5rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.pf16-modal-close-btn:hover {
+  background: #5a6268;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pf16-page {
+    padding: 1rem;
+  }
+
+  .pf16-question-block {
+    padding: 1rem;
+  }
+
+  .pf16-navigation {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .pf16-nav-btn,
+  .pf16-submit-btn {
+    width: 100%;
+  }
+}

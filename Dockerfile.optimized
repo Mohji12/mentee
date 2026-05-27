@@ -1,0 +1,59 @@
+FROM public.ecr.aws/lambda/python:3.11
+
+# Set working directory
+WORKDIR /var/task
+
+# Install system dependencies in one layer (faster)
+RUN yum install -y \
+        libpng \
+        libjpeg-turbo \
+        freetype \
+        freetype-devel \
+        libpng-devel \
+        zlib-devel \
+        chromium \
+        atk \
+        at-spi2-atk \
+        gtk3 \
+        libXcomposite \
+        libXcursor \
+        libXdamage \
+        libXext \
+        libXi \
+        libXrandr \
+        libXScrnSaver \
+        libXtst \
+        cups-libs \
+        libXss \
+        libasound2 \
+    && yum clean all \
+    && rm -rf /var/cache/yum
+
+# Upgrade pip, setuptools, wheel in one step
+RUN pip install --upgrade pip setuptools wheel --no-cache-dir
+
+# Copy requirements first for better caching
+COPY requirements.txt .
+
+# Install Python packages (removed -v flag for speed, use pip cache)
+# Using --cache-dir to enable pip caching between builds
+RUN pip install --cache-dir /tmp/pip-cache -r requirements.txt -t . || \
+    (echo "ERROR: Package installation failed. Checking requirements.txt..." && \
+     cat requirements.txt && \
+     exit 1)
+
+# Verify critical packages (combined with cleanup)
+RUN python -c "import fastapi; import sqlalchemy; import pymysql; import bcrypt; import pydantic; print('✓ Core packages verified')" || \
+    (echo "ERROR: Package verification failed!" && \
+     ls -la /var/task/ | head -20 && \
+     exit 1)
+
+# Clean up pip cache to reduce image size
+RUN rm -rf /tmp/pip-cache
+
+# Copy application code (this layer changes most often, so keep it last)
+COPY app/ ./app
+
+# Lambda entrypoint
+CMD ["app.main.handler"]
+

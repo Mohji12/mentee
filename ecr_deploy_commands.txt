@@ -1,0 +1,72 @@
+# =====================================================
+# ECR and Docker Commands for Mentee Tracker
+# =====================================================
+# AWS Account ID: 474833638797
+# ECR Repository: mentee
+# Region: ap-south-1
+# ECR URI: 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee
+# =====================================================
+
+# IMPORTANT: First, add IAM policy to your user for ECR access
+# Go to IAM Console -> Users -> admin -> Add permissions -> Attach policies directly
+# Add: AmazonEC2ContainerRegistryFullAccess (or create custom policy with ecr:GetAuthorizationToken)
+
+# =====================================================
+# Step 1: Login to ECR
+# =====================================================
+
+# For Windows PowerShell:
+$password = aws ecr get-login-password --region ap-south-1
+$password | docker login --username AWS --password-stdin 474833638797.dkr.ecr.ap-south-1.amazonaws.com
+
+# For Windows CMD:
+# aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 474833638797.dkr.ecr.ap-south-1.amazonaws.com
+
+# For Linux/Mac:
+# aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 474833638797.dkr.ecr.ap-south-1.amazonaws.com
+
+# =====================================================
+# Step 2: Build Docker Image
+# =====================================================
+docker build -t mentee:latest .
+
+# Or with specific Dockerfile:
+# docker build -f Dockerfile -t mentee:latest .
+
+# =====================================================
+# Step 3: Tag Image for ECR
+# =====================================================
+docker tag mentee:latest 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee:latest
+
+# Or tag with version:
+# docker tag mentee:latest 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee:v1.0.0
+
+# =====================================================
+# Step 4: Push to ECR
+# =====================================================
+docker push 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee:latest
+
+# =====================================================
+# Quick One-Line Command (PowerShell)
+# =====================================================
+# aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 474833638797.dkr.ecr.ap-south-1.amazonaws.com; docker build -t mentee:latest .; docker tag mentee:latest 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee:latest; docker push 474833638797.dkr.ecr.ap-south-1.amazonaws.com/mentee:latest
+
+# =====================================================
+# Useful ECR Management Commands
+# =====================================================
+
+# List images in repository:
+# aws ecr list-images --repository-name mentee --region ap-south-1
+
+# Describe repository:
+# aws ecr describe-repositories --repository-names mentee --region ap-south-1
+
+# Delete image:
+# aws ecr batch-delete-image --repository-name mentee --image-ids imageTag=latest --region ap-south-1
+
+# Create repository (if doesn't exist):
+# aws ecr create-repository --repository-name mentee --region ap-south-1
+
+
+
+

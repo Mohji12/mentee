@@ -1,0 +1,245 @@
+/* Mentor consolidated internal marks — wide table, single horizontal scroll */
+
+.mcim-wrap {
+  padding: 1rem 1.25rem 2rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.mcim-header {
+  margin-bottom: 1.25rem;
+}
+
+.mcim-header h1 {
+  margin: 0 0 0.35rem 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.mcim-header p {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.92rem;
+  max-width: 52rem;
+}
+
+.mcim-meta {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #334155;
+}
+
+.mcim-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+}
+
+.mcim-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.mcim-controls select {
+  min-width: 140px;
+  padding: 0.45rem 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.9rem;
+}
+
+.mcim-btn {
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #6366f1;
+  background: #6366f1;
+  color: white;
+  font-weight: 700;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.mcim-btn:hover {
+  background: #4f46e5;
+}
+
+.mcim-btn--secondary {
+  background: white;
+  color: #3730a3;
+}
+
+.mcim-btn--secondary:hover {
+  background: #eef2ff;
+}
+
+.mcim-scroll {
+  overflow-x: auto;
+  overflow-y: visible;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+  -webkit-overflow-scrolling: touch;
+}
+
+.mcim-table {
+  border-collapse: collapse;
+  font-size: 0.72rem;
+  min-width: max-content;
+}
+
+.mcim-table th,
+.mcim-table td {
+  border: 1px solid #cbd5e1;
+  padding: 0.35rem 0.45rem;
+  text-align: center;
+  white-space: nowrap;
+  background: #fff;
+}
+
+.mcim-table th {
+  background: #f1f5f9;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.mcim-table tbody tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.mcim-sticky {
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  box-shadow: 2px 0 4px rgba(15, 23, 42, 0.06);
+}
+
+.mcim-sticky-2 {
+  position: sticky;
+  left: 7.5rem;
+  z-index: 2;
+  box-shadow: 2px 0 4px rgba(15, 23, 42, 0.06);
+}
+
+.mcim-th-sticky {
+  z-index: 3;
+  background: #e2e8f0 !important;
+}
+
+.mcim-th-sticky-2 {
+  z-index: 3;
+  background: #e2e8f0 !important;
+}
+
+.mcim-subject-head {
+  background: #e0e7ff !important;
+  color: #312e81;
+  font-size: 0.68rem;
+}
+
+.mcim-upload-panel {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+}
+
+.mcim-upload-panel h2 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.mcim-upload-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.mcim-upload-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.mcim-upload-grid input[type='text'],
+.mcim-upload-grid input[type='file'] {
+  font-size: 0.88rem;
+}
+
+.mcim-upload-grid input[type='text'] {
+  padding: 0.45rem 0.55rem;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+}
+
+.mcim-upload-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.mcim-import-result {
+  margin-top: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #065f46;
+}
+
+.mcim-import-result--warn {
+  background: #fffbeb;
+  border-color: #fde68a;
+  color: #92400e;
+}
+
+.mcim-import-errors {
+  margin-top: 0.5rem;
+  max-height: 160px;
+  overflow-y: auto;
+  font-size: 0.78rem;
+  color: #991b1b;
+  white-space: pre-wrap;
+}
+
+.mcim-empty,
+.mcim-error,
+.mcim-loading {
+  padding: 2rem;
+  text-align: center;
+  color: #64748b;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px dashed #cbd5e1;
+}
+
+.mcim-error {
+  color: #b91c1c;
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+@media (max-width: 768px) {
+  .mcim-sticky-2 {
+    left: 6rem;
+  }
+}

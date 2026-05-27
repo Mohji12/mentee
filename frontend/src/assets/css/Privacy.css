@@ -1,0 +1,119 @@
+/* General Styling */
+.privacy-container {
+    max-width: 900px;
+    height: 80vh; /* Adjust height as needed */
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    font-family: "Roboto", sans-serif;
+    color: #333;
+    overflow-y: auto; /* Enables vertical scrolling */
+    scrollbar-width: thin; /* Firefox scrollbar */
+    scrollbar-color: #888 #f9f9f9; /* Scrollbar color */
+  }
+  
+  /* Custom Scrollbar for Webkit Browsers */
+  .privacy-container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .privacy-container::-webkit-scrollbar-track {
+    background: #f9f9f9;
+  }
+  
+  .privacy-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+  }
+  
+  .privacy-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  /* Headings */
+  .privacy-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #004080;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .privacy-container h2 {
+    font-size: 1.5rem;
+    color: #0066cc;
+    margin-top: 25px;
+  }
+  
+  .privacy-container h3 {
+    font-size: 1.2rem;
+    color: #0099ff;
+    margin-top: 20px;
+  }
+  
+  /* Paragraphs */
+  .privacy-container p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  /* Lists */
+  .privacy-container ul {
+    margin-left: 20px;
+    padding-left: 20px;
+    list-style-type: disc;
+  }
+  
+  .privacy-container ul li {
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+  
+  /* Horizontal Line */
+  .privacy-container hr {
+    border: none;
+    height: 1px;
+    background-color: #ddd;
+    margin: 20px 0;
+  }
+  
+  /* Contact and Support Section */
+  .privacy-contact {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+  }
+  
+  /* Governing Law Section */
+  .privacy-governing-law {
+    background-color: #eef6ff;
+    padding: 15px;
+    border-left: 5px solid #004080;
+    margin-top: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .privacy-container {
+      height: 90vh; /* Increase height on mobile for better scrolling */
+      padding: 20px;
+    }
+  
+    .privacy-container h1 {
+      font-size: 1.8rem;
+    }
+  
+    .privacy-container h2 {
+      font-size: 1.3rem;
+    }
+  
+    .privacy-container h3 {
+      font-size: 1.1rem;
+    }
+  }
+  

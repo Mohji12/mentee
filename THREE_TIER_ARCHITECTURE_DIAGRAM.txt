@@ -1,0 +1,225 @@
+================================================================================
+                    MENTEE TRACKER MCA - THREE-TIER ARCHITECTURE DIAGRAM
+================================================================================
+
+                                    INTERNET
+                                       │
+                                       ▼
+                            ┌─────────────────────┐
+                            │   CLOUDFRONT CDN    │
+                            │  (Static Assets)    │
+                            └─────────────────────┘
+                                       │
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                    TIER 1                                      │
+│                              PRESENTATION LAYER                                │
+│                              (React.js Frontend)                               │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                       │
+                    ┌──────────────────┼──────────────────┐
+                    │                  │                  │
+                    ▼                  ▼                  ▼
+        ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+        │   STUDENT UI    │  │   MENTOR UI     │  │   ADMIN UI      │
+        │                 │  │                 │  │                 │
+        │ • Dashboard     │  │ • Dashboard     │  │ • Dashboard     │
+        │ • Activities    │  │ • Students      │  │ • All Students  │
+        │ • MCA Forms     │  │ • Approvals     │  │ • Activities    │
+        │ • Reports       │  │ • Meetings      │  │ • Analytics     │
+        │ • Psychometric  │  │ • Tracking      │  │ • Management    │
+        │ • Competencies  │  │ • Appointments  │  │                 │
+        └─────────────────┘  └─────────────────┘  └─────────────────┘
+                    │                  │                  │
+                    └──────────────────┼──────────────────┘
+                                       │
+                                       ▼
+                            ┌─────────────────────┐
+                            │   API GATEWAY       │
+                            │  (AWS API Gateway)  │
+                            └─────────────────────┘
+                                       │
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                    TIER 2                                      │
+│                              BUSINESS LOGIC LAYER                              │
+│                              (FastAPI Backend)                                 │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                       │
+                    ┌──────────────────┼──────────────────┐
+                    │                  │                  │
+                    ▼                  ▼                  ▼
+        ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+        │  AUTHENTICATION │  │   CORE SERVICES │  │  EXTERNAL APIS  │
+        │                 │  │                 │  │                 │
+        │ • JWT Tokens    │  │ • User Mgmt     │  │ • Google Gemini │
+        │ • Login/Logout  │  │ • Activities    │  │ • AWS S3        │
+        │ • Password Reset│  │ • Meetings      │  │ • ZeptoMail     │
+        │ • Role Control  │  │ • Reports       │  │ • Redis Cache   │
+        │ • Session Mgmt  │  │ • Competencies  │  │                 │
+        │                 │  │ • MCA System    │  │                 │
+        └─────────────────┘  └─────────────────┘  └─────────────────┘
+                    │                  │                  │
+                    └──────────────────┼──────────────────┘
+                                       │
+                                       ▼
+                            ┌─────────────────────┐
+                            │   BACKGROUND TASKS  │
+                            │   (APScheduler)     │
+                            │                     │
+                            │ • Semester Updates  │
+                            │ • Email Scheduling  │
+                            │ • Report Generation │
+                            └─────────────────────┘
+                                       │
+                                       ▼
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                                    TIER 3                                      │
+│                                DATA LAYER                                      │
+│                              (Database & Storage)                              │
+└─────────────────────────────────────────────────────────────────────────────────┘
+                                       │
+                    ┌──────────────────┼──────────────────┐
+                    │                  │                  │
+                    ▼                  ▼                  ▼
+        ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+        │   MYSQL RDS     │  │   REDIS CACHE   │  │   AWS S3 STORAGE│
+        │   (Primary DB)  │  │                 │  │                 │
+        │                 │  │ • Session Data  │  │ • User Profiles │
+        │ • students      │  │ • Temp Data     │  │ • Reports       │
+        │ • mentors       │  │ • API Cache     │  │ • Documents     │
+        │ • activities    │  │ • Rate Limiting │  │ • Images        │
+        │ • competencies  │  │ • Performance   │  │ • Logos         │
+        │ • meetings      │  │                 │  │                 │
+        │ • MCA_assignments│ │                 │  │                 │
+        │ • psychometric  │  │                 │  │                 │
+        │ • reports       │  │                 │  │                 │
+        └─────────────────┘  └─────────────────┘  └─────────────────┘
+
+================================================================================
+                              DATA FLOW DIAGRAM
+================================================================================
+
+1. USER AUTHENTICATION FLOW:
+   User Login → Frontend → API Gateway → Authentication Service → JWT Token → Session Storage
+
+2. DATA ACCESS FLOW:
+   Frontend Request → API Gateway → Business Logic → Database Query → Cache Check → Data Return
+
+3. FILE UPLOAD FLOW:
+   File Upload → Frontend → API Gateway → File Service → AWS S3 → URL Return
+
+4. AI INTEGRATION FLOW:
+   Competency Data → AI Service → Google Gemini → Analysis → Report Generation → Database Storage
+
+5. EMAIL NOTIFICATION FLOW:
+   Event Trigger → Email Service → ZeptoMail → SMTP → User Email
+
+================================================================================
+                              SECURITY LAYERS
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              SECURITY ARCHITECTURE                              │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────────────────────┐
+                    │         CLOUDFRONT CDN          │
+                    │     (DDoS Protection, HTTPS)    │
+                    └─────────────────────────────────┘
+                                       │
+                    ┌─────────────────────────────────┐
+                    │       API GATEWAY SECURITY      │
+                    │   (Rate Limiting, API Keys)     │
+                    └─────────────────────────────────┘
+                                       │
+                    ┌─────────────────────────────────┐
+                    │      APPLICATION SECURITY       │
+                    │  (JWT, CORS, Input Validation)  │
+                    └─────────────────────────────────┘
+                                       │
+                    ┌─────────────────────────────────┐
+                    │       DATABASE SECURITY         │
+                    │   (Encryption, Access Control)  │
+                    └─────────────────────────────────┘
+
+================================================================================
+                              SCALABILITY FEATURES
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              SCALABILITY ARCHITECTURE                           │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+• AUTO-SCALING: AWS Lambda automatically scales based on demand
+• LOAD BALANCING: API Gateway distributes requests across multiple instances
+• CACHING: Redis cache reduces database load and improves response times
+• CDN: CloudFront serves static assets globally with low latency
+• DATABASE: RDS supports read replicas for horizontal scaling
+• STORAGE: S3 provides unlimited scalable storage
+
+================================================================================
+                              DEPLOYMENT ARCHITECTURE
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────────────┐
+│                              CLOUD INFRASTRUCTURE                               │
+└─────────────────────────────────────────────────────────────────────────────────┘
+
+                    ┌─────────────────────────────────┐
+                    │         AWS CLOUD               │
+                    └─────────────────────────────────┘
+                                       │
+                    ┌─────────────────────────────────┐
+                    │    REGION: ap-south-1           │
+                    └─────────────────────────────────┘
+                                       │
+        ┌─────────────────────────────┼─────────────────────────────┐
+        │                             │                             │
+        ▼                             ▼                             ▼
+┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│   LAMBDA    │              │     RDS     │              │     S3      │
+│ (Backend)   │              │  (Database) │              │ (Storage)   │
+└─────────────┘              └─────────────┘              └─────────────┘
+        │                             │                             │
+        ▼                             ▼                             ▼
+┌─────────────┐              ┌─────────────┐              ┌─────────────┐
+│ API GATEWAY │              │   REDIS     │              │ CLOUDFRONT  │
+│ (API Mgmt)  │              │   (Cache)   │              │   (CDN)     │
+└─────────────┘              └─────────────┘              └─────────────┘
+
+================================================================================
+                              TECHNOLOGY STACK SUMMARY
+================================================================================
+
+FRONTEND (TIER 1):
+├── React.js 19.0.0
+├── React Router DOM 7.1.1
+├── Axios 1.7.9
+├── Recharts 2.15.1
+└── XLSX 0.18.5
+
+BACKEND (TIER 2):
+├── FastAPI (Python)
+├── SQLAlchemy (ORM)
+├── JWT Authentication
+├── Google Generative AI
+├── ReportLab (PDF)
+└── APScheduler
+
+DATABASE (TIER 3):
+├── MySQL (AWS RDS)
+├── Redis (Caching)
+└── AWS S3 (Storage)
+
+CLOUD SERVICES:
+├── AWS Lambda
+├── AWS API Gateway
+├── AWS RDS
+├── AWS S3
+├── CloudFront
+└── ZeptoMail
+
+================================================================================
+End of Architecture Diagram
+================================================================================ 

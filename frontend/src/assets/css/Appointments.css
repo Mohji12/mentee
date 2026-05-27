@@ -1,0 +1,399 @@
+.meeting-portal-container {
+  max-width: 100%;
+  border-radius: 10px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.meeting-portal-title {
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #2d2d2d;
+}
+
+.open-modal-button {
+  background-color: #0057b8;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.open-modal-button:hover {
+  background-color: #0041a8;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.meeting-form-modal label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.meeting-form-modal input[type="datetime-local"],
+.meeting-form-modal input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.modal-buttons button[type="submit"] {
+  background-color: #28a745;
+  color: white;
+}
+
+.modal-buttons button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.modal-buttons button[type="button"] {
+  background-color: #6c757d;
+  color: white;
+}
+
+.modal-buttons button[type="button"]:hover {
+  background-color: #5a6268;
+}
+
+.status-message {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+.status-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.status-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+.meeting-table-title {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+  color: #333;
+}
+
+.meeting-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.meeting-table th,
+.meeting-table td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.meeting-table th {
+  background-color: #f1f1f1;
+  font-weight: bold;
+}
+
+.appointments-card-bg {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08), 0 1.5px 7px rgba(0,0,0,0.11);
+  padding: 2rem 1.5rem;
+  margin: 0 auto 2rem;
+  max-width: 1050px;
+}
+
+.redesigned-meeting-table {
+  border-radius: 12px;
+  background: #f9fafb;
+  margin-bottom: 0;
+  overflow:hidden;
+}
+
+.redesigned-meeting-table th,
+.redesigned-meeting-table td {
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.9rem 0.5rem;
+}
+
+.redesigned-meeting-table th {
+  background: #ecf3fa;
+  color: #0b314d;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.redesigned-meeting-table .alt-row {
+  background-color: #f2f6ff;
+}
+
+.mentor-appointments-table th,
+.mentor-appointments-table td {
+  padding: 12px 14px;
+}
+
+.redesigned-verify-btn {
+  background: linear-gradient(90deg,#196efc 65%,#2645ff 100%);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  box-shadow: 0 1px 2.5px rgba(38,69,255,0.10);
+  font-size: 1rem;
+  letter-spacing: 0.01em;
+  cursor:pointer;
+  transition: background 0.18s,transform 0.11s;
+}
+.redesigned-verify-btn:hover {
+  background: linear-gradient(90deg,#2645ff 60%,#196efc 100%);
+  transform: translateY(-2px) scale(1.05);
+}
+
+.modal-appointment-pop {
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 9px 36px rgba(45,77,179,0.10);
+  padding: 2.5rem 2rem 1.3rem 2rem;
+  width: 95vw;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.redesigned-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.modal-approve {
+  background: #2ecc40;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.02rem;
+  cursor:pointer;
+  transition: background 0.13s;
+}
+.modal-approve:hover {
+  background: #229934;
+}
+.modal-reject {
+  background: #e53e3e;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.02rem;
+  cursor:pointer;
+  transition: background 0.13s;
+}
+.modal-reject:hover {
+  background: #aa2020;
+}
+.modal-cancel {
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-weight: 600;
+  padding: 0.6rem 1.3rem;
+  font-size: 1.02rem;
+  cursor:pointer;
+}
+
+/* Mode of meeting (student request form) */
+.meeting-mode-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.meeting-mode-options {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+}
+.mode-option input {
+  cursor: pointer;
+}
+.meeting-online-note {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+}
+
+/* Meeting cards (student appointments + meetings) */
+.meetings-section-content {
+  margin-top: 1.5rem;
+}
+.meetings-empty {
+  text-align: center;
+  color: #666;
+  padding: 2rem;
+}
+.meeting-cards-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.25rem;
+}
+.meeting-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.meeting-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #eee;
+}
+.meeting-card-id {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+}
+.meeting-mode-badge {
+  display: inline-block;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.meeting-mode-badge--online {
+  background: #e3f2fd;
+  color: #1565c0;
+}
+.meeting-mode-badge--offline {
+  background: #f3e5f5;
+  color: #6a1b9a;
+}
+.meeting-card-body {
+  padding: 1.25rem;
+  flex: 1;
+}
+.meeting-card-body p {
+  margin: 0.4rem 0;
+  font-size: 0.95rem;
+}
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+.status-badge--approved {
+  background: #d4edda;
+  color: #155724;
+}
+.status-badge--pending {
+  background: #fff3cd;
+  color: #856404;
+}
+.status-badge--rejected {
+  background: #f8d7da;
+  color: #721c24;
+}
+.meeting-card-actions {
+  padding: 1rem 1.25rem;
+  border-top: 1px solid #eee;
+}
+.btn-start-meeting {
+  display: inline-block;
+  background: #1a73e8;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.btn-start-meeting:hover {
+  background: #1557b0;
+  color: #fff;
+}
+
+@media (max-width:650px) {
+  .appointments-card-bg, .modal-appointment-pop { padding: 1rem !important; }
+  .meeting-table th, .meeting-table td { font-size: 0.9rem; }
+  .meeting-portal-title { font-size: 1.18rem !important; }
+  .meeting-cards-list { grid-template-columns: 1fr; }
+}

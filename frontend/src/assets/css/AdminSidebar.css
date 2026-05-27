@@ -1,0 +1,174 @@
+/* Sidebar Container */
+.admin-sidebar__container {
+  width: 250px;
+  height: 100vh;
+  background-color: #2f3c4e; /* Sidebar background color */
+  color: white;
+  z-index: 2;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Sidebar Title */
+.admin-sidebar__title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: white;
+}
+
+/* Sidebar Menu */
+.admin-sidebar__menu {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 160px;
+}
+
+.admin-sidebar__menu-item {
+  padding: 10px;
+  margin: 10px 10px 10px 10px;
+  display: block;
+  text-decoration: none;
+  color: white;
+  background-color: #3b4c5b; /* Slightly lighter background */
+  border-radius: 5px;
+}
+
+.admin-sidebar__menu-item:hover {
+  background-color: #4b5d6e; /* Hover effect */
+}
+
+/* Logout Button */
+.admin-sidebar-sidebar-logout-button {
+  padding: 10px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  cursor: pointer;
+  margin-top: auto; /* Pushes it to the bottom */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.admin-sidebar-sidebar-logout-button:hover {
+  background-color: #c0392b;
+}
+
+/* Logout Link (Make entire button clickable) */
+.admin-sidebar-sidebar-logout-link {
+  text-decoration: none;
+  color: white;
+  width: 100%; /* Ensure the link takes up the full width of the button */
+  display: block; /* Makes the link block-level to fill the button */
+  text-align: center; /* Centers the text inside the button */
+}
+
+/* Left logo at the top-left corner */
+.admin-sidebar-logo-left {
+  position: absolute;
+  top: 10px;
+  left: 35px;
+  width: 200px; /* Adjust width */
+  height: 100px; /* Adjust height */
+  background-image: url('../images/mentee_tracker.png'); /* Left logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 2;
+}
+
+/* Right logo at the top-right corner */
+.ad-logo-right {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  width: 175px; /* Adjust width */
+  height: 175px; /* Adjust height */
+  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Media Query for Mobile Version */
+@media (max-width: 768px) {
+  /* Adjust the sidebar for mobile devices */
+  .admin-sidebar__container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Full width on mobile */
+    height: 90px; /* Height for the bottom bar */
+    flex-direction: row; /* Align menu items horizontally */
+    justify-content: space-around; /* Distribute the items evenly */
+    background-color: black;
+    padding: 0px 0px 0px 0px; /* Add padding around the items */
+  }
+
+  /* Sidebar Menu */
+  .admin-sidebar__menu {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    justify-content: space-around; /* Space the menu items evenly */
+  }
+
+  /* Menu items as square blocks with icons */
+  .admin-sidebar__menu-item {
+    width: 35px; /* Fixed width for square blocks */
+    height: 35px; /* Fixed height for square blocks */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border-radius: 10px; /* Optional: rounded corners for the blocks */
+    text-align: center; /* Center the icon inside the square */
+    font-size: 24px; /* Adjust font size to fit inside the square */
+  }
+
+  .admin-sidebar__menu-item:hover {
+    background-color: #000000; /* Hover effect */
+  }
+
+  /* Logo */
+  .admin-sidebar-logo-left {
+    position: fixed;
+    left: -05px;
+    background-image: url('../images/black.png'); /* Left logo image */
+    width: 130px;
+    z-index: 1;
+  }
+
+
+  /* Hide the text in mobile version */
+  .admin-sidebar__menu-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0; /* Hides the text in mobile version */
+    margin-right: 20px;
+  }
+
+  /* Explicit icon styling */
+  .admin-sidebar__menu-item svg {
+    font-size: 15px; /* Adjust icon size */
+    color: white;
+  }
+  
+  /* Make menu items icons only */
+  .admin-sidebar__menu-item:before {
+    font-size: 28px; /* Adjust icon size */
+    color: white;
+  }
+
+  /* Hide the text label (for mobile) */
+  @media (max-width: 768px) {
+    .admin-sidebar__menu-item {
+      padding: 0;
+    }
+  }
+}

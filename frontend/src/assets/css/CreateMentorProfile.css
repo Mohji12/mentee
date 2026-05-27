@@ -1,0 +1,38 @@
+.create-mentor-profile__form {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Optional: limit the width of the form */
+  margin: 0 auto; /* Centers the form horizontally */
+}
+
+.create-mentor-profile__input-group {
+  margin-bottom: 12px; /* Reduced space between input fields */
+}
+
+.create-mentor-profile__label {
+  display: block;
+  font-size: 14px; /* Smaller label font */
+  margin-bottom: 6px; /* Reduced space between label and input */
+}
+
+.create-mentor-profile__input {
+  width: 100%;
+  padding: 6px; /* Smaller padding */
+  font-size: 12px; /* Smaller font */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.create-mentor-profile__submit-btn {
+  background-color: #2196f3;
+  color: white;
+  padding: 8px 12px; /* Reduced padding for smaller button */
+  font-size: 14px; /* Smaller button font */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.create-mentor-profile__submit-btn:hover {
+  background-color: #1976d2;
+}
