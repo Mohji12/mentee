@@ -17,7 +17,7 @@ from app.routes.hod import dashboard as hod_dashboard
 from app.routes.program_faculty import dashboard as program_faculty_dashboard
 from fastapi.middleware.cors import CORSMiddleware
 from app.utils.student_services import update_student_semesters
-from app.utils.reminder_service import run_reminder_job, run_counseling_reminder_job
+from app.utils.reminder_service import run_counseling_reminder_job
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.interval import IntervalTrigger
 from apscheduler.triggers.cron import CronTrigger
@@ -43,13 +43,6 @@ async def lifespan(app: FastAPI):
                 id='update_semesters',  # Unique ID for the job
                 name='Update student semesters every 6 months', 
                 replace_existing=True  # If the job exists, replace it
-            )
-            scheduler.add_job(
-                func=run_reminder_job,
-                trigger=CronTrigger(hour=9, minute=0),  # Daily at 9:00 AM
-                id='reminder_job',
-                name='Daily mentee reminder emails',
-                replace_existing=True
             )
             scheduler.add_job(
                 func=run_counseling_reminder_job,

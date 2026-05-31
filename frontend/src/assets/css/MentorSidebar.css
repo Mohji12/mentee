@@ -86,7 +86,7 @@
   right: 40px;
   width: 175px; /* Adjust width */
   height: 175px; /* Adjust height */
-  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -151,7 +151,7 @@
     position: fixed;
     left: 10px;
     top: 10px;
-    background-image: url('../images/black.png');
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png');
     width: 100px;
     height: 50px;
     background-size: contain;

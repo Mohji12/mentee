@@ -45,8 +45,8 @@ SENDER_EMAIL = "jgi@menteetracker.com"  # Sender email address
 SENDER_NAME = "JGI Mentee Tracker"  # Display name for sender
 
 # Logo URLs
-LOGO_URL = "https://jgi-menteetrackers.s3.ap-south-1.amazonaws.com/black.png"
-JAIN_LOGO_URL = "https://jgi-menteetrackers.s3.ap-south-1.amazonaws.com/Jain-Logo.png"
+LOGO_URL = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png"
+JAIN_LOGO_URL = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png"
 
 # ============================================================================
 # EMAIL TEMPLATE

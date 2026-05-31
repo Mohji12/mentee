@@ -86,7 +86,7 @@
   right: 40px;
   width: 175px; /* Adjust width */
   height: 175px; /* Adjust height */
-  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -138,7 +138,7 @@
   .admin-sidebar-logo-left {
     position: fixed;
     left: -05px;
-    background-image: url('../images/black.png'); /* Left logo image */
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png'); /* Left logo image */
     width: 130px;
     z-index: 1;
   }

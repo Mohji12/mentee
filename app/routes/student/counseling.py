@@ -17,7 +17,7 @@ from app.schemas.counseling import (
 )
 from app.services.google_meet_service import GoogleMeetService
 from app.services.email_services import send_email
-from app.services.s3bucket import s3_client, S3_BUCKET_NAME
+from app.services.s3bucket import s3_client, get_document_url
 from app.core.dependencies import get_current_student
 from typing import List, Optional
 from datetime import datetime, timedelta, timezone
@@ -26,34 +26,30 @@ import uuid
 router = APIRouter()
 
 
-def _student_feedback_file_url(session) -> Optional[str]:
-    if not getattr(session, "student_feedback_file", None):
+def _file_url(value) -> Optional[str]:
+    if not value:
         return None
-    return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{session.student_feedback_file}"
+    return get_document_url(value)
+
+
+def _student_feedback_file_url(session) -> Optional[str]:
+    return _file_url(getattr(session, "student_feedback_file", None))
 
 
 def _mentor_feedback_file_url(session) -> Optional[str]:
-    if not getattr(session, "mentor_feedback_file", None):
-        return None
-    return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{session.mentor_feedback_file}"
+    return _file_url(getattr(session, "mentor_feedback_file", None))
 
 
 def _student_issues_proof_file_url(session) -> Optional[str]:
-    if not getattr(session, "student_issues_proof_file", None):
-        return None
-    return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{session.student_issues_proof_file}"
+    return _file_url(getattr(session, "student_issues_proof_file", None))
 
 
 def _mentor_resolution_proof_file_url(session) -> Optional[str]:
-    if not getattr(session, "mentor_resolution_proof_file", None):
-        return None
-    return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{session.mentor_resolution_proof_file}"
+    return _file_url(getattr(session, "mentor_resolution_proof_file", None))
 
 
 def _issue_resolution_feedback_proof_file_url(session) -> Optional[str]:
-    if not getattr(session, "issue_resolution_feedback_proof_file", None):
-        return None
-    return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{session.issue_resolution_feedback_proof_file}"
+    return _file_url(getattr(session, "issue_resolution_feedback_proof_file", None))
 
 
 def _get_issue_resolution_feedback(db: Session, counseling_id: str) -> List:
@@ -594,13 +590,13 @@ async def submit_student_feedback(
         timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         feedback_file_key = f"counseling-feedback/{student_usn}/{counseling_id}_{timestamp}.{ext}"
         try:
-            s3_client.upload_fileobj(
+            file_url = s3_client.upload_fileobj(
                 __import__("io").BytesIO(content),
-                S3_BUCKET_NAME,
+                None,
                 feedback_file_key,
                 ExtraArgs={"ContentType": file.content_type or "application/octet-stream"}
             )
-            session.student_feedback_file = feedback_file_key
+            session.student_feedback_file = file_url
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to upload file: {str(e)}")
 
@@ -675,9 +671,7 @@ async def get_session_feedback(
         raise HTTPException(status_code=404, detail="Counseling session not found")
     
     def _feedback_file_url(s):
-        if not getattr(s, "student_feedback_file", None):
-            return None
-        return f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{s.student_feedback_file}"
+        return _file_url(getattr(s, "student_feedback_file", None))
 
     return {
         "counseling_id": session.counseling_id,
@@ -753,13 +747,13 @@ async def submit_issues_resolution(
         timestamp = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
         proof_key = f"counseling-issues-proof/{student_usn}/{counseling_id}_{timestamp}.{ext}"
         try:
-            s3_client.upload_fileobj(
+            file_url = s3_client.upload_fileobj(
                 __import__("io").BytesIO(content),
-                S3_BUCKET_NAME,
+                None,
                 proof_key,
                 ExtraArgs={"ContentType": file.content_type or "application/octet-stream"}
             )
-            session.student_issues_proof_file = proof_key
+            session.student_issues_proof_file = file_url
         except Exception as e:
             raise HTTPException(status_code=500, detail=f"Failed to upload proof file: {str(e)}")
     db.commit()

@@ -26,9 +26,9 @@ router = APIRouter()
 # Module-level cache for S3 images (avoids re-downloading on every report)
 _IMAGE_CACHE = {}
 IMAGE_URLS = {
-    "watermark": "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/Screenshot_2025-08-27_182721-removebg-preview.png",
-    "jain_logo": "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/Jain-Logo.png",
-    "mentee_logo": "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/MENTEE+TRACKER+(2).png",
+    "watermark": "https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Screenshot_2025-06-30_140404-removebg-preview_jcrpar.png",
+    "jain_logo": "https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png",
+    "mentee_logo": "https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png",
 }
 
 

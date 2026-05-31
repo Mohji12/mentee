@@ -25,7 +25,7 @@ router = APIRouter()
 
 def add_watermark_to_page(canvas_obj, width, height):
     """Add watermark to a page with 90% transparency"""
-    watermark_url = "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/Screenshot_2025-08-27_182721-removebg-preview.png"
+    watermark_url = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Screenshot_2025-06-30_140404-removebg-preview_jcrpar.png"
     try:
         # Download watermark from S3
         response = requests.get(watermark_url)
@@ -115,7 +115,7 @@ def generate_student_profile_pdf(student_usn: str, db: Session = Depends(get_db)
     width, height = A4
 
     # Add Jain Logo to the top left corner of the first page
-    jain_logo_url = "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/Jain-Logo.png"
+    jain_logo_url = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png"
     try:
         # Download and add the Jain logo from S3
         response = requests.get(jain_logo_url)
@@ -135,7 +135,7 @@ def generate_student_profile_pdf(student_usn: str, db: Session = Depends(get_db)
         print(f"Failed to load Jain logo: {e}")
 
     # Add Mentee Tracker Logo to the top right corner of the first page
-    mentee_logo_url = "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/MENTEE+TRACKER+(2).png"
+    mentee_logo_url = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png"
     try:
         # Download and add the Mentee Tracker logo from S3
         response = requests.get(mentee_logo_url)

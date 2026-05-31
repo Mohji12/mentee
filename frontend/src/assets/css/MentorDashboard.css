@@ -76,7 +76,7 @@
   right: 30px;
   width: 150px; /* Adjust width */
   height: 50px; /* Adjust height */
-  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
   background-size: contain;
   background-repeat: no-repeat;
   z-index: 9999; /* Ensure logo is always on top */
@@ -129,7 +129,7 @@
     top: 10px;
     width: 100px;
     height: 50px;
-    background-image: url('../images/Jain-Logo.png');
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png');
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 9999; /* Ensure logo is always on top */

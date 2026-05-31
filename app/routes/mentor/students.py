@@ -30,7 +30,7 @@ from app.schemas.academic_performance import (
 from app.schemas.experience_learning import ExperienceLearningResponse
 from app.schemas.students import SendEmailRequest
 from app.core.dependencies import get_current_mentor
-from app.services.s3bucket import s3_client, S3_BUCKET_NAME, S3_EXPIRATION
+from app.services.s3bucket import get_document_url
 from app.services.email_services import send_email
 from typing import List, Optional, Dict, Any
 from datetime import datetime
@@ -292,16 +292,8 @@ def get_mentor_student_statistics(mentor_id: str, db: Session = Depends(get_db))
 
 
 def _get_marksheet_view_url_mentor(marksheet_url: str) -> str:
-    """Generate presigned URL for viewing marksheet (mentor)."""
-    try:
-        presigned_url = s3_client.generate_presigned_url(
-            "get_object",
-            Params={"Bucket": S3_BUCKET_NAME, "Key": marksheet_url},
-            ExpiresIn=S3_EXPIRATION
-        )
-        return presigned_url
-    except Exception:
-        return ""
+    """Return view URL for marksheet (Cloudinary or legacy S3)."""
+    return get_document_url(marksheet_url)
 
 
 @router.get("/students/{student_usn}/academic-performance", response_model=AcademicPerformanceResponse)
@@ -551,7 +543,7 @@ def get_assigned_students_experience_learning(
         # Generate proof URL if proof exists
         if entry.proof_file_path:
             try:
-                proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{entry.proof_file_path}"
+                proof_url = get_document_url(entry.proof_file_path)
                 entry_dict["proof_url"] = proof_url
             except Exception:
                 pass
@@ -818,7 +810,7 @@ def _get_activities_summary(db: Session, student_usn: str) -> List[Dict[str, Any
         proof_url = None
         if a.proof:
             try:
-                proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{a.proof}"
+                proof_url = get_document_url(a.proof)
             except Exception:
                 pass
         
@@ -971,7 +963,7 @@ def _get_experiential_learning(db: Session, student_usn: str) -> List[Dict[str, 
         proof_url = None
         if entry.proof_file_path:
             try:
-                proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{entry.proof_file_path}"
+                proof_url = get_document_url(entry.proof_file_path)
             except Exception:
                 pass
         

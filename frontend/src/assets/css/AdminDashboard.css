@@ -75,7 +75,7 @@
   right: 40px;
   width: 150px; /* Adjust width */
   height: 150px; /* Adjust height */
-  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
   background-size: contain;
   background-repeat: no-repeat;
   z-index:1;
@@ -119,7 +119,7 @@
     margin-top: -15px;
     width: 130px; /* Adjust width */
     height: 150px; /* Adjust height */
-    background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
     background-size: contain;
     background-repeat: no-repeat;
   }

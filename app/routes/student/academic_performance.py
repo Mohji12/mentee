@@ -15,7 +15,7 @@ from app.schemas.academic_performance import (
     SecondaryMarksheetInfo,
 )
 from app.core.dependencies import get_current_student
-from app.services.s3bucket import s3_client, S3_BUCKET_NAME, S3_EXPIRATION
+from app.services.s3bucket import s3_client, get_document_url
 from datetime import datetime
 
 router = APIRouter()
@@ -28,16 +28,8 @@ def _max_semesters_for_program(program: str | None) -> int:
 
 
 def _get_marksheet_view_url(marksheet_url: str) -> str:
-    """Generate presigned URL for viewing marksheet."""
-    try:
-        presigned_url = s3_client.generate_presigned_url(
-            "get_object",
-            Params={"Bucket": S3_BUCKET_NAME, "Key": marksheet_url},
-            ExpiresIn=S3_EXPIRATION
-        )
-        return presigned_url
-    except Exception:
-        return ""
+    """Return view URL for marksheet (Cloudinary or legacy S3)."""
+    return get_document_url(marksheet_url)
 
 
 def _require_secondary_marksheets(db: Session, student_usn: str) -> None:
@@ -290,9 +282,9 @@ def upload_marksheet(
     
     try:
         # Upload to S3
-        s3_client.upload_fileobj(
+        file_url = s3_client.upload_fileobj(
             file.file,
-            S3_BUCKET_NAME,
+            None,
             s3_file_name,
             ExtraArgs={
                 "ContentType": file.content_type or "application/octet-stream"
@@ -307,14 +299,14 @@ def upload_marksheet(
         
         if existing:
             # Update existing marksheet
-            existing.marksheet_url = s3_file_name
+            existing.marksheet_url = file_url
             existing.updated_at = datetime.utcnow()
         else:
             # Create new marksheet record
             marksheet = AcademicPerformanceMarksheet(
                 student_usn=student_usn.strip(),
                 semester=semester,
-                marksheet_url=s3_file_name
+                marksheet_url=file_url
             )
             db.add(marksheet)
         
@@ -323,7 +315,7 @@ def upload_marksheet(
         return {
             "message": "Marksheet uploaded successfully",
             "semester": semester,
-            "marksheet_url": s3_file_name
+            "marksheet_url": file_url
         }
     except HTTPException:
         # Re-raise HTTP exceptions as-is
@@ -334,9 +326,10 @@ def upload_marksheet(
             db.rollback()
         except Exception:
             pass
-        # Try to delete uploaded file from S3 if database operation failed
+        # Try to delete uploaded file if database operation failed
         try:
-            s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=s3_file_name)
+            if 'file_url' in locals():
+                s3_client.delete_object(Key=file_url)
         except Exception:
             pass
         raise HTTPException(status_code=500, detail=f"Failed to upload marksheet: {str(e)}")
@@ -408,9 +401,9 @@ def upload_secondary_marksheet(
     s3_file_name = f"marksheets/{student_usn}/secondary_{standard}_{timestamp}{file_extension}"
 
     try:
-        s3_client.upload_fileobj(
+        file_url = s3_client.upload_fileobj(
             file.file,
-            S3_BUCKET_NAME,
+            None,
             s3_file_name,
             ExtraArgs={"ContentType": file.content_type or "application/octet-stream"},
         )
@@ -423,21 +416,21 @@ def upload_secondary_marksheet(
             .first()
         )
         if existing:
-            existing.marksheet_url = s3_file_name
+            existing.marksheet_url = file_url
             existing.updated_at = datetime.utcnow()
         else:
             db.add(
                 StudentSecondaryMarksheet(
                     student_usn=student_usn.strip(),
                     standard=standard,
-                    marksheet_url=s3_file_name,
+                    marksheet_url=file_url,
                 )
             )
         db.commit()
         return {
             "message": f"{standard}th standard marksheet uploaded successfully",
             "standard": standard,
-            "marksheet_url": s3_file_name,
+            "marksheet_url": file_url,
         }
     except HTTPException:
         raise
@@ -447,7 +440,8 @@ def upload_secondary_marksheet(
         except Exception:
             pass
         try:
-            s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=s3_file_name)
+            if 'file_url' in locals():
+                s3_client.delete_object(Key=file_url)
         except Exception:
             pass
         raise HTTPException(status_code=500, detail=f"Failed to upload marksheet: {str(e)}")

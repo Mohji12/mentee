@@ -1,9 +1,11 @@
 /* Custom Login Container */
 .login-container {
   display: flex;
+  position: relative;
   height: 100vh; /* Full height of the viewport */
   background-image: url('../images/landing.jpg');
   max-width: 100%;
+  overflow-x: hidden;
 }
 
 .login-left {
@@ -146,13 +148,14 @@
 /* Left logo at the top-left corner */
 .login-logo-left {
   position: absolute;
-  top: -10px;
+  top: 24px;
   left: 10px;
-  width: 230px; /* Adjust width */
-  height:80px; /* Adjust height */
-  background-image: url('../images/black.png'); /* Left logo image */
+  width: 230px;
+  height: 100px;
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png');
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: left center;
 }
 
 /* Right logo at the top-right corner */
@@ -162,7 +165,7 @@
   right: 40px;
   width: 175px; /* Adjust width */
   height: 175px; /* Adjust height */
-  background-image: url('../images/Jain-Logo.png'); /* Right logo image */
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png'); /* Right logo image */
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -315,9 +318,9 @@
   .login-logo-left {
     position: fixed;
     left: 15px;
-    top: 15px;
-    width: 100px;
-    height: 50px;
+    top: 20px;
+    width: 120px;
+    height: 65px;
     z-index: 1001;
   }
 
@@ -369,8 +372,8 @@
 
   .login-logo-left,
   .login-logo-right {
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 55px;
   }
 
   .login-powered-by {

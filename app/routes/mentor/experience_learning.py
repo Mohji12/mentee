@@ -9,7 +9,7 @@ from app.schemas.experience_learning import (
     ExperienceLearningResponse,
 )
 from app.core.dependencies import get_current_mentor
-from app.services.s3bucket import s3_client, S3_BUCKET_NAME
+from app.services.s3bucket import s3_client, get_document_url
 from datetime import datetime
 from typing import List
 import traceback
@@ -51,7 +51,7 @@ async def get_experience_learning_entries(
         # Generate proof URL if proof exists
         if entry.proof_file_path:
             try:
-                proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{entry.proof_file_path}"
+                proof_url = get_document_url(entry.proof_file_path)
                 entry_dict["proof_url"] = proof_url
             except Exception:
                 pass
@@ -149,7 +149,7 @@ async def update_experience_learning_entry(
     proof_url = None
     if entry.proof_file_path:
         try:
-            proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{entry.proof_file_path}"
+            proof_url = get_document_url(entry.proof_file_path)
         except Exception:
             pass
 
@@ -193,7 +193,7 @@ async def delete_experience_learning_entry(
     # Delete proof file from S3 if exists
     if entry.proof_file_path:
         try:
-            s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=entry.proof_file_path)
+            s3_client.delete_object(Key=entry.proof_file_path)
         except Exception as e:
             print(f"Warning: Failed to delete proof file from S3: {str(e)}")
 
@@ -266,50 +266,45 @@ async def upload_proof(
         # Delete old proof file if exists
         if entry.proof_file_path:
             try:
-                s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=entry.proof_file_path)
+                s3_client.delete_object(Key=entry.proof_file_path)
             except Exception as e:
                 print(f"Warning: Failed to delete old proof file: {str(e)}")
 
-        # Generate S3 file path
+        # Generate storage path
         timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         s3_file_name = f"experience-learning/mentor/{mentor_id.strip()}/{entry_id}_{timestamp}.{file_extension}"
 
-        # Upload file to S3
         try:
-            s3_client.upload_fileobj(
+            file_url = s3_client.upload_fileobj(
                 file.file,
-                S3_BUCKET_NAME,
+                None,
                 s3_file_name,
                 ExtraArgs={
                     "ContentType": file.content_type or "application/octet-stream"
                 },
             )
-        except Exception as s3_error:
+        except Exception as upload_error:
             raise HTTPException(
-                status_code=500, detail=f"Failed to upload file to S3: {str(s3_error)}"
+                status_code=500, detail=f"Failed to upload file: {str(upload_error)}"
             )
 
-        # Update entry with proof file path
         try:
-            entry.proof_file_path = s3_file_name
+            entry.proof_file_path = file_url
             db.commit()
             db.refresh(entry)
         except Exception as db_error:
-            # If database operation fails, try to delete the uploaded file from S3
             try:
-                s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=s3_file_name)
+                s3_client.delete_object(Key=file_url)
             except:
                 pass
             raise HTTPException(
                 status_code=500, detail=f"Failed to save proof path to database: {str(db_error)}"
             )
 
-        proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{s3_file_name}"
-
         return {
             "message": "Proof file uploaded successfully",
-            "file_key": s3_file_name,
-            "proof_url": proof_url,
+            "file_key": file_url,
+            "proof_url": file_url,
         }
 
     except HTTPException:
@@ -348,7 +343,7 @@ async def get_proof(
         raise HTTPException(status_code=404, detail="No proof file found for this entry")
 
     try:
-        proof_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{entry.proof_file_path}"
+        proof_url = get_document_url(entry.proof_file_path)
         return {"proof_url": proof_url, "entry_id": entry_id}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

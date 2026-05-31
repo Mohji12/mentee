@@ -8,8 +8,8 @@ import HeroImage from '../../assets/images/hero.png';
 import Chatbot from '../Chatbot';
 import Footer from '../components/Footer';
 
-const MENTEE_TRACKER_LOGO_URL = 'https://jgi-menteetrackers.s3.ap-south-1.amazonaws.com/logo_mentee-removebg-preview.png';
-const JAIN_LOGO_URL = 'https://jgi-menteetrackers.s3.ap-south-1.amazonaws.com/Jain-Logo.png';
+const MENTEE_TRACKER_LOGO_URL = 'https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png';
+const JAIN_LOGO_URL = 'https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png';
 
 const LandingPage = React.memo(() => {
   return (

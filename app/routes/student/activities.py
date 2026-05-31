@@ -8,7 +8,7 @@ from app.db.models.students import Student
 from app.db.models.swot import SWOT
 from app.db.models.activities import Activities
 from app.schemas.activities import ActivitySubmissionsSchema, ActivityTrackingSchema, StudentActivityRequest
-from app.services.s3bucket import s3_client, S3_BUCKET_NAME, S3_EXPIRATION
+from app.services.s3bucket import s3_client, get_document_url
 from app.services.email_services import send_email
 from app.utils.analysis import parse_activities
 from app.utils.id_utils import generate_activity_id
@@ -59,7 +59,7 @@ async def get_proof(student_usn: str, activity_id: str, db: Session = Depends(ge
 
     try:
         # Return public S3 URL (file is public via bucket policy)
-        public_url = f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{submission.proof}"
+        public_url = get_document_url(submission.proof)
         return {
             "proof_url": public_url, 
             "submission_id": submission.submission_id,
@@ -217,18 +217,18 @@ async def upload_proof(
         if not student:
             raise HTTPException(status_code=404, detail="Student not found")
 
-        # Upload file to S3 (No Public Access)
+        # Upload file to Cloudinary
         try:
-            s3_client.upload_fileobj(
+            file_url = s3_client.upload_fileobj(
                 file.file,
-                S3_BUCKET_NAME,
+                None,
                 s3_file_name,
                 ExtraArgs={
                     "ContentType": file.content_type or "application/octet-stream"
                 }
             )
-        except Exception as s3_error:
-            raise HTTPException(status_code=500, detail=f"Failed to upload file to S3: {str(s3_error)}")
+        except Exception as upload_error:
+            raise HTTPException(status_code=500, detail=f"Failed to upload file: {str(upload_error)}")
 
         # Insert into `activity_submissions`
         try:
@@ -237,7 +237,7 @@ async def upload_proof(
                 activity_id=activity_id,
                 student_usn=student_usn,
                 mentor_id=student.assigned_mentor,  # Fetch from Students table
-                proof=s3_file_name,
+                proof=file_url,
                 status="Pending"
             )
             db.add(new_submission)
@@ -245,13 +245,13 @@ async def upload_proof(
         except Exception as db_error:
             # If database operation fails, try to delete the uploaded file from S3
             try:
-                s3_client.delete_object(Bucket=S3_BUCKET_NAME, Key=s3_file_name)
+                s3_client.delete_object(Key=file_url)
             except:
                 pass
             raise HTTPException(status_code=500, detail=f"Failed to save submission to database: {str(db_error)}")
 
-        return {"message": "File uploaded successfully", "file_key": s3_file_name, "submission_id": submission_id,
-                "public_url": f"https://{S3_BUCKET_NAME}.s3.{s3_client.meta.region_name}.amazonaws.com/{s3_file_name}"}
+        return {"message": "File uploaded successfully", "file_key": file_url, "submission_id": submission_id,
+                "public_url": file_url}
 
     except HTTPException:
         # Re-raise HTTP exceptions as-is

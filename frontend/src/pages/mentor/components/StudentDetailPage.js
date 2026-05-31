@@ -5,9 +5,10 @@ import '../../../assets/css/StudentDetailPage.css';
 import '../../../assets/css/Report.css';
 import './CounselingDashboard.css';
 import pdfHeaderImage from '../../../assets/images/Screenshot 2026-03-18 111022.png';
-import menteeTrackerLogo from '../../../assets/images/logo_mentee-removebg-preview.png';
 import { FaArrowLeft, FaUser, FaGraduationCap, FaClipboardList, FaTasks, FaComments, FaCalendarAlt, FaCheck, FaTimes, FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock, FaExternalLinkAlt, FaEye, FaFilePdf, FaClipboardCheck, FaLightbulb, FaLink, FaHistory, FaChartLine } from 'react-icons/fa';
 import { addCanvasAsFullPage, appendNodeToPdfPaged, createA4Pdf, renderNodeToCanvas } from '../../../utils/pdfExport';
+
+const MENTEE_TRACKER_LOGO_URL = 'https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png';
 
 const StudentDetailPage = () => {
   const { mentor_id, student_usn } = useParams();
@@ -1491,7 +1492,7 @@ const StudentDetailPage = () => {
             <div className="sdp-pdf-intro-card">
               <div className="sdp-pdf-intro-header">
                 <div className="sdp-pdf-intro-brand">
-                  <img className="sdp-pdf-intro-logo" src={menteeTrackerLogo} alt="" />
+                  <img className="sdp-pdf-intro-logo" src={MENTEE_TRACKER_LOGO_URL} alt="" />
                   <div className="sdp-pdf-intro-brandtext">
                     <div className="sdp-pdf-intro-university">JAIN (Deemed-to-be University)</div>
                     <div className="sdp-pdf-intro-sub">Mentoring Process</div>
@@ -1528,7 +1529,7 @@ const StudentDetailPage = () => {
             <div className="sdp-pdf-intro-card">
               <div className="sdp-pdf-intro-header">
                 <div className="sdp-pdf-intro-brand">
-                  <img className="sdp-pdf-intro-logo" src={menteeTrackerLogo} alt="" />
+                  <img className="sdp-pdf-intro-logo" src={MENTEE_TRACKER_LOGO_URL} alt="" />
                   <div className="sdp-pdf-intro-brandtext">
                     <div className="sdp-pdf-intro-university">JAIN (Deemed-to-be University)</div>
                     <div className="sdp-pdf-intro-sub">Mentoring Outcomes & Objectives</div>
@@ -1569,7 +1570,7 @@ const StudentDetailPage = () => {
             <div className="sdp-pdf-intro-card">
               <div className="sdp-pdf-intro-header">
                 <div className="sdp-pdf-intro-brand">
-                  <img className="sdp-pdf-intro-logo" src={menteeTrackerLogo} alt="" />
+                  <img className="sdp-pdf-intro-logo" src={MENTEE_TRACKER_LOGO_URL} alt="" />
                   <div className="sdp-pdf-intro-brandtext">
                     <div className="sdp-pdf-intro-university">JAIN (Deemed-to-be University)</div>
                     <div className="sdp-pdf-intro-sub">Guidelines & Impact</div>
@@ -1611,7 +1612,7 @@ const StudentDetailPage = () => {
             <div className="sdp-pdf-intro-card">
               <div className="sdp-pdf-intro-header">
                 <div className="sdp-pdf-intro-brand">
-                  <img className="sdp-pdf-intro-logo" src={menteeTrackerLogo} alt="" />
+                  <img className="sdp-pdf-intro-logo" src={MENTEE_TRACKER_LOGO_URL} alt="" />
                   <div className="sdp-pdf-intro-brandtext">
                     <div className="sdp-pdf-intro-university">JAIN (Deemed-to-be University)</div>
                     <div className="sdp-pdf-intro-sub">Outcome & Self-Reflection</div>

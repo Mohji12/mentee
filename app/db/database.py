@@ -14,10 +14,11 @@ except ImportError:
     # python-dotenv not installed, will use system environment variables
     pass
 
-# Get DATABASE_URL from environment variable
-DATABASE_URL = os.getenv("DATABASE_URL")
-if not DATABASE_URL:
-    raise ValueError("DATABASE_URL environment variable is required")
+# Get DATABASE_URL from environment variable, with project default fallback
+DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "mysql+pymysql://adminuser:Mentee123%40@52.90.192.59:3306/psychometric"
+)
 
 # Parse database URL for diagnostics
 def get_db_info():

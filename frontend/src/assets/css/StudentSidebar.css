@@ -195,7 +195,7 @@ button.ss-sidebar-menu-button:disabled {
     position: fixed;
     left: 10px;
     top: 10px;
-    background-image: url('../images/black.png');
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png');
     width: 100px;
     height: 50px;
     background-size: contain;
@@ -207,7 +207,7 @@ button.ss-sidebar-menu-button:disabled {
     position: fixed;
     right: 10px;
     top: 10px;
-    background-image: url('../images/Jain-Logo.png');
+    background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png');
     width: 100px;
     height: 50px;
     background-size: contain;

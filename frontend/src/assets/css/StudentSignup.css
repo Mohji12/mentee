@@ -1,4 +1,5 @@
 .student-signup-page {
+  position: relative;
   min-height: 100vh;
   background-image: url('../images/landing.jpg');
   background-size: cover;
@@ -8,6 +9,7 @@
   align-items: center;
   padding: 20px;
   background-color: white;
+  overflow-x: hidden;
   overflow-y: auto;
 }
 
@@ -282,13 +284,14 @@ button:disabled {
 /* Left logo at the top-left corner */
 .ssg-logo-left {
   position: absolute;
-  top: -10px;
+  top: 24px;
   left: 10px;
   width: 230px;
-  height: 80px;
-  background-image: url('../images/black.png');
+  height: 100px;
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png');
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: left center;
 }
 
 /* Right logo at the top-right corner */
@@ -298,7 +301,7 @@ button:disabled {
   right: 40px;
   width: 175px;
   height: 175px;
-  background-image: url('../images/Jain-Logo.png');
+  background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png');
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -328,8 +331,11 @@ button:disabled {
 
   .ssg-logo-left {
     position: fixed;
-    left: -05px;
-    width: 130px;
+    left: 15px;
+    top: 20px;
+    width: 120px;
+    height: 65px;
+    z-index: 1001;
   }
 
   .ssg-logo-right {

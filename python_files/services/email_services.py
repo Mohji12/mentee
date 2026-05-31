@@ -16,7 +16,7 @@ def send_email(to_email: str, subject: str, body: str):
     SENDER_EMAIL = "jgi@menteetracker.com"
 
     # Logo URL
-    LOGO_URL = "https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/black.png"
+    LOGO_URL = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png"
 
     # HTML Email Template
     html_body = f"""
@@ -38,7 +38,7 @@ def send_email(to_email: str, subject: str, body: str):
         <a href="https://jgi.menteetracker.com">
             <img src={LOGO_URL} width="125">
         </a>
-        <img class="small-img" src="https://jgi-menteetracker.s3.ap-south-1.amazonaws.com/Jain-Logo.png" width="125"> 
+        <img class="small-img" src="https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png" width="125"> 
         </div>
         <div class="container">
         {body}
