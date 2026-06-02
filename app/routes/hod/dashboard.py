@@ -11,6 +11,7 @@ from app.db.models.report import Report
 from app.db.models.activities import Activities
 from app.db.models.MCA_assignments import MentorshipAssessment
 from app.core.dependencies import get_current_hod
+from app.utils.alumni import active_students_filter
 from app.services.email_services import send_mentor_changed_notification
 
 router = APIRouter()
@@ -45,7 +46,7 @@ def hod_stats(
     total_mentors = db.query(Mentor).filter(Mentor.mentor_department == dept).count()
     usn_list = [
         r[0]
-        for r in db.query(Student.student_usn)
+        for r in active_students_filter(db.query(Student.student_usn))
         .join(Mentor, Student.assigned_mentor == Mentor.mentor_id)
         .filter(Mentor.mentor_department == dept)
         .all()
@@ -127,6 +128,7 @@ def hod_filters(
 def hod_students(
     member_id: str,
     mentor_id: Optional[str] = Query(None, description="Filter by assigned mentor"),
+    view: str = Query("active", description="active | alumni | all"),
     current: dict = Depends(get_current_hod),
     db: Session = Depends(get_db),
 ):
@@ -155,6 +157,10 @@ def hod_students(
     )
     if mentor_id:
         q = q.filter(Student.assigned_mentor == mentor_id)
+    if view == "alumni":
+        q = q.filter(Student.is_alumni.is_(True))
+    elif view == "active":
+        q = active_students_filter(q)
     q = q.group_by(Student.student_usn, Mentor.mentor_name, Mentor.mentor_department).all()
     student_list = []
     for row in q:

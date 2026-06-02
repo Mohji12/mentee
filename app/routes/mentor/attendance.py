@@ -13,6 +13,7 @@ from app.schemas.attendance import (
     ManualAttendanceBulkRequest
 )
 from app.utils.id_utils import generate_session_id
+from app.utils.alumni import active_students_filter
 from datetime import datetime, timedelta, timezone
 from typing import List, Optional
 import qrcode
@@ -181,8 +182,8 @@ def get_attendance_stats(mentor_id: str, db: Session = Depends(get_db)):
         func.lower(Attendance.status) == "late",
     ).scalar() or 0
 
-    assigned_students_count = db.query(func.count(Student.student_usn)).filter(
-        Student.assigned_mentor == mentor_id
+    assigned_students_count = active_students_filter(
+        db.query(func.count(Student.student_usn)).filter(Student.assigned_mentor == mentor_id)
     ).scalar() or 0
 
     # Current week (Monday–Sunday) in IST
@@ -335,7 +336,9 @@ def get_weekly_attendance_report(
 
     week_end_dt = week_start_dt + timedelta(days=7)
 
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     attendance_in_week = (
         db.query(Attendance)
         .filter(
@@ -431,8 +434,8 @@ def get_students_for_manual_attendance(
         raise HTTPException(status_code=404, detail="Session not found")
     
     # Get all assigned students
-    assigned_students = db.query(Student).filter(
-        Student.assigned_mentor == mentor_id
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
     ).all()
     
     # Get existing attendance records for this session

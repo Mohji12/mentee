@@ -16,6 +16,7 @@ from app.db.models.MCA_assignments import MentorshipAssessment
 from app.db.models.pf16_responses import PF16Response
 from app.db.models.ibp_responses import IBPResponse
 from app.db.models.counseling import CounselingSession
+from app.utils.alumni import active_students_filter
 
 router = APIRouter()
 
@@ -30,7 +31,9 @@ def get_dashboard_alerts(mentor_id: str, db: Session = Depends(get_db)):
     alerts = []
     
     # Get assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     student_usns = [s.student_usn for s in assigned_students]
     
     if not student_usns:
@@ -135,7 +138,9 @@ def get_activity_feed(mentor_id: str, limit: int = 10, db: Session = Depends(get
     activities = []
     
     # Get assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     student_usns = [s.student_usn for s in assigned_students]
     student_names = {s.student_usn: s.student_name or s.student_usn for s in assigned_students}
     
@@ -218,7 +223,9 @@ def get_at_risk_students(mentor_id: str, db: Session = Depends(get_db)):
     Optimized with batch queries to avoid N+1 problem."""
     
     # Get assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     
     if not assigned_students:
         return {"at_risk_students": [], "total_count": 0}
@@ -356,7 +363,9 @@ def get_at_risk_students(mentor_id: str, db: Session = Depends(get_db)):
 def get_attendance_trend(mentor_id: str, weeks: int = 6, db: Session = Depends(get_db)):
     """Get weekly attendance trend data for charts."""
     # Get assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     student_usns = [s.student_usn for s in assigned_students]
     
     if not student_usns:
@@ -415,7 +424,9 @@ def get_calendar_events(mentor_id: str, db: Session = Depends(get_db)):
     end_of_next_week = start_of_week + timedelta(days=13)
     
     # Get assigned students for names
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     student_names = {s.student_usn: s.student_name or s.student_usn for s in assigned_students}
     
     events = []
@@ -461,7 +472,9 @@ def get_calendar_events(mentor_id: str, db: Session = Depends(get_db)):
 def get_form_completion_stats(mentor_id: str, db: Session = Depends(get_db)):
     """Get form completion statistics for pie/donut chart.
     Optimized with batch queries to avoid N+1 problem."""
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     total_students = len(assigned_students)
     
     if total_students == 0:

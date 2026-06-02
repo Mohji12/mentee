@@ -149,9 +149,9 @@
   .sd-logo-right {
     position: fixed;
     right: 15px;
-    top: 15px;
-    width: 80px;
-    height: 50px;
+    top: calc(16px + env(safe-area-inset-top, 0px));
+    width: 90px;
+    height: 58px;
     background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924616/Jain-Logo_jix84i.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -163,7 +163,7 @@
     flex-grow: 1;
     overflow-y: auto;
     margin: 0;
-    padding: 20px 15px;
+    padding: calc(72px + env(safe-area-inset-top, 0px)) 15px 20px;
     width: 100%;
     max-width: 100%;
   }

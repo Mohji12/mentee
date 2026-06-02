@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, Date, DateTime
+from sqlalchemy import Column, String, Integer, ForeignKey, Date, DateTime, Boolean
 from app.db.database import Base
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -24,6 +24,8 @@ class Student(Base):
     parent_guardian_contact = Column(String(20), nullable=True)
     mother_contact = Column(String(20), nullable=True)
     father_contact = Column(String(20), nullable=True)
+    is_alumni = Column(Boolean, nullable=False, default=False, server_default="0")
+    alumni_since = Column(DateTime, nullable=True)
 
     activities = relationship("Activities", back_populates="student") # Add this relationship
     experience_learning = relationship(

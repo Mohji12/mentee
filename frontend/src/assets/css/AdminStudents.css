@@ -199,3 +199,70 @@ html, body {
     margin-left: 0 !important;
   }
 }
+
+.admin-students__view-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-students__view-tab {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.admin-students__view-tab.active {
+  background: #007bff;
+  color: #fff;
+  border-color: #007bff;
+}
+
+.admin-students__alumni-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.admin-students__alumni-btn {
+  background: #6c757d;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.admin-students__alumni-btn.primary {
+  background: #28a745;
+}
+
+.admin-students__alumni-btn.warn {
+  background: #dc3545;
+}
+
+.admin-students__row-action {
+  padding: 4px 8px;
+  font-size: 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.admin-students__row-action.to-alumni {
+  background: #ffc107;
+  color: #000;
+}
+
+.admin-students__row-action.to-active {
+  background: #17a2b8;
+  color: #fff;
+}

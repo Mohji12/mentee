@@ -13,6 +13,7 @@ from app.db.models.report import Report
 from app.db.models.activities import Activities
 from app.db.models.MCA_assignments import MentorshipAssessment
 from app.core.dependencies import get_current_leader
+from app.utils.alumni import active_students_filter
 from app.services.email_services import send_mentor_changed_notification
 from app.core.password import hash_password, validate_password
 
@@ -150,6 +151,7 @@ def leader_students(
     mentor_id: Optional[str] = Query(None, description="Filter by assigned mentor"),
     without_department: Optional[bool] = Query(False, description="Show only students without department (no mentor or mentor has no department)"),
     without_mentor: Optional[bool] = Query(False, description="Show only students without assigned mentor"),
+    view: str = Query("active", description="active | alumni | all"),
     current: dict = Depends(get_current_leader),
     db: Session = Depends(get_db),
 ):
@@ -187,6 +189,10 @@ def leader_students(
         q = q.filter(Mentor.mentor_department == department)
     if mentor_id:
         q = q.filter(Student.assigned_mentor == mentor_id)
+    if view == "alumni":
+        q = q.filter(Student.is_alumni.is_(True))
+    elif view == "active":
+        q = active_students_filter(q)
     q = q.group_by(Student.student_usn, Mentor.mentor_name, Mentor.mentor_department, Mentor.mentor_id)
     all_students = q.all()
     student_list = []
