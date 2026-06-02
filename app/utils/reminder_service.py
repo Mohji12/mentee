@@ -153,45 +153,9 @@ def send_mentor_digest_email(
 
 
 def run_reminder_job(app_url: str = DEFAULT_APP_URL) -> None:
-    """
-    Load all students with pending items, send mentee reminder emails and mentor digest emails.
-    Uses a single DB session; swallows per-email errors so one failure does not stop the rest.
-    """
-    from app.db.database import get_db
-
-    db = next(get_db())
-    try:
-        rows = get_students_with_pending_items(db)
-        # Send one email per mentee
-        for r in rows:
-            if r["student_email"] and "@" in r["student_email"]:
-                try:
-                    send_mentee_reminder_email(
-                        r["student_email"],
-                        r["student_name"],
-                        r["pending_items"],
-                        app_url=app_url,
-                    )
-                except Exception as e:
-                    logger.exception("Reminder email failed for %s: %s", r["student_usn"], e)
-
-        # Group by mentor and send one digest per mentor
-        by_mentor = defaultdict(list)
-        for r in rows:
-            if r["mentor_email"] and "@" in r["mentor_email"]:
-                by_mentor[(r["mentor_id"], r["mentor_email"], r["mentor_name"])].append(
-                    (r["student_name"], r["student_usn"], r["pending_items"]))
-        for (mentor_id, mentor_email, mentor_name), mentees_list in by_mentor.items():
-            try:
-                send_mentor_digest_email(mentor_email, mentor_name, mentees_list, app_url=app_url)
-            except Exception as e:
-                logger.exception("Mentor digest email failed for %s: %s", mentor_id, e)
-
-        logger.info("Reminder job completed: %d mentees with pending items processed", len(rows))
-    except Exception as e:
-        logger.exception("Reminder job failed: %s", e)
-    finally:
-        db.close()
+    """Disabled — daily pending-task reminder emails are turned off."""
+    logger.info("run_reminder_job skipped (reminders disabled)")
+    return
 
 
 # ============ COUNSELING SESSION REMINDERS ============
@@ -365,22 +329,6 @@ def create_overdue_followup_reminders(db: Session) -> int:
 
 
 def run_counseling_reminder_job() -> None:
-    """
-    Generate and process all counseling-related reminders.
-    """
-    from app.db.database import get_db
-    
-    db = next(get_db())
-    try:
-        upcoming_count = create_upcoming_session_reminders(db)
-        followup_count = create_followup_due_reminders(db)
-        overdue_count = create_overdue_followup_reminders(db)
-        
-        logger.info(
-            "Counseling reminder job completed: %d upcoming, %d followup due, %d overdue reminders created",
-            upcoming_count, followup_count, overdue_count
-        )
-    except Exception as e:
-        logger.exception("Counseling reminder job failed: %s", e)
-    finally:
-        db.close()
+    """Disabled — counseling in-app reminders are turned off."""
+    logger.info("run_counseling_reminder_job skipped (reminders disabled)")
+    return
