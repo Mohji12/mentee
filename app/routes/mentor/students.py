@@ -1,6 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
-from sqlalchemy import desc
+from sqlalchemy import desc, func
 from app.db.database import get_db
 from app.db.models.competencies import Competencies
 from app.db.models.mentors import Mentor
@@ -32,6 +32,7 @@ from app.schemas.students import SendEmailRequest
 from app.core.dependencies import get_current_mentor
 from app.services.s3bucket import get_document_url
 from app.services.email_services import send_email
+from app.utils.alumni import active_students_filter
 from typing import List, Optional, Dict, Any
 from datetime import datetime
 import pytz
@@ -47,15 +48,24 @@ def _max_semesters_for_program(program: str | None) -> int:
     return 4
 
 @router.get("/assigned_students")
-def get_assigned_students(mentor_id: str, db: Session = Depends(get_db)):
+def get_assigned_students(
+    mentor_id: str,
+    view: str = Query("active", description="active | alumni | all"),
+    db: Session = Depends(get_db),
+):
     mentor = db.query(Mentor).filter(Mentor.mentor_id == mentor_id).first()
     if not mentor:
         raise HTTPException(status_code=404, detail=f"No mentor found with ID {mentor_id}")
 
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    q = db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    if view == "alumni":
+        q = q.filter(Student.is_alumni.is_(True))
+    elif view == "active":
+        q = active_students_filter(q)
+    assigned_students = q.all()
 
     if not assigned_students:
-        raise HTTPException(status_code=404, detail="No students assigned to this mentor")
+        return []
 
     student_list = []
     for student in assigned_students:
@@ -221,9 +231,26 @@ def get_mentor_student_statistics(mentor_id: str, db: Session = Depends(get_db))
         raise HTTPException(status_code=404, detail=f"No mentor found with ID {mentor_id}")
 
     # Fetch assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     if not assigned_students:
-        raise HTTPException(status_code=404, detail="No students assigned to this mentor")
+        total_alumni = (
+            db.query(func.count(Student.student_usn))
+            .filter(Student.assigned_mentor == mentor_id, Student.is_alumni.is_(True))
+            .scalar()
+        )
+        return {
+            "total_students": 0,
+            "total_alumni": total_alumni or 0,
+            "psychometric_filled": 0,
+            "report_generated": 0,
+            "activities_generated": 0,
+            "observation_generated": 0,
+            "mca_filled": 0,
+            "pf16_filled": 0,
+            "ibp_filled": 0,
+        }
 
     # Initialize counters
     psychometric_filled = 0
@@ -506,7 +533,9 @@ def get_assigned_students_experience_learning(
         raise HTTPException(status_code=404, detail=f"No mentor found with ID {mentor_id}")
 
     # Get all assigned students
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
     
     if not assigned_students:
         return []

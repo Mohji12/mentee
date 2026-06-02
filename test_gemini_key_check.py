@@ -23,18 +23,16 @@ def test_gemini_api():
     print("=" * 70)
     print()
     
-    # Get API key from genai_service
+    # Get API key from environment
     try:
-        from app.services.genai_service import genai as genai_module
-        # Get the configured API key
-        api_key = os.getenv("GEMINI_API_KEY")
-    except Exception as e:
-        print(f"[ERROR] Could not import genai_service: {e}")
-        # Try to get from environment variable
-        api_key = os.getenv("GEMINI_API_KEY")
-        if not api_key:
-            print("[ERROR] No API key found. Please set GEMINI_API_KEY environment variable")
-            return False
+        from dotenv import load_dotenv
+        load_dotenv()
+    except ImportError:
+        pass
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key:
+        print("[ERROR] No API key found. Please set GEMINI_API_KEY in .env")
+        return False
     
     print(f"API Key: {api_key[:20]}...{api_key[-10:] if len(api_key) > 30 else ''}")
     print()

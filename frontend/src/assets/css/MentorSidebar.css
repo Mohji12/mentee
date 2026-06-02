@@ -97,10 +97,13 @@
   .mentor-sidebar__container {
     display: flex !important;
     position: fixed;
+    top: auto;
+    right: 0;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 80px;
+    max-height: 80px;
     flex-direction: row;
     justify-content: space-around;
     background-color: #1a1a1a;
@@ -149,13 +152,14 @@
   /* Logo */
   .mentor-sidebar-logo-left {
     position: fixed;
-    left: 10px;
-    top: 10px;
+    left: 12px;
+    top: calc(16px + env(safe-area-inset-top, 0px));
     background-image: url('https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png');
-    width: 100px;
-    height: 50px;
+    width: 110px;
+    height: 58px;
     background-size: contain;
     background-repeat: no-repeat;
+    background-position: left center;
     z-index: 1001;
   }
 
@@ -271,6 +275,8 @@
 @media (max-width: 480px) {
   .mentor-sidebar__container {
     height: 70px;
+    max-height: 70px;
+    min-height: 70px;
     padding: 6px 0;
   }
 

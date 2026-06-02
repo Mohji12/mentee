@@ -9,6 +9,7 @@ from app.db.models.students import Student
 from app.db.database import get_db
 from app.schemas.activities import UpdateActivityTrackingSchema, ActivityMSubmissionsSchema, ActivitySubmissionsSchema, ActivityReviewRequest, MentorActivityRequest
 from app.core.dependencies import get_current_mentor
+from app.utils.alumni import active_students_filter
 from app.utils.id_utils import generate_activity_id
 from app.services.email_services import send_email
 from datetime import datetime, timedelta
@@ -26,7 +27,9 @@ def get_assigned_students_activities(mentor_id: str, db: Session = Depends(get_d
         raise HTTPException(status_code=404, detail=f"No mentor found with ID {mentor_id}")
 
     # Fetch all students assigned to this mentor, including their names
-    assigned_students = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    assigned_students = active_students_filter(
+        db.query(Student).filter(Student.assigned_mentor == mentor_id)
+    ).all()
 
     if not assigned_students:
         raise HTTPException(status_code=404, detail="No students assigned to this mentor")

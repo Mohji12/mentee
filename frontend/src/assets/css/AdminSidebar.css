@@ -96,10 +96,14 @@
   /* Adjust the sidebar for mobile devices */
   .admin-sidebar__container {
     position: fixed;
+    top: auto;
+    right: 0;
     bottom: 0;
     left: 0;
     width: 100%; /* Full width on mobile */
     height: 90px; /* Height for the bottom bar */
+    max-height: 90px;
+    z-index: 1200;
     flex-direction: row; /* Align menu items horizontally */
     justify-content: space-around; /* Distribute the items evenly */
     background-color: black;
