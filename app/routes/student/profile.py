@@ -1,10 +1,14 @@
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends, HTTPException, UploadFile, File
 from app.db.database import get_db
 from sqlalchemy.orm import Session
 from app.db.models.students import Student
 from app.db.models.mentors import Mentor
 from app.schemas.students import StudentProfileSchema, StudentEditSchema
+from app.services.cloudinary_service import upload_fileobj, delete_document
 from datetime import datetime, timezone
+
+ALLOWED_PHOTO_TYPES = {"image/jpeg", "image/jpg", "image/png"}
+MAX_PHOTO_SIZE = 5 * 1024 * 1024  # 5 MB
 
 router = APIRouter()
 
@@ -131,6 +135,7 @@ def get_student_profile(student_usn: str, db: Session = Depends(get_db)):
         "parent_guardian_contact": student.parent_guardian_contact,
         "mother_contact": student.mother_contact,
         "father_contact": student.father_contact,
+        "profile_photo_url": student.profile_photo_url,
     }
 
 @router.put("/editprofile")
@@ -180,3 +185,65 @@ def edit_student_profile(student_usn: str, data: StudentEditSchema, db: Session 
 
     db.commit()
     return {"message": f"Profile updated successfully for Student USN {student_usn}"}
+
+
+@router.post("/uploadphoto")
+async def upload_profile_photo(student_usn: str, file: UploadFile = File(...), db: Session = Depends(get_db)):
+    """
+    Upload or update the student's profile photo.
+    Accepts JPG, JPEG, PNG. Max size 5 MB.
+    If a photo already exists, the old one is deleted from Cloudinary before uploading the new one.
+    """
+    student = db.query(Student).filter_by(student_usn=student_usn.strip()).first()
+    if not student:
+        raise HTTPException(status_code=404, detail=f"Student with USN {student_usn} not found")
+
+    if file.content_type not in ALLOWED_PHOTO_TYPES:
+        raise HTTPException(status_code=400, detail="Invalid image format. Only JPG, JPEG, and PNG are allowed.")
+
+    contents = await file.read()
+    if len(contents) > MAX_PHOTO_SIZE:
+        raise HTTPException(status_code=400, detail="File size exceeds 5 MB limit.")
+
+    # Duplicate check: compute simple hash and compare with existing photo
+    import hashlib
+    new_hash = hashlib.md5(contents).hexdigest()
+    if student.profile_photo_url:
+        # Store hash in a predictable way — check if the same hash exists in the URL path
+        if f"/{new_hash}" in student.profile_photo_url:
+            raise HTTPException(status_code=400, detail="This photo is already uploaded.")
+
+    # Delete old photo from Cloudinary if exists
+    if student.profile_photo_url:
+        delete_document(student.profile_photo_url)
+
+    import io
+    key = f"profile_photos/{student_usn}/{new_hash}"
+    photo_url = upload_fileobj(
+        io.BytesIO(contents),
+        None,
+        key,
+        ExtraArgs={"ContentType": file.content_type},
+    )
+
+    student.profile_photo_url = photo_url
+    db.commit()
+
+    return {"message": "Profile photo uploaded successfully", "profile_photo_url": photo_url}
+
+
+@router.delete("/deletephoto")
+def delete_profile_photo(student_usn: str, db: Session = Depends(get_db)):
+    """Delete the student's profile photo."""
+    student = db.query(Student).filter_by(student_usn=student_usn.strip()).first()
+    if not student:
+        raise HTTPException(status_code=404, detail=f"Student with USN {student_usn} not found")
+
+    if not student.profile_photo_url:
+        raise HTTPException(status_code=400, detail="No profile photo to delete.")
+
+    delete_document(student.profile_photo_url)
+    student.profile_photo_url = None
+    db.commit()
+
+    return {"message": "Profile photo deleted successfully"}

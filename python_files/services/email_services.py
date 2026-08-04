@@ -8,7 +8,7 @@ def send_email(to_email: str, subject: str, body: str):
     # SMTP_PORT = 587
     # SMTP_USERNAME = "84a6ad001@smtp-brevo.com"
     # SMTP_PASSWORD = "gOLTc1vCVKQ9qNUd"
-    # SENDER_EMAIL = "noreply@krintix.com"
+    # SENDER_EMAIL = "noreply@biogred.com"
     SMTP_SERVER = "smtp.zeptomail.in"
     SMTP_PORT = 587
     SMTP_USERNAME = "emailapikey"

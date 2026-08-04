@@ -27,6 +27,9 @@ const StudentDetailPage = () => {
   const [swotLoading, setSwotLoading] = useState(false);
   const [swotError, setSwotError] = useState('');
   const [mentorCounselingSessions, setMentorCounselingSessions] = useState([]);
+  const [academicDocs, setAcademicDocs] = useState(null);
+  const [verifyBusy, setVerifyBusy] = useState('');
+  const [verifyRemarks, setVerifyRemarks] = useState('');
 
   useEffect(() => {
     fetchStudentDetails();
@@ -35,6 +38,9 @@ const StudentDetailPage = () => {
   useEffect(() => {
     if (activeTab === 'counseling') {
       fetchSessionChains();
+    }
+    if (activeTab === 'academic') {
+      fetchAcademicDocs();
     }
   }, [activeTab]);
 
@@ -68,6 +74,49 @@ const StudentDetailPage = () => {
       setError(err.message || 'Failed to load student details.');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const fetchAcademicDocs = async () => {
+    try {
+      const token = sessionStorage.getItem('access_token');
+      const res = await fetch(
+        `${API_BASE_URL}/mentor/${mentor_id}/students/${student_usn}/academic-performance`,
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      if (!res.ok) return;
+      const data = await res.json();
+      setAcademicDocs(data);
+    } catch (e) {
+      /* keep details-based academic view as fallback */
+    }
+  };
+
+  const verifyDocument = async (kind, key, action) => {
+    const token = sessionStorage.getItem('access_token');
+    const busyKey = `${kind}-${key}-${action}`;
+    setVerifyBusy(busyKey);
+    try {
+      const url =
+        kind === 'secondary'
+          ? `${API_BASE_URL}/mentor/${mentor_id}/students/${student_usn}/academic-performance/secondary-marksheet/${key}/verify`
+          : `${API_BASE_URL}/mentor/${mentor_id}/students/${student_usn}/academic-performance/marksheet/${key}/verify`;
+      const res = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ action, remarks: verifyRemarks || null }),
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || 'Verification failed');
+      setVerifyRemarks('');
+      await fetchAcademicDocs();
+    } catch (e) {
+      alert(e.message || 'Verification failed');
+    } finally {
+      setVerifyBusy('');
     }
   };
 
@@ -387,7 +436,11 @@ const StudentDetailPage = () => {
           </button>
           <div className="sdp-header-info">
           <div className="sdp-avatar">
-            <FaUser />
+            {profile.profile_photo_url ? (
+              <img src={profile.profile_photo_url} alt="Profile" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+            ) : (
+              <FaUser />
+            )}
           </div>
           <div className="sdp-header-text">
             <h1>{profile.student_name || 'Student'}</h1>
@@ -604,19 +657,41 @@ const StudentDetailPage = () => {
             <h2 className="sdp-section-title">
               <FaGraduationCap /> Academic Performance
             </h2>
+
+            <div style={{ marginBottom: '1rem' }}>
+              <input
+                type="text"
+                placeholder="Verification remarks (optional)"
+                value={verifyRemarks}
+                onChange={(e) => setVerifyRemarks(e.target.value)}
+                style={{ width: '100%', maxWidth: 420, padding: '0.5rem', borderRadius: 8, border: '1px solid #e2e8f0' }}
+              />
+            </div>
+
+            {academicDocs?.documents_summary && (
+              <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+                <span>Uploaded: {academicDocs.documents_summary.total_uploaded}</span>
+                <span>Pending: {academicDocs.documents_summary.pending_verification}</span>
+                <span>Verified: {academicDocs.documents_summary.verified}</span>
+                <span>Rejected: {academicDocs.documents_summary.rejected}</span>
+              </div>
+            )}
             
             {/* Secondary Marksheets */}
-            {academic_performance.secondary_marksheets && 
-             Object.keys(academic_performance.secondary_marksheets).length > 0 && (
+            {((academicDocs?.secondary_marksheets) || academic_performance.secondary_marksheets) && 
+             Object.keys((academicDocs?.secondary_marksheets) || academic_performance.secondary_marksheets || {}).length > 0 && (
               <div className="sdp-secondary-marksheets">
                 <h3>10th & 12th Marksheets</h3>
                 <div className="sdp-marksheet-list">
                   {[10, 12].map((std) => {
-                    const info = academic_performance.secondary_marksheets[std];
+                    const info = (academicDocs?.secondary_marksheets || academic_performance.secondary_marksheets || {})[std]
+                      || (academicDocs?.secondary_marksheets || academic_performance.secondary_marksheets || {})[String(std)];
                     if (!info) return null;
+                    const status = info.verification_status || 'pending';
                     return (
                       <div key={std} className="sdp-marksheet-item">
                         <span className="sdp-marksheet-label">{std}th Standard</span>
+                        <span className={`ap-badge ap-badge-${status.replace('_', '-')}`}>{status.replace('_', ' ')}</span>
                         {info.uploaded_at && (
                           <span className="sdp-marksheet-date">
                             Uploaded: {formatDate(info.uploaded_at)}
@@ -630,6 +705,19 @@ const StudentDetailPage = () => {
                             <FaEye /> View
                           </button>
                         )}
+                        {status !== 'verified' && (
+                          <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+                            <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('secondary', std, 'verify')}>
+                              <FaCheck /> Verify
+                            </button>
+                            <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('secondary', std, 'reject')}>
+                              <FaTimes /> Reject
+                            </button>
+                            <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('secondary', std, 'request_reupload')}>
+                              Re-upload
+                            </button>
+                          </div>
+                        )}
                       </div>
                     );
                   })}
@@ -638,15 +726,19 @@ const StudentDetailPage = () => {
             )}
 
             {/* Semester-wise Performance */}
-            {academic_performance.semesters && 
-             Object.keys(academic_performance.semesters).length > 0 ? (
+            {(academicDocs?.semesters || academic_performance.semesters) && 
+             (Array.isArray(academicDocs?.semesters) ? academicDocs.semesters.length > 0 : Object.keys(academic_performance.semesters || {}).length > 0) ? (
               <div className="sdp-semesters">
-                {Object.entries(academic_performance.semesters)
+                {(Array.isArray(academicDocs?.semesters)
+                  ? academicDocs.semesters.map((data) => [String(data.semester), data])
+                  : Object.entries(academic_performance.semesters)
+                )
                   .sort(([a], [b]) => Number(a) - Number(b))
                   .map(([sem, data]) => {
                     const hasRows = data.rows && data.rows.length > 0;
                     const hasMarksheet = data.marksheet && data.marksheet.marksheet_url;
                     if (!hasRows && !hasMarksheet) return null;
+                    const status = data.marksheet?.verification_status || 'pending';
                     
                     return (
                       <div key={sem} className="sdp-semester-card">
@@ -690,6 +782,7 @@ const StudentDetailPage = () => {
                           <div className="sdp-semester-marksheet">
                             <FaFilePdf className="sdp-pdf-icon" />
                             <span>Marksheet Available</span>
+                            <span className={`ap-badge ap-badge-${status.replace('_', '-')}`}>{status.replace('_', ' ')}</span>
                             {data.marksheet.uploaded_at && (
                               <span className="sdp-marksheet-date">
                                 ({formatDate(data.marksheet.uploaded_at)})
@@ -701,6 +794,19 @@ const StudentDetailPage = () => {
                             >
                               <FaEye /> View
                             </button>
+                            {status !== 'verified' && (
+                              <div style={{ display: 'flex', gap: '0.35rem', flexWrap: 'wrap' }}>
+                                <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('semester', Number(sem), 'verify')}>
+                                  <FaCheck /> Verify
+                                </button>
+                                <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('semester', Number(sem), 'reject')}>
+                                  <FaTimes /> Reject
+                                </button>
+                                <button type="button" className="sdp-view-btn" disabled={!!verifyBusy} onClick={() => verifyDocument('semester', Number(sem), 'request_reupload')}>
+                                  Re-upload
+                                </button>
+                              </div>
+                            )}
                           </div>
                         )}
                       </div>

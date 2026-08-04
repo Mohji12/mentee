@@ -14,7 +14,7 @@ const LeaderDashboard = () => {
         <Outlet />
       </div>
       <div className="admin-dashboard-powered-by">
-        Powered by <a href="https://krintix.com" target="_blank" rel="noopener noreferrer" className="ad-footer-link">KRINTIX</a>
+        Powered by <a href="https://biogred.com" target="_blank" rel="noopener noreferrer" className="ad-footer-link">BIOGRED</a>
       </div>
     </div>
   );

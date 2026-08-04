@@ -21,16 +21,20 @@ from app.db.models.counseling import CounselingSession, SessionIssuesResolution
 from app.db.models.meetings import Meetings
 from app.db.models.attendance import Attendance, AttendanceSession
 from app.schemas.academic_performance import (
+    AcademicDocumentsSummary,
+    AcademicDocumentListItem,
     AcademicPerformanceResponse,
     AcademicPerformanceSemesterResponse,
     AcademicPerformanceRowWithId,
     AcademicPerformanceMarksheetResponse,
+    AcademicRecordVerifyRequest,
     SecondaryMarksheetInfo,
 )
+from app.services import academic_document_service as doc_svc
+from app.services.s3bucket import get_document_url
 from app.schemas.experience_learning import ExperienceLearningResponse
 from app.schemas.students import SendEmailRequest
 from app.core.dependencies import get_current_mentor
-from app.services.s3bucket import get_document_url
 from app.services.email_services import send_email
 from app.utils.alumni import active_students_filter
 from typing import List, Optional, Dict, Any
@@ -353,9 +357,20 @@ def get_student_academic_performance_mentor(
             m = secondary_by_standard[std]
             secondary_marksheets_response[std] = SecondaryMarksheetInfo(
                 standard=std,
+                document_type=m.document_type or doc_svc.document_type_for_standard(std),
                 marksheet_url=m.marksheet_url,
                 marksheet_view_url=_get_marksheet_view_url_mentor(m.marksheet_url),
                 uploaded_at=m.uploaded_at,
+                updated_at=m.updated_at,
+                board_university=m.board_university,
+                institution_name=m.institution_name,
+                year_of_passing=m.year_of_passing,
+                percentage_cgpa=m.percentage_cgpa,
+                verification_status=m.verification_status or "pending",
+                remarks=m.remarks,
+                uploaded_by=m.uploaded_by,
+                verified_by=m.verified_by,
+                verified_at=m.verified_at,
             )
     can_fill_semester = 10 in secondary_by_standard and 12 in secondary_by_standard
 
@@ -399,7 +414,20 @@ def get_student_academic_performance_mentor(
                 semester=sem,
                 marksheet_url=m.marksheet_url,
                 marksheet_view_url=_get_marksheet_view_url_mentor(m.marksheet_url),
-                uploaded_at=m.uploaded_at
+                uploaded_at=m.uploaded_at,
+                updated_at=m.updated_at,
+                sgpa=m.sgpa,
+                cgpa=m.cgpa,
+                percentage=m.percentage,
+                total_credits=m.total_credits,
+                backlogs=m.backlogs,
+                result_status=m.result_status,
+                academic_year=m.academic_year,
+                verification_status=m.verification_status or "pending",
+                remarks=m.remarks,
+                uploaded_by=m.uploaded_by,
+                verified_by=m.verified_by,
+                verified_at=m.verified_at,
             )
         semester_responses.append(
             AcademicPerformanceSemesterResponse(
@@ -417,7 +445,20 @@ def get_student_academic_performance_mentor(
                 semester=sem,
                 marksheet_url=m.marksheet_url,
                 marksheet_view_url=_get_marksheet_view_url_mentor(m.marksheet_url),
-                uploaded_at=m.uploaded_at
+                uploaded_at=m.uploaded_at,
+                updated_at=m.updated_at,
+                sgpa=m.sgpa,
+                cgpa=m.cgpa,
+                percentage=m.percentage,
+                total_credits=m.total_credits,
+                backlogs=m.backlogs,
+                result_status=m.result_status,
+                academic_year=m.academic_year,
+                verification_status=m.verification_status or "pending",
+                remarks=m.remarks,
+                uploaded_by=m.uploaded_by,
+                verified_by=m.verified_by,
+                verified_at=m.verified_at,
             )
             semester_responses.append(
                 AcademicPerformanceSemesterResponse(
@@ -515,6 +556,162 @@ def get_student_secondary_marksheet_mentor(
         }
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Failed to generate view URL: {str(e)}")
+
+
+@router.patch(
+    "/students/{student_usn}/academic-performance/secondary-marksheet/{standard}/verify",
+    summary="Verify or reject 10th/12th marksheet",
+)
+def verify_secondary_marksheet_mentor(
+    mentor_id: str,
+    student_usn: str,
+    standard: int,
+    data: AcademicRecordVerifyRequest,
+    current: dict = Depends(get_current_mentor),
+    db: Session = Depends(get_db),
+):
+    if current.get("mentor_id") != mentor_id:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    if standard not in (10, 12):
+        raise HTTPException(status_code=400, detail="Standard must be 10 or 12")
+    student = db.query(Student).filter(Student.student_usn == student_usn.strip()).first()
+    if not student:
+        raise HTTPException(status_code=404, detail="Student not found")
+    if student.assigned_mentor != mentor_id:
+        raise HTTPException(status_code=403, detail="Student is not assigned to you")
+    row = (
+        db.query(StudentSecondaryMarksheet)
+        .filter(
+            StudentSecondaryMarksheet.student_usn == student_usn.strip(),
+            StudentSecondaryMarksheet.standard == standard,
+        )
+        .first()
+    )
+    if not row:
+        raise HTTPException(status_code=404, detail=f"Marksheet not found for {standard}th standard")
+    new_status = doc_svc.apply_verification(row, data.action, data.remarks, mentor_id)
+    titles = {
+        "verified": "Document Approved",
+        "rejected": "Document Rejected",
+        "reupload_required": "Re-upload Required",
+    }
+    doc_svc.notify_student_academic(
+        db,
+        student_usn,
+        titles.get(new_status, "Academic Document Update"),
+        f"Your {standard}th marksheet status is now '{new_status}'. {data.remarks or ''}".strip(),
+        link=f"/student/{student_usn}/academic-performance",
+    )
+    db.commit()
+    return {"message": f"Document marked as {new_status}", "verification_status": new_status}
+
+
+@router.patch(
+    "/students/{student_usn}/academic-performance/marksheet/{semester}/verify",
+    summary="Verify or reject semester marksheet",
+)
+def verify_semester_marksheet_mentor(
+    mentor_id: str,
+    student_usn: str,
+    semester: int,
+    data: AcademicRecordVerifyRequest,
+    current: dict = Depends(get_current_mentor),
+    db: Session = Depends(get_db),
+):
+    if current.get("mentor_id") != mentor_id:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    student = db.query(Student).filter(Student.student_usn == student_usn.strip()).first()
+    if not student:
+        raise HTTPException(status_code=404, detail="Student not found")
+    if student.assigned_mentor != mentor_id:
+        raise HTTPException(status_code=403, detail="Student is not assigned to you")
+    row = db.query(AcademicPerformanceMarksheet).filter(
+        AcademicPerformanceMarksheet.student_usn == student_usn.strip(),
+        AcademicPerformanceMarksheet.semester == semester,
+    ).first()
+    if not row:
+        raise HTTPException(status_code=404, detail="Marksheet not found for this semester")
+    new_status = doc_svc.apply_verification(row, data.action, data.remarks, mentor_id)
+    titles = {
+        "verified": "Document Approved",
+        "rejected": "Document Rejected",
+        "reupload_required": "Re-upload Required",
+    }
+    doc_svc.notify_student_academic(
+        db,
+        student_usn,
+        titles.get(new_status, "Academic Document Update"),
+        f"Your semester {semester} marksheet status is now '{new_status}'. {data.remarks or ''}".strip(),
+        link=f"/student/{student_usn}/academic-performance",
+    )
+    db.commit()
+    return {"message": f"Document marked as {new_status}", "verification_status": new_status}
+
+
+@router.get(
+    "/academic-performance/reports/pending",
+    summary="Pending academic document verification for assigned students",
+)
+def mentor_pending_academic_documents(
+    mentor_id: str,
+    current: dict = Depends(get_current_mentor),
+    db: Session = Depends(get_db),
+):
+    if current.get("mentor_id") != mentor_id:
+        raise HTTPException(status_code=403, detail="Forbidden")
+    assigned = db.query(Student).filter(Student.assigned_mentor == mentor_id).all()
+    usn_to_name = {s.student_usn: s.student_name for s in assigned}
+    usns = list(usn_to_name.keys())
+    if not usns:
+        return []
+    items: list[AcademicDocumentListItem] = []
+    for m in (
+        db.query(StudentSecondaryMarksheet)
+        .filter(
+            StudentSecondaryMarksheet.student_usn.in_(usns),
+            func.lower(StudentSecondaryMarksheet.verification_status).in_(["pending", "reupload_required"]),
+        )
+        .all()
+    ):
+        items.append(
+            AcademicDocumentListItem(
+                student_usn=m.student_usn,
+                student_name=usn_to_name.get(m.student_usn),
+                document_kind="secondary",
+                standard=m.standard,
+                document_type=m.document_type or doc_svc.document_type_for_standard(m.standard),
+                verification_status=m.verification_status or "pending",
+                uploaded_at=m.uploaded_at,
+                marksheet_view_url=_get_marksheet_view_url_mentor(m.marksheet_url),
+                remarks=m.remarks,
+                institution_name=m.institution_name,
+                board_university=m.board_university,
+            )
+        )
+    for m in (
+        db.query(AcademicPerformanceMarksheet)
+        .filter(
+            AcademicPerformanceMarksheet.student_usn.in_(usns),
+            func.lower(AcademicPerformanceMarksheet.verification_status).in_(["pending", "reupload_required"]),
+        )
+        .all()
+    ):
+        items.append(
+            AcademicDocumentListItem(
+                student_usn=m.student_usn,
+                student_name=usn_to_name.get(m.student_usn),
+                document_kind="semester",
+                semester=m.semester,
+                document_type=f"Semester {m.semester}",
+                verification_status=m.verification_status or "pending",
+                uploaded_at=m.uploaded_at,
+                marksheet_view_url=_get_marksheet_view_url_mentor(m.marksheet_url),
+                remarks=m.remarks,
+                academic_year=m.academic_year,
+            )
+        )
+    items.sort(key=lambda x: x.uploaded_at or datetime.min, reverse=True)
+    return items
 
 
 @router.get("/students/experience-learning", response_model=List[ExperienceLearningResponse])
@@ -631,6 +828,7 @@ def get_student_details(
         "blood_group": student.blood_group,
         "date_of_birth": student.date_of_birth.isoformat() if student.date_of_birth else None,
         "parent_guardian_contact": student.parent_guardian_contact,
+        "profile_photo_url": student.profile_photo_url,
     }
     
     # 2. Academic Performance Summary

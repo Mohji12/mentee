@@ -14,7 +14,7 @@ const StudentDashboard = () => {
       {/* <Sidebar/> */}
       {/* <Chatbot /> */}
       <div className="sd-powered-by">
-      Powered by <a href="https://krintix.com" target="_blank" rel="noopener noreferrer" className='sd-footer-link'>KRINTIX</a>
+      Powered by <a href="https://biogred.com" target="_blank" rel="noopener noreferrer" className='sd-footer-link'>BIOGRED</a>
       </div>
     </div>
   );

@@ -223,3 +223,374 @@
   }
 }
 
+/* Profile photo in dashboard header */
+.sdh-profile-photo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e2e8f0;
+}
+.sdh-profile-photo-placeholder {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #94a3b8;
+}
+
+/* Enhanced dashboard layout */
+.sdh-enhanced .sdh-pill-muted {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+.sdh-quick-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.sdh-quick-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.85rem;
+  border-radius: 10px;
+  background: #111827;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border: none;
+  cursor: pointer;
+}
+
+.sdh-quick-btn:hover {
+  background: #374151;
+}
+
+.sdh-summary-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(140px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.sdh-summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 0.75rem 0.85rem;
+  box-shadow: 0 4px 14px rgba(17, 24, 39, 0.05);
+}
+
+.sdh-summary-card-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.sdh-summary-card-value {
+  font-size: 1.35rem;
+  font-weight: 900;
+  color: #111827;
+  margin: 0.35rem 0;
+}
+
+.sdh-summary-card-status {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #4f46e5;
+}
+
+.sdh-summary-card-updated {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-top: 0.35rem;
+}
+
+.sdh-widgets-row {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.sdh-widgets-row-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sdh-widgets-row-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sdh-widget {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+}
+
+.sdh-widget-wide {
+  margin-bottom: 1rem;
+}
+
+.sdh-widget h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.sdh-widget-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sdh-widget-head h3 {
+  margin: 0;
+}
+
+.sdh-widget-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.88rem;
+  color: #64748b;
+}
+
+.sdh-widget-meta a {
+  color: #4f46e5;
+  font-weight: 700;
+}
+
+.sdh-chart-wrap {
+  width: 100%;
+  min-height: 220px;
+}
+
+.sdh-chart-sm {
+  min-height: 180px;
+}
+
+.sdh-empty-chart {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.sdh-mini-stats {
+  margin: 0.75rem 0 0;
+  padding-left: 1.1rem;
+  font-size: 0.88rem;
+}
+
+.sdh-progress-bar {
+  height: 12px;
+  background: #e2e8f0;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 0.75rem 0;
+}
+
+.sdh-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #8b5cf6);
+  border-radius: 999px;
+  transition: width 0.3s ease;
+}
+
+.sdh-progress-label {
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0;
+}
+
+.sdh-score-display {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #4f46e5;
+  line-height: 1.1;
+  margin: 0.5rem 0;
+}
+
+.sdh-stat-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.sdh-meeting-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sdh-meeting-list li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.sdh-widget-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  font-weight: 800;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.sdh-notif-list,
+.sdh-events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 320px;
+  overflow-y: auto;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.sdh-notif {
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.sdh-notif-unread {
+  background: #eef2ff;
+  border-color: #c7d2fe;
+}
+
+.sdh-notif-read {
+  background: #f8fafc;
+}
+
+.sdh-notif-title {
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.sdh-notif-msg {
+  font-size: 0.85rem;
+  color: #475569;
+  margin: 0.25rem 0;
+}
+
+.sdh-notif-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.75rem;
+  color: #64748b;
+  align-items: center;
+}
+
+.sdh-notif-empty {
+  color: #94a3b8;
+  font-size: 0.9rem;
+  padding: 0.5rem 0;
+}
+
+.sdh-text-btn {
+  background: none;
+  border: none;
+  color: #4f46e5;
+  font-weight: 800;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.sdh-event-item {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: #f8fafc;
+  font-size: 0.88rem;
+}
+
+.sdh-event-status {
+  color: #64748b;
+  font-size: 0.8rem;
+}
+
+.sdh-legacy-grid {
+  margin-top: 1rem;
+}
+
+.sdh-legacy-title {
+  font-weight: 800;
+  color: #64748b;
+  font-size: 0.85rem;
+  margin: 0 0 0.5rem;
+}
+
+.sdh-legacy-link {
+  display: block;
+  padding: 0.85rem 1rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 800;
+  color: #111827;
+}
+
+.sdh-legacy-link:hover {
+  background: #f1f5f9;
+}
+
+@media (max-width: 1200px) {
+  .sdh-summary-row {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .sdh-summary-row {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+  }
+  .sdh-widgets-row-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .sdh-summary-row {
+    grid-template-columns: 1fr;
+  }
+  .sdh-widgets-row-2 {
+    grid-template-columns: 1fr;
+  }
+  .sdh-quick-actions {
+    flex-direction: column;
+  }
+  .sdh-quick-btn {
+    justify-content: center;
+  }
+}
+

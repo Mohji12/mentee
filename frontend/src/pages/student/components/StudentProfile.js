@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import '../../../assets/css/StudentProfile.css';
 import { API_BASE_URL } from '../../../api';
-import { FaSignOutAlt, FaPen, FaTimes } from 'react-icons/fa';
+import { FaSignOutAlt, FaPen, FaTimes, FaCamera, FaTrash, FaUser } from 'react-icons/fa';
 
 const StudentProfile = () => {
   const { student_usn } = useParams();
   const [profile, setProfile] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [photoUploading, setPhotoUploading] = useState(false);
+  const photoInputRef = useRef(null);
   const [formData, setFormData] = useState({
     student_name: '',
     student_phoneno: '',
@@ -53,6 +55,49 @@ const StudentProfile = () => {
         setIsLoading(false);
       });
   }, [student_usn]);
+
+  const handlePhotoUpload = async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const allowed = ['image/jpeg', 'image/jpg', 'image/png'];
+    if (!allowed.includes(file.type)) {
+      alert('Only JPG, JPEG, and PNG images are allowed.');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      alert('File size must not exceed 5 MB.');
+      return;
+    }
+    setPhotoUploading(true);
+    try {
+      const formData = new FormData();
+      formData.append('file', file);
+      const res = await fetch(`${API_BASE_URL}/student/${student_usn}/uploadphoto`, {
+        method: 'POST',
+        body: formData,
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || 'Upload failed');
+      setProfile(prev => ({ ...prev, profile_photo_url: data.profile_photo_url }));
+    } catch (err) {
+      alert(err.message);
+    } finally {
+      setPhotoUploading(false);
+      if (photoInputRef.current) photoInputRef.current.value = '';
+    }
+  };
+
+  const handlePhotoDelete = async () => {
+    if (!window.confirm('Are you sure you want to delete your profile photo?')) return;
+    try {
+      const res = await fetch(`${API_BASE_URL}/student/${student_usn}/deletephoto`, { method: 'DELETE' });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.detail || 'Delete failed');
+      setProfile(prev => ({ ...prev, profile_photo_url: null }));
+    } catch (err) {
+      alert(err.message);
+    }
+  };
 
   const handleCreateProfile = () => {
     navigate(`/student/${student_usn}/createprofile`);
@@ -197,6 +242,32 @@ const StudentProfile = () => {
       
       {profile && profile.student_name ? (
         <div className="sp-profile-details-container">
+          <div className="sp-profile-photo-section">
+            <div className="sp-profile-photo-wrapper">
+              {profile.profile_photo_url ? (
+                <img src={profile.profile_photo_url} alt="Profile" className="sp-profile-photo" />
+              ) : (
+                <div className="sp-profile-photo-placeholder"><FaUser /></div>
+              )}
+              <label className="sp-profile-photo-upload-btn" title="Upload photo">
+                <FaCamera />
+                <input
+                  ref={photoInputRef}
+                  type="file"
+                  accept=".jpg,.jpeg,.png"
+                  onChange={handlePhotoUpload}
+                  style={{ display: 'none' }}
+                  disabled={photoUploading}
+                />
+              </label>
+            </div>
+            {profile.profile_photo_url && (
+              <button className="sp-profile-photo-delete-btn" onClick={handlePhotoDelete} title="Delete photo">
+                <FaTrash /> Remove Photo
+              </button>
+            )}
+            {photoUploading && <span className="sp-profile-photo-loading">Uploading...</span>}
+          </div>
           <div className="sp-profile-details">
             <div><span className="sp-profile-label">USN:</span> {display(profile.student_usn)}</div>
             <div><span className="sp-profile-label">Name:</span> {display(profile.student_name)}</div>

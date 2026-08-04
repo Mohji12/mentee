@@ -216,9 +216,9 @@ const ForgotPassword = () => {
             </div>
 
             {/* <Chatbot /> */}
-        {/* "Powered by Krintix" Text with Class */}
+        {/* "Powered by Biogred" Text with Class */}
         <div className="fp-powered-by">
-            <p>Powered by <a href="https://krintix.com" target="_blank" rel="noopener noreferrer" className="fp-footer-link">KRINTIX</a></p>
+            <p>Powered by <a href="https://biogred.com" target="_blank" rel="noopener noreferrer" className="fp-footer-link">BIOGRED</a></p>
             </div>
             </div>
             </PullToRefresh>

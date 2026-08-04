@@ -32,7 +32,7 @@ const Footer = () => {
           <img src={MENTEE_TRACKER_LOGO_URL} alt="Mentee Tracker" className="lp-footer-logo lp-footer-logo-mentee" />
           <img src={JAIN_LOGO_URL} alt="Jain University" className="lp-footer-logo lp-footer-logo-jain" />
         </span>
-        &copy; {currentYear} <a href="https://krintix.com" className="lp-footer-linkb">KRINTIX</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All rights reserved.
+        &copy; {currentYear} <a href="https://biogred.com" className="lp-footer-linkb">BIOGRED</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;All rights reserved.
       </div>
     </footer>
   );

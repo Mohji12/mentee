@@ -1,10 +1,10 @@
 from mangum import Mangum
 from fastapi import FastAPI
 from app.db.database import Base, engine, get_db
-from app.db.models import counseling, activities, query, mentors, admin, login, forgot_password, MCA_assignments, meetings, mentee_competency_report, psychometric_responses, report, swot, competencies, activities_tracking, activity_submissions, attendance, committee_member, academic_performance, pf16_responses, ibp_responses, experience_learning, email_logs, internal_marks  # Import all models to register them
+from app.db.models import counseling, activities, query, mentors, admin, login, forgot_password, MCA_assignments, meetings, mentee_competency_report, psychometric_responses, report, swot, competencies, activities_tracking, activity_submissions, attendance, committee_member, academic_performance, pf16_responses, ibp_responses, experience_learning, email_logs, internal_marks, employability, alumni_sessions, expert_sessions, notifications  # Import all models to register them
 from contextlib import asynccontextmanager
 from app.routes.auth import forgot_password, login, student_signup, user
-from app.routes.admin import profile as admin_profile, activities as admin_activities, students as admin_students, pf16 as admin_pf16, ibp as admin_ibp, counseling as admin_counseling
+from app.routes.admin import profile as admin_profile, activities as admin_activities, students as admin_students, pf16 as admin_pf16, ibp as admin_ibp, counseling as admin_counseling, academic_records as admin_academic_records
 from app.routes.mentor import activities as mentor_activities, meetings as mentor_meetings, profile as mentor_profile, services as mentor_services, students as mentor_students, counseling as mentor_counseling, attendance as mentor_attendance, pf16 as mentor_pf16, ibp as mentor_ibp, experience_learning as mentor_experience_learning, dashboard as mentor_dashboard
 from app.routes.mentor.internal_marks import router as mentor_internal_marks_router
 from app.routes.student import activities as student_activities, meetings as student_meetings, profile as student_profile, psychometric, query, swot, reportdownload, mca, counseling as student_counseling, attendance as student_attendance, academic_performance as student_academic_performance, pf16 as student_pf16, ibp as student_ibp, experience_learning, dashboard as student_dashboard
@@ -77,6 +77,7 @@ app.include_router(admin_students.router, prefix="/admin/{admin_id}", tags=["Adm
 app.include_router(admin_pf16.router, prefix="/admin/{admin_id}", tags=["Admin - 16PF"])
 app.include_router(admin_ibp.router, prefix="/admin/{admin_id}", tags=["Admin - IBP"])
 app.include_router(admin_counseling.router, prefix="/admin/{admin_id}", tags=["Admin - Counseling Oversight"])
+app.include_router(admin_academic_records.router, prefix="/admin/{admin_id}", tags=["Admin - Academic Records"])
 
 # Mentor Routes
 app.include_router(mentor_profile.router, prefix="/mentor/{mentor_id}", tags=["Mentor - Profile"])

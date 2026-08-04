@@ -172,12 +172,12 @@ const Login = () => {
           <p>
             Powered by{' '}
             <a
-              href="https://krintix.com"
+              href="https://biogred.com"
               target="_blank"
               rel="noopener noreferrer"
               className="login-footer-link"
             >
-              KRINTIX
+              BIOGRED
             </a>
           </p>
         </div>

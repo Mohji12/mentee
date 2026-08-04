@@ -83,7 +83,7 @@ const App = () => {
         <Route path="/student_signup" element={<StudentSignup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route path="/krintix" element={<LinkPage />} />
+        <Route path="/biogred" element={<LinkPage />} />
         <Route path="/logout" element={<Logout />} />
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

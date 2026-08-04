@@ -59,7 +59,7 @@ Thank you for being a valued part of our community.
 
 <p style="font-size: 16px; color: #333;">
 Best regards,<br>
-<strong>Team Krintix</strong>
+<strong>Team Biogred</strong>
 </p>
 """
 

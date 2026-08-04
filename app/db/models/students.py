@@ -24,6 +24,7 @@ class Student(Base):
     parent_guardian_contact = Column(String(20), nullable=True)
     mother_contact = Column(String(20), nullable=True)
     father_contact = Column(String(20), nullable=True)
+    profile_photo_url = Column(String(500), nullable=True)
     is_alumni = Column(Boolean, nullable=False, default=False, server_default="0")
     alumni_since = Column(DateTime, nullable=True)
 
