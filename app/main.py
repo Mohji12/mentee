@@ -1,4 +1,7 @@
-from mangum import Mangum
+try:
+    from mangum import Mangum
+except ImportError:
+    Mangum = None
 from fastapi import FastAPI
 from app.db.database import Base, engine, get_db
 from app.db.models import counseling, activities, query, mentors, admin, login, forgot_password, MCA_assignments, meetings, mentee_competency_report, psychometric_responses, report, swot, competencies, activities_tracking, activity_submissions, attendance, committee_member, academic_performance, pf16_responses, ibp_responses, experience_learning, email_logs, internal_marks, employability, alumni_sessions, expert_sessions, notifications  # Import all models to register them
@@ -151,4 +154,4 @@ async def health_check():
     return {"status": "ok", "service": "mentee-tracker-api"}
 
 
-handler = Mangum(app)
+handler = Mangum(app) if Mangum else app
