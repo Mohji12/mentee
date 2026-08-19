@@ -25,8 +25,8 @@ def send_email(to_email: str, subject: str, body: str):
     SMTP_SERVER = "smtp.zeptomail.in"
     SMTP_PORT = 587
     SMTP_USERNAME = "emailapikey"
-    SMTP_PASSWORD = "Zoho-enczapikey PHtE6r0NQr/tgjUv+0RS5qC6QpalMo4uqe1jeFVCsI5FWPYCGk1Sqd4ukmfhr00jXPURHKHKwN9v4OmZserXdDy5YWxOD2qyqK3sx/VYSPOZsbq6x00Zsl4afkLeUYHvcdZo1ifSvdvdNA=="
-    SENDER_EMAIL = "jgi@menteetracker.com"
+    SMTP_PASSWORD = "Zoho-enczapikey PHtE6r1ZSuG52jQp9UIEt/LuFMWgPYwtrOJgKQBGt4lBCvMHHk1c+dguk2Li+B1+VfJGFqSewNg7tO/Ks+nQcWa+MGtLCWqyqK3sx/VYSPOZsbq6x00UsVQZdEDbUoPocNNi3CbQudzbNA=="
+    SENDER_EMAIL = "noreply@bengaluruhealthcommunity.in"
 
     # Logo URL
     LOGO_URL = "https://res.cloudinary.com/dvlitilou/image/upload/v1779924617/logo_mentee-removebg-preview_coyhds.png"
@@ -73,7 +73,7 @@ def send_email(to_email: str, subject: str, body: str):
         
         # Create message
         msg = MIMEMultipart()
-        msg["From"] = formataddr(("Mentee Tracker", SENDER_EMAIL))
+        msg["From"] = formataddr(("JGIMENTEETRACKER", SENDER_EMAIL))
         msg["To"] = to_email
         msg["Subject"] = subject
         msg.attach(MIMEText(html_body, "html"))
